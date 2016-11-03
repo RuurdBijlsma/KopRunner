@@ -1,26 +1,55 @@
 class KeyboardActor extends Actor {
-    init(car, keyHandler = MAIN.keyHandler) {
-        keyHandler.setContinuousKey("w", "Accelerate car", () => car.accelerate());
-        keyHandler.setContinuousKey("s", "Decelerate car", () => car.decelerate());
-        keyHandler.setContinuousKey("a", "Turn left", () => car.turnWheel(-1.13));
-        keyHandler.setContinuousKey("d", "Turn right", () => car.turnWheel(1.13));
-        keyHandler.setContinuousKey("ArrowUp", "Accelerate car", () => car.accelerate());
-        keyHandler.setContinuousKey("ArrowDown", "Decelerate car", () => car.decelerate());
-        keyHandler.setContinuousKey("ArrowLeft", "Turn left", () => car.turnWheel(-1.13));
-        keyHandler.setContinuousKey("ArrowRight", "Turn right", () => car.turnWheel(1.13));
-        keyHandler.setContinuousKey("Shift", "Activate boost", () => car.boost());
-        keyHandler.setContinuousKey(" ", "Jump car", () => car.jump());
+    init(cars, keyHandler = MAIN.keyHandler) {
+
+        keyHandler.setSingleKey("w", "Accelerate car", [
+            () => cars.map(car => car.startMovingForward()),
+            () => cars.map(car => car.stopMoving())
+        ]);
+        keyHandler.setSingleKey("s", "Decelerate car", [
+            () => cars.map(car => car.startMovingBackward()),
+            () => cars.map(car => car.stopMoving())
+        ]);
+        keyHandler.setSingleKey("a", "Turn left", [
+            () => cars.map(car => car.turnWheel(-1.13)),
+            () => cars.map(car => car.turnWheel(0))
+        ]);
+        keyHandler.setSingleKey("d", "Turn right", [
+            () => cars.map(car => car.turnWheel(1.13)),
+            () => cars.map(car => car.turnWheel(0))
+        ]);
+        keyHandler.setSingleKey("ArrowUp", "Accelerate car", [
+            () => cars.map(car => car.startMovingForward()),
+            () => cars.map(car => car.stopMoving())
+        ]);
+        keyHandler.setSingleKey("ArrowDown", "Decelerate car", [
+            () => cars.map(car => car.startMovingBackward()),
+            () => cars.map(car => car.stopMoving())
+        ]);
+        keyHandler.setSingleKey("ArrowLeft", "Turn left", [
+            () => cars.map(car => car.turnWheel(-1.13)),
+            () => cars.map(car => car.turnWheel(0))
+        ]);
+        keyHandler.setSingleKey("ArrowRight", "Turn right", [
+            () => cars.map(car => car.turnWheel(1.13)),
+            () => cars.map(car => car.turnWheel(0))
+        ]);
+        keyHandler.setContinuousKey("Shift", "Activate boost",
+            () => cars.map(car => car.boost())
+        );
+        keyHandler.setContinuousKey(" ", "Jump car",
+            () => cars.map(car => car.jump())
+        );
     }
 
     disable(car) {
-        MAIN.keyHandler.deleteContinuousKey("w");
-        MAIN.keyHandler.deleteContinuousKey("s");
-        MAIN.keyHandler.deleteContinuousKey("a");
-        MAIN.keyHandler.deleteContinuousKey("d");
-        MAIN.keyHandler.deleteContinuousKey("ArrowUp");
-        MAIN.keyHandler.deleteContinuousKey("ArrowDown");
-        MAIN.keyHandler.deleteContinuousKey("ArrowLeft");
-        MAIN.keyHandler.deleteContinuousKey("ArrowRight");
+        MAIN.keyHandler.deleteSingleKey("w");
+        MAIN.keyHandler.deleteSingleKey("s");
+        MAIN.keyHandler.deleteSingleKey("a");
+        MAIN.keyHandler.deleteSingleKey("d");
+        MAIN.keyHandler.deleteSingleKey("ArrowUp");
+        MAIN.keyHandler.deleteSingleKey("ArrowDown");
+        MAIN.keyHandler.deleteSingleKey("ArrowLeft");
+        MAIN.keyHandler.deleteSingleKey("ArrowRight");
         MAIN.keyHandler.deleteContinuousKey("Shift");
         MAIN.keyHandler.deleteContinuousKey(" ");
     }

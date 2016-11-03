@@ -59,12 +59,16 @@ class KeyHandler {
         }
         for (let checkKey in handler.singleKeyFunctions)
             if (key === checkKey)
-                handler.singleKeyFunctions[checkKey].action(e);
+                handler.singleKeyFunctions[checkKey].action[0](e);
     }
 
     keyup(e, handler) {
         let key = e.key;
         handler.keyPressed.splice(handler.keyPressed.map(k => k.key).indexOf(key), 1);
+
+        for (let checkKey in handler.singleKeyFunctions)
+            if (key === checkKey)
+                handler.singleKeyFunctions[checkKey].action[1](e);
     }
 
     isPressed(key) {

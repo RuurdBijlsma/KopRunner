@@ -5,6 +5,7 @@ class Scene extends Physijs.Scene {
         super();
         let scene = this;
         this.main = main;
+        this.setGravity(new THREE.Vector3(0, -30, 0));
 
         this.renderElement = renderElement;
         this.camera = new THREE.PerspectiveCamera(45, this.renderElement.offsetWidth / this.renderElement.offsetHeight, 0.1, 10000);
@@ -28,7 +29,7 @@ class Scene extends Physijs.Scene {
         let floorZ = 366,
             floorX = 150,
             geometry = new THREE.CubeGeometry(1, 2, 1),
-            material = Physijs.createMaterial(new THREE.MeshStandardMaterial({ color: 0x00ff00 }), 1, 0.2),
+            material = Physijs.createMaterial(new THREE.MeshStandardMaterial({ color: 0x00ff00 }), 0.8, 2),
             floorGeometry = new THREE.CubeGeometry(floorX, 1, floorZ),
             textureLoader = new THREE.TextureLoader(),
             floorMap = textureLoader.load('img/textures/4way.png'),
@@ -59,7 +60,15 @@ class Scene extends Physijs.Scene {
         document.body.appendChild(this.stats.dom);
 
         main.loop.add(() => this.simulate());
-        this.car = new PlayerCar(this, 0, 3, 0);
+
+        let cars = [];
+        for (let x = -50; x < 50; x+=50)
+            for (let y = -50; y < 50; y+=50)
+                cars.push(new PlayerCar(this, x, 3, y));
+
+        this.car = cars[0];
+
+        this.car._actor.init(cars, this.main.keyHandler);
 
         this.camera.position.x = 0;
         this.camera.position.y = 3;
