@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/KeyHandler.js" afterPath="$PROJECT_DIR$/js/game/KeyHandler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Main.js" afterPath="$PROJECT_DIR$/js/game/Main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/PhysicsCar.js" afterPath="$PROJECT_DIR$/js/game/PhysicsCar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Scene.js" afterPath="$PROJECT_DIR$/js/game/Scene.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/SkyBox.js" afterPath="$PROJECT_DIR$/js/game/SkyBox.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/WorldTile.js" afterPath="$PROJECT_DIR$/js/game/WorldTile.js" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,8 +72,8 @@
       <file leaf-file-name="PhysicsCar.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/PhysicsCar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="145" column="20" selection-start-line="145" selection-start-column="20" selection-end-line="145" selection-end-column="20" />
+            <state relative-caret-position="272">
+              <caret line="143" column="5" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -231,7 +226,7 @@
       <workItem from="1478169538478" duration="28000" />
       <workItem from="1478170231112" duration="1967000" />
       <workItem from="1478186814395" duration="166000" />
-      <workItem from="1478196763664" duration="759000" />
+      <workItem from="1478196763664" duration="900000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -338,11 +333,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478196920497</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="camera following added">
+      <created>1478205237097</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1478205237097</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10091000" />
+    <option name="totallyTimeSpent" value="10232000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -396,7 +398,8 @@
     <MESSAGE value="fixmix" />
     <MESSAGE value="physics driving added" />
     <MESSAGE value="orbit controls are back" />
-    <option name="LAST_COMMIT_MESSAGE" value="orbit controls are back" />
+    <MESSAGE value="camera following added" />
+    <option name="LAST_COMMIT_MESSAGE" value="camera following added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -715,8 +718,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/PhysicsCar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="145" column="20" selection-start-line="145" selection-start-column="20" selection-end-line="145" selection-end-column="20" />
+        <state relative-caret-position="272">
+          <caret line="143" column="5" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
           <folding />
         </state>
       </provider>
