@@ -2,7 +2,7 @@
 const mapSize = 7;
 const tileSize = 15;
 const tileHeight = 0.1;
-const AINodeDensityFactor = 5;
+const aiNodePerBlock = 10;
 const tileYlevel = 5;
 
 class World{
@@ -14,37 +14,42 @@ class World{
 
     createMap()
     {
-        let textureLoader = new THREE.TextureLoader();
-        let floorMap = textureLoader.load('img/textures/floor.png');
+        let t = new THREE.TextureLoader();
+        let mat = t.load('img/textures/4way.png', () => {
 
-        for(let x = 0; x < mapSize; ++x)
-        {
-            let row = [];
-            for(let y = 0; y < mapSize; ++y)
+            for(let x = 0; x < mapSize; ++x)
             {
-                row.push(new WorldTile(x,y, floorMap,'img/textures/floor.png'));
+                let row = [];
+                for(let y = 0; y < mapSize; ++y)
+                {
+                    row.push(new WorldTile(x,y, mat, 'img/textures/4way.png'));
+                }
+                this.map.push(row);
             }
-            this.map.push(row);
-        }
 
-        for(let i = 0; i < mapSize; ++i)
-        {
-            this.map[i][0].north = null;
-            this.map[0][i].west = null;
-            this.map[i][mapSize - 1].south = null;
-            this.map[mapSize - 1][i].east = null;
-        }
-
-        for(let x = 1; x < mapSize - 1; ++x)
-        {
-            for(let y = 1; y < mapSize - 1; ++y)
+            for(let i = 0; i < mapSize; ++i)
             {
-                this.map[x][y].north = this.map[x][y - 1];
-                this.map[x][y].south = this.map[x][y + 1];
-
-                this.map[x][y].west = this.map[x - 1][y];
-                this.map[x][y].east = this.map[x + 1][y];
+                this.map[i][0].north = null;
+                this.map[0][i].west = null;
+                this.map[i][mapSize - 1].south = null;
+                this.map[mapSize - 1][i].east = null;
             }
-        }
+
+            for(let x = 1; x < mapSize - 1; ++x)
+            {
+                for(let y = 1; y < mapSize - 1; ++y)
+                {
+                    this.map[x][y].north = this.map[x][y - 1];
+                    this.map[x][y].south = this.map[x][y + 1];
+
+                    this.map[x][y].west = this.map[x - 1][y];
+                    this.map[x][y].east = this.map[x + 1][y];
+                }
+            }
+
+        });
+
+
+
     }
 }

@@ -19,27 +19,22 @@ class PixelFetcher
 
     getPixelR(x,y)
     {
-        let pos = (x + this.texture.width * y) * 4, data = this.texture.data;
-        return data[pos];
+        return this.context.getImageData(x,y,1,1).data.r;
     }
     getPixelG(x,y)
     {
-        let pos = (x + this.texture.width * y) * 4, data = this.texture.data;
-        return data[pos + 1];
+        return this.context.getImageData(x,y,1,1).data.g;
     }
     getPixelB(x,y)
     {
-        let pos = (x + this.texture.width * y) * 4, data = this.texture.data;
-        return data[pos + 2];
+        return this.context.getImageData(x,y,1,1).data.b;
     }
     getPixelA(x,y)
     {
-        let pos = (x + this.texture.width * y) * 4, data = this.texture.data;
-        return data[pos + 3];
+        return this.context.getImageData(x,y,1,1).data.a;
     }
     getPixelRGBA(x,y)
     {
-        let pos = (x + this.texture.width * y) * 4, data = this.texture.data;
-        return { r: data[pos], g: data[pos + 1], b: data[pos + 2], a: data[pos + 3] };
+        return this.context.getImageData(x,y,1,1).data;
     }
 }
