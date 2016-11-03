@@ -1,8 +1,17 @@
 class Actor extends Singleton {
 
-    init(car) {}
+    init(car)
+    {
 
-    disable(car) {}
+    }
 
-    driveCar(car){}
+    disable(car)
+    {
+
+    }
+
+    driveCar(car)
+    {
+
+    }
 }
