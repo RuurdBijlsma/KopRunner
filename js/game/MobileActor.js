@@ -11,6 +11,6 @@ class MobileActor extends Actor {
 
     driveCar(car) {
         //noinspection JSSuspiciousNameCombination
-        MAIN.scene.camera.rotation.z = Math.abs(this.deviceOrientantionState.angleX) + Math.PI / 2;
+        MAIN.scene.camera.rotation.z = this.deviceOrientantionState.angleY + Math.PI / 2;
     }
 }

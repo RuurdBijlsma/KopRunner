@@ -23,7 +23,7 @@ class Scene extends Physijs.Scene {
         this.renderElement.appendChild(this.renderer.domElement);
         window.addEventListener('resize', () => this.onWindowResize());
 
-        this.controls = new THREE.OrbitControls(this.camera, renderElement);
+        // this.controls = new THREE.OrbitControls(this.camera, renderElement);
 
         let floorZ = 366,
             floorX = 150,
