@@ -20,7 +20,7 @@ class WorldTile{
         let g = new THREE.SphereGeometry(1,10,10);
         let mat2 = new THREE.MeshPhongMaterial({ color: "blue" });
         let mesh2 = new THREE.Mesh(g, mat2);
-        MAIN.scene.add(mesh2);
+        // MAIN.scene.add(mesh2);
         mesh2.position.set(this.worldX, tileYlevel, this.worldZ);
 
 		this._neighbours = [];
@@ -111,7 +111,7 @@ class WorldTile{
         let g1 = new THREE.CylinderGeometry(1,1,5,10,10);
         let mat2 = new THREE.MeshPhongMaterial({ color: "red"});
         let mesh2 = new THREE.Mesh(g1,mat2);
-        MAIN.scene.add(mesh2);
+        // MAIN.scene.add(mesh2);
         mesh2.position.set(this.singleAINode.worldPosition.x, tileYlevel, this.singleAINode.worldPosition.y );
 
         let g = new THREE.SphereGeometry(0.1,10,10);
@@ -125,7 +125,7 @@ class WorldTile{
                 let k = this.detailedAINodes[x][y];
                 k.mesh = mesh.clone();
                 k.mesh.position.set(k.worldPosition.x,tileYlevel,k.worldPosition.y);
-                MAIN.scene.add(k.mesh);
+                // MAIN.scene.add(k.mesh);
             }
         }
 

@@ -31,6 +31,8 @@ class KeyHandler {
     }
 
     setSingleKey(key, name, fun) {
+        if (fun.length < 2)
+            fun[1] = function() {};
         this.singleKeyFunctions[key] = {
             action: fun,
             name: name
@@ -56,19 +58,17 @@ class KeyHandler {
                 key: key,
                 event: e
             });
+            if (handler.singleKeyFunctions[key])
+                handler.singleKeyFunctions[key].action[0](e);
         }
-        for (let checkKey in handler.singleKeyFunctions)
-            if (key === checkKey)
-                handler.singleKeyFunctions[checkKey].action[0](e);
     }
 
     keyup(e, handler) {
         let key = e.key;
-        handler.keyPressed.splice(handler.keyPressed.map(k => k.key).indexOf(key), 1);
+        if (handler.singleKeyFunctions[key])
+            handler.singleKeyFunctions[key].action[1](e);
 
-        for (let checkKey in handler.singleKeyFunctions)
-            if (key === checkKey)
-                handler.singleKeyFunctions[checkKey].action[1](e);
+        handler.keyPressed.splice(handler.keyPressed.map(k => k.key).indexOf(key), 1);
     }
 
     isPressed(key) {

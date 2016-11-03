@@ -20,7 +20,8 @@ class SkyBox extends THREE.Mesh {
 
         let skyBox = this;
         this.loop = scene.main.loop.add(function() {
-            skyBox.position.set(scene.camera.position.x, scene.camera.position.y, scene.camera.position.z);
+            let pos = scene.camera.getWorldPosition();
+            skyBox.position.set(pos.x, pos.y, pos.z);
         });
     }
 }

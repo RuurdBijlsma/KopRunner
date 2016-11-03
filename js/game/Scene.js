@@ -24,14 +24,10 @@ class Scene extends Physijs.Scene {
         this.renderElement.appendChild(this.renderer.domElement);
         window.addEventListener('resize', () => this.onWindowResize());
 
-        this.controls = new THREE.OrbitControls(this.camera, renderElement);
-        this.camera.position.set(10, 10, 10);
-        this.camera.lookAt(new THREE.Vector3);
-
         let floorZ = 366,
             floorX = 150,
             geometry = new THREE.CubeGeometry(1, 2, 1),
-            material = Physijs.createMaterial(new THREE.MeshStandardMaterial({ color: 0x00ff00 }), 0.8, 2),
+            material = Physijs.createMaterial(new THREE.MeshStandardMaterial({ color: 0x00ff00 }), 2, 0.2),
             floorGeometry = new THREE.CubeGeometry(floorX, 1, floorZ),
             textureLoader = new THREE.TextureLoader(),
             floorMap = textureLoader.load('img/textures/4way.png'),
@@ -61,29 +57,40 @@ class Scene extends Physijs.Scene {
         this.stats.showPanel(1);
         document.body.appendChild(this.stats.dom);
 
-        main.loop.add(() => this.simulate());
-
         let cars = [];
         for (let x = -50; x < 50; x += 100)
             for (let y = -50; y < 50; y += 100)
                 cars.push(new PlayerCar(this, x, 3, y));
-
         this.car = cars[0];
-
-        // main.loop.add(() => this.updateCamera());
-
         this.car._actor.init(cars, this.main.keyHandler);
 
+        // this.controls = new THREE.OrbitControls(this.camera, renderElement);
+        // this.camera.position.set(10, 10, 10);
+        // this.camera.lookAt(new THREE.Vector3);
+
+        main.loop.add(() => this.updateCamera());
+
         this.render();
+        main.loop.add(() => this.simulate());
+        this.car.add(this.camera);
+        this.camera.position.set(0, 5, -10);
     }
     updateCamera() {
-        let cameraHeight = 5,
-            cameraDistance = 10,
-            direction = this.car.getWorldDirection().clone().multiplyScalar(cameraDistance),
-            position = this.car.position.clone();
+        let speed = this.car.directionalSpeed;
+        this.camera.position.set(speed.x / 3, 5, -10 - speed.length()/5);
+        this.camera.lookAt(new THREE.Vector3(0, 0, 10))
+            // this.camera.lookAt(this.car.position);
+            // let cameraHeight = 5,
+            //     cameraDistance = 10,
+            //     direction = this.car.getWorldDirection().clone().multiplyScalar(cameraDistance),
+            //     position = this.car.position.clone(),
+            //     newY = position.y - direction.y;
+            // newY = newY <= 0.5 ? 0.5 : newY;
+            // newY += cameraHeight;
+            // let driftCameraDelay = 300;
 
-        this.camera.position.set(position.x - direction.x, position.y - direction.y + cameraHeight, position.z - direction.z);
-        this.camera.lookAt(position.clone().add(direction));
+        // let newCamPos = new THREE.Vector3(position.x - direction.x, newY, position.z - direction.z);
+        // setTimeout(() => this.cylinder.position.set(newCamPos.x, newCamPos.y, newCamPos.z), driftCameraDelay);
     }
     render() {
         this.stats.begin();
