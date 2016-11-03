@@ -8,7 +8,7 @@ class PhysicsCar extends Physijs.BoxMesh {
             wheelRadius = 0.4,
             wheelGeometry = new THREE.CylinderGeometry(wheelRadius, wheelRadius, 0.4, 4);
 
-        let envMap = scene.skyBox.envMap;
+        //let envMap = scene.skyBox.envMap;
         // wheelMaterial.envMap = envMap;
         // wheelMaterial.envMapIntensity = 2;
         // bodyMaterial.envMap = envMap;
@@ -23,16 +23,16 @@ class PhysicsCar extends Physijs.BoxMesh {
 
         this.wheels = {
             frontLeft: {
-                position: new THREE.Vector3(x + 1.2, y - 0.7, z + 1.4)
+                position: new THREE.Vector3(x + 1.2, y - 1.5, z + 1.4)
             },
             frontRight: {
-                position: new THREE.Vector3(x - 1.2, y - 0.7, z + 1.4)
+                position: new THREE.Vector3(x - 1.2, y - 1.5, z + 1.4)
             },
             backLeft: {
-                position: new THREE.Vector3(x + 1.2, y - 0.7, z - 1.4)
+                position: new THREE.Vector3(x + 1.2, y - 1.5, z - 1.4)
             },
             backRight: {
-                position: new THREE.Vector3(x - 1.2, y - 0.7, z - 1.4)
+                position: new THREE.Vector3(x - 1.2, y - 1.5, z - 1.4)
             }
         }
 
@@ -80,9 +80,7 @@ class PhysicsCar extends Physijs.BoxMesh {
     }
 
     get speed() {
-        let sum = v => v.x + v.y + v.z,
-            speedInCarDirection = this.getWorldDirection().multiply(this.getLinearVelocity());
-        return sum(speedInCarDirection);
+        return this.getLinearVelocity().multiply(new THREE.Vector3(1, 0, 1)).length();
     }
 
     get actor() {
@@ -151,8 +149,9 @@ class PhysicsCar extends Physijs.BoxMesh {
             rotationChange *= this.speed < -1 ? -1 : this.speed;
             rotationChange *= -1; // als je achteruit gaat moet steering omgekeerd
         }
-        rotationChange *= 70;
-        this.setAngularVelocity(new THREE.Vector3(0, currentAnglularVelocity.y + rotationChange, 0));
+        rotationChange *= 200;
+        console.log(rotationChange);
+        this.setAngularVelocity(new THREE.Vector3(0, rotationChange, 0));
         // }
     }
 

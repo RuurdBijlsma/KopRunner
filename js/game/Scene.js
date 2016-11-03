@@ -24,7 +24,7 @@ class Scene extends Physijs.Scene {
         this.renderElement.appendChild(this.renderer.domElement);
         window.addEventListener('resize', () => this.onWindowResize());
 
-        this.controls = new THREE.OrbitControls(this.camera, renderElement);
+        // this.controls = new THREE.OrbitControls(this.camera, renderElement);
 
         let floorZ = 366,
             floorX = 150,
@@ -45,7 +45,7 @@ class Scene extends Physijs.Scene {
 
         floorMap.repeat.set(floorX / 50, floorZ / 50);
         this.floor.receiveShadow = true;
-        //this.add(this.floor);
+        this.add(this.floor);
         this.floor.mass = 0;
 
         this.lights = {
@@ -62,21 +62,26 @@ class Scene extends Physijs.Scene {
         main.loop.add(() => this.simulate());
 
         let cars = [];
-        for (let x = -50; x < 50; x+=50)
-            for (let y = -50; y < 50; y+=50)
+        for (let x = -50; x < 50; x += 100)
+            for (let y = -50; y < 50; y += 100)
                 cars.push(new PlayerCar(this, x, 3, y));
 
         this.car = cars[0];
 
+        main.loop.add(() => this.updateCamera());
+
         this.car._actor.init(cars, this.main.keyHandler);
 
-        this.camera.position.x = 0;
-        this.camera.position.y = 3;
-        this.camera.position.z = -6;
-
-        this.camera.lookAt(new THREE.Vector3(0, 2, 0));
-
         this.render();
+    }
+    updateCamera() {
+        let cameraHeight = 5,
+            cameraDistance = 10,
+            direction = this.car.getWorldDirection().clone().multiplyScalar(cameraDistance),
+            position = this.car.position.clone();
+
+        this.camera.position.set(position.x - direction.x, position.y - direction.y + cameraHeight, position.z - direction.z);
+        this.camera.lookAt(position.clone().add(direction));
     }
     render() {
         this.stats.begin();
