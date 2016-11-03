@@ -1,13 +1,15 @@
 class WorldTile{
 	constructor(_x,_z, _texture, _texture_url)
 	{
-		let geom = new THREE.BoxGeometry(tileSize, tileHeight, tileSize);
-
-		let mat = new THREE.MeshPhongMaterial({ map: _texture });
-		this.mesh = new THREE.Mesh(geom, mat);
-		this.mesh.position.set(_x * tileSize + tileSize / 2, tileYlevel ,_z * tileSize + tileSize / 2);
+		// let geom = new THREE.BoxGeometry(tileSize, tileHeight, tileSize);
+		// let mat = new THREE.MeshPhongMaterial({ map: _texture });
+		this.texture = _texture;
 		this.texture_url = _texture_url;
-        this.texture = _texture;
+
+        this.heightmap = this.texture_url.split(".")[0] + ".heightmap.png";
+        this.mesh = this.generateMeshFromHeightMap();
+        this.mesh.position.set(_x * tileSize,0,_z * tileSize);
+
 		MAIN.scene.add(this.mesh);
 
 		Object.defineProperty(this,"x", { value: _x, writable: false});
@@ -54,6 +56,25 @@ class WorldTile{
 	get east()	{ return this.neighbours[3]; }
 
 	get neighbours()	{ return this._neighbours; }
+
+	generateMeshFromHeightMap() {
+		let fetcher = new PixelFetcher(this.heightmap);
+
+        let geometry = new THREE.PlaneGeometry(tileSize, tileSize, this.heightmap.width, this.heightmap.height);
+
+        for(let vertex of geometry.vertices) {
+            vertex.z = fetcher.getPixelR(vertex.x, vertex.y) / 255;
+        }
+
+        geometry.computeFaceNormals();
+        geometry.computeVertexNormals();
+
+        let ground = new Physijs.HeightfieldMesh(geometry, new THREE.MeshPhongMaterial({ map: this.texture }), 0, this.heightmap.width, this.heightmap.height);
+        ground.rotation.x = Math.PI / -2;
+        ground.receiveShadow = true;
+
+        return ground;
+    }
 
 	generateAStarNodes()
 	{

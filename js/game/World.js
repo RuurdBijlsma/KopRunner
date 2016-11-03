@@ -52,4 +52,32 @@ class World{
 
 
     }
+
+    getDetailSet()
+    {
+        let midpoint = Math.floor(mapSize / 2);
+        let arr = [];
+        for(let x = -1; x <= 1; ++x)
+        {
+            for(let y = -1; y <= 1; ++y)
+            {
+                arr.push(map[midpoint + x][midpoint + y]);
+            }
+        }
+    }
+
+    getSimpleSet()
+    {
+        let arr = this.getDetailSet();
+        let arr2 = [];
+        for(let x = 0; x < mapSize; ++x)
+        {
+            for(let y = 0; y < mapSize; ++y)
+            {
+                if(!arr.contains(this.map[x][y]))
+                    arr2.push(this.map[x][y]);
+            }
+        }
+        return arr2;
+    }
 }
