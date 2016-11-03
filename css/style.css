@@ -1,0 +1,102 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Muli;
+    font-weight: 300;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: default;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+#renderer {
+    width: 100%;
+    position: fixed;
+    height: 100%;
+}
+
+html {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+body, html {
+    height: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.20);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: rgba(0, 0, 0, 0.60);
+}
+
+*:focus {
+    outline: none;
+}
+
+*:link,
+*:visited {
+    color: white;
+    text-decoration: none;
+}
+
+::-moz-selection {
+    color: white;
+    background: rgb(255, 80, 0);
+}
+
+::selection {
+    color: white;
+    background: rgb(255, 80, 0);
+}
+
+::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+:-moz-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+    opacity: 1;
+}
+
+::-moz-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number] textarea {
+    cursor: text;
+}
+
+input[type='button'],
+input[type='submit'],
+a[href] {
+    cursor: pointer;
+}
