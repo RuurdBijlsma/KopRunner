@@ -149,9 +149,9 @@ class PhysicsCar extends Physijs.BoxMesh {
             rotationChange *= this.speed < -1 ? -1 : this.speed;
             rotationChange *= -1; // als je achteruit gaat moet steering omgekeerd
         }
-        rotationChange *= 200;
+        rotationChange *= 70;
         console.log(rotationChange);
-        this.setAngularVelocity(new THREE.Vector3(0, rotationChange, 0));
+        this.setAngularVelocity(new THREE.Vector3(0, currentAnglularVelocity.y+rotationChange, 0));
         // }
     }
 

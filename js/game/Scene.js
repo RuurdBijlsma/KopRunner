@@ -24,7 +24,9 @@ class Scene extends Physijs.Scene {
         this.renderElement.appendChild(this.renderer.domElement);
         window.addEventListener('resize', () => this.onWindowResize());
 
-        // this.controls = new THREE.OrbitControls(this.camera, renderElement);
+        this.controls = new THREE.OrbitControls(this.camera, renderElement);
+        this.camera.position.set(10, 10, 10);
+        this.camera.lookAt(new THREE.Vector3);
 
         let floorZ = 366,
             floorX = 150,
@@ -68,7 +70,7 @@ class Scene extends Physijs.Scene {
 
         this.car = cars[0];
 
-        main.loop.add(() => this.updateCamera());
+        // main.loop.add(() => this.updateCamera());
 
         this.car._actor.init(cars, this.main.keyHandler);
 
