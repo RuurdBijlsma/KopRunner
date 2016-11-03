@@ -4,7 +4,7 @@ class WorldTile{
 		let geom = new THREE.BoxGeometry(tileSize, tileHeight, tileSize);
 		let mat = new THREE.MeshPhongMaterial({ map: _texture });
 		this.mesh = new THREE.Mesh(geom, mat);
-		this.mesh.position.set(_x * tileSize,0,_z * tileSize);
+		this.mesh.position.set(_x * tileSize,tileYlevel,_z * tileSize);
 		this.texture = _texture;
 		this.texture_url = _texture_url;
 		MAIN.scene.add(this.mesh);

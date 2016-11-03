@@ -3,6 +3,7 @@ const mapSize = 7;
 const tileSize = 15;
 const tileHeight = 0.1;
 const AINodeDensityFactor = 5;
+const tileYlevel = 5;
 
 class World{
 	constructor()
