@@ -1,4 +1,4 @@
-class PlayerCar extends PhysicsCar{
+class PlayerCar extends NewCar{
 	constructor(scene, x, y, z, color) {
 		super(scene, x, y, z, color);
         this._actor = KeyboardActor.instance;

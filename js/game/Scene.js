@@ -58,25 +58,26 @@ class Scene extends Physijs.Scene {
         document.body.appendChild(this.stats.dom);
 
         let cars = [];
-        for (let x = -50; x < 50; x += 100)
-            for (let y = -50; y < 50; y += 100)
-                cars.push(new PlayerCar(this, x, 3, y));
+        // for (let x = -50; x < 50; x += 100)
+        //     for (let y = -50; y < 50; y += 100)
+        //         cars.push(new PlayerCar(this, x, 3, y));
+        cars.push(new PlayerCar(this, 0, 3, 0));
         this.car = cars[0];
         this.car._actor.init(cars, this.main.keyHandler);
 
-        // this.controls = new THREE.OrbitControls(this.camera, renderElement);     //uncomment dit voor orbitcontrols
-        // this.camera.position.set(10, 10, 10);                                    //uncomment dit voor orbitcontrols
-        // this.camera.lookAt(new THREE.Vector3);                                   //uncomment dit voor orbitcontrols
+        this.controls = new THREE.OrbitControls(this.camera, renderElement); //uncomment dit voor orbitcontrols
+        this.camera.position.set(10, 10, 10); //uncomment dit voor orbitcontrols
+        this.camera.lookAt(new THREE.Vector3); //uncomment dit voor orbitcontrols
 
-        main.loop.add(() => this.updateCamera());                                   //comment dit voor orbitcontrols
-        this.car.add(this.camera);                                                  //comment dit voor orbitcontrols
+        // main.loop.add(() => this.updateCamera());                                   //comment dit voor orbitcontrols
+        // this.car.add(this.camera);                                                  //comment dit voor orbitcontrols
 
         this.render();
         main.loop.add(() => this.simulate());
     }
     updateCamera() {
         let speed = this.car.directionalSpeed;
-        this.camera.position.set(speed.x / 3, 5, -10 - speed.length()/5);
+        this.camera.position.set(speed.x / 3, 5, -10 - speed.length() / 5);
         this.camera.lookAt(new THREE.Vector3(0, 0, 10))
             // this.camera.lookAt(this.car.position);
             // let cameraHeight = 5,
