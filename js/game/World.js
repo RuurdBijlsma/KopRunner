@@ -5,6 +5,16 @@ const tileHeight = 0.1;
 const aiNodePerBlock = 10;
 const tileYlevel = 5;
 
+function getDistance(nodeA, nodeB) {
+    let dstX = Math.abs(nodeA.worldPosition.x - nodeB.worldPosition.x);
+    let dstY = Math.abs(nodeA.worldPosition.y - nodeB.worldPosition.y);
+
+    if (dstX > dstY)
+        return 14*dstY + 10* (dstX-dstY);
+    return 14*dstX + 10 * (dstY-dstX);
+}
+
+
 class World{
 	constructor()
 	{
@@ -48,6 +58,20 @@ class World{
             }
 
             this.recalculatePaths();
+
+            let t = this.findPath(this.map[0][0].singleAINode, this.map[1][1].singleAINode);
+
+            let geom = new THREE.CylinderGeometry(1,1,2,4,1);
+            let mat2 = new THREE.MeshPhongMaterial({ color: "yellow"});
+            let mesh = new THREE.Mesh(geom,mat2);
+
+            for(k of t)
+            {
+                let m = mesh.clone();
+                m.position.set(k.worldPosition.x, 0, k.worldPosition.z);
+                MAIN.scene.add(m);
+            }
+            console.log(t);
         });
 
 
@@ -82,58 +106,48 @@ class World{
                 if(tile.north != null)
                     sainode.neighbours.push(tile.north.singleAINode);
 
-                /*
-                for(let i = 0; i < mapSize; ++i)
+                for(let xt = 0; xt < aiNodePerBlock; ++xt)
                 {
-                    let t0 = tile.detailedAINodes[i][0];
-                    let t1 = tile.detailedAINodes[0][i];
-                    let t2 = tile.detailedAINodes[i][aiNodePerBlock - 1];
-                    let t3 = tile.detailedAINodes[aiNodePerBlock - 1][i];
-
-                    for(let j = 0; j < aiNodePerBlock; ++j)
+                    for(let yt = 0; yt < aiNodePerBlock; ++yt)
                     {
-                        if(t0.north != null)
+                        if(xt >= 1 && xt < aiNodePerBlock - 1 && yt >= 1 && yt < aiNodePerBlock - 1)
                         {
-                            t0.neighbours.push(t0.north());
-
+                            //regular case
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt - 1][yt]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt + 1][yt]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt][yt - 1]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt][yt + 1]);
                         }
 
-                        if(t1.east != null)
+                        if(xt == 0 && tile.west != null)
                         {
-
-
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.west.detailedAINodes[aiNodePerBlock - 1][yt]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.west.singleAINode);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.singleAINode);
                         }
 
-                        if(t2.south != null)
+                        if(xt == aiNodePerBlock - 1 && tile.east != null)
                         {
-
-
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.east.detailedAINodes[0][yt]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.east.singleAINode);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.singleAINode);
                         }
 
-                        if(t3.west != null)
+                        if(yt == 0 && tile.north != null)
                         {
-
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.north.detailedAINodes[xt][aiNodePerBlock - 1]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.north.singleAINode);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.singleAINode);
                         }
 
+                        if(yt == aiNodePerBlock - 1 && tile.south != null)
+                        {
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.south.detailedAINodes[xt][0]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.south.singleAINode);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.singleAINode);
+                        }
                     }
                 }
-
-                for(let x = 1; x < mapSize - 1; ++x)
-                {
-                    for(let y = 1; y < mapSize - 1; ++y)
-                    {
-                        this.map[x][y].north = this.map[x][y - 1];
-                        this.map[x][y].south = this.map[x][y + 1];
-
-                        this.map[x][y].west = this.map[x - 1][y];
-                        this.map[x][y].east = this.map[x + 1][y];
-                    }
-                } */
-
-
-
-
-
             }
         }
     }
@@ -167,19 +181,103 @@ class World{
         return arr2;
     }
 
-    findPath(start, goal)
+    getSearchRepresentation()
+    {
+        let m = new Map();
+
+        for(let xt = 0; xt < mapSize; ++xt)
+        {
+            for(let yt = 0; yt < mapSize; ++yt)
+            {
+                let tile = this.map[xt][yt];
+
+                m.set(tile.getSingleAINode(), new NodeAstarData(0,0, tile.getSingleAINode(), null));
+
+                for(let x = 0; x < aiNodePerBlock; ++x)
+                {
+                    for(let y = 0; y < aiNodePerBlock; ++y)
+                    {
+                        m.set(tile.detailedAINodes[x][y], new NodeAstarData(0,0,tile.detailedAINodes[x][y], null));
+                    }
+                }
+            }
+        }
+        return m;
+    }
+
+    findPath(_start, _goal)
     {
         let closedSet = [];
         let openSet = [];
-        openSet.push(start);
+        openSet.push(_start);
+
+        let mappedData = this.getSearchRepresentation();
+
+        let end = mappedData.get(_goal);
 
 
+        while(openSet.length > 0)
+        {
+            let node = openSet[0];
+            for(let i = 1; i < openSet.length; ++i)
+            {
+                if(mappedData.get(openSet[i]).fCost < mappedData.get(node).fCost || mappedData.get(openSet[i]).fCost === mappedData.get(node).fCost)
+                {
+                    if(mappedData.get(openSet[i]).hCost < mappedData.get(node).hCost)
+                        node = openSet[i];
+                }
+            }
+            let index = openSet.indexOf(node);
+            if(index >= 0)
+                openSet.splice(index,1);
+            closedSet.push(node);
 
+            if(mappedData.get(node) === end)
+            {
+                //return path
+                return this.retracePath(_start, node, mappedData);
+            }
 
+            for(let neighbour of node)
+            {
+                if(closedSet.contains(neighbour))
+                {
+                    continue;
+                }
 
+                let ncth = mappedData.get(node).gCost + getDistance(node, neighbour);
+                if(ncth < mappedData.get(neighbour).gCost || !openSet.contains(neighbour))
+                {
+                    mappedData.get(neighbour).gCost = ncth;
+                    mappedData.get(neighbour).hCost = getDistance(neighbour, _goal);
+                    mappedData.get(neighbour).parent = node;
 
-
-
+                    if(!openSet.contains(neighbour))
+                    {
+                        openSet.push(neighbour);
+                    }
+                }
+            }
+        }
     }
+
+    retracePath(start, goal, data)
+    {
+        let path = [];
+        let node = goal;
+
+        while(node != start)
+        {
+            path.push(node);
+            node = data.get(node).parent;
+
+        }
+        path.reverse();
+        return path;
+    }
+
+
+
+
 
 }
