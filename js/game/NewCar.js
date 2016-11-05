@@ -64,29 +64,6 @@ class NewCar extends Physijs.Vehicle{
         this.boostPower = 50;
     }
 
-    get isOnGround() {
-        let carHeight = 3;
-        return new THREE.Raycaster(this.position, this.groundDirection, 0, carHeight).intersectObjects([MAIN.scene.floor]).length > 0;
-    }
-    get directionalSpeed() {
-        return this.getWorldDirection().multiply(this.getLinearVelocity());
-    }
-
-    get actor() {
-        return this._actor;
-    }
-
-    set actor(value) {
-        if (this._actor != undefined) this._actor.disable();
-        this._actor = value;
-        this._actor.init(this);
-    }
-
-    update() {
-        if (this.actor == undefined) return;
-        this.actor.driveCar(this);
-    }
-
     startAccelerating(accelerationForce = 50) {
         this.applyEngineForce(accelerationForce);
     }
@@ -113,7 +90,7 @@ class NewCar extends Physijs.Vehicle{
     get wheelDirection() {
         return this._wheelDirection || 0;
     }
-    
+
     set wheelDirection(v) {
         v = v > this.maxSteerRotation ? this.maxSteerRotation : v;
         v = v < -this.maxSteerRotation ? -this.maxSteerRotation : v;
@@ -127,11 +104,24 @@ class NewCar extends Physijs.Vehicle{
         this._wheelDirection = v;
     }
 
+    get isOnGround() {
+        let carHeight = 3;
+        return new THREE.Raycaster(this.mesh.position, this.groundDirection, 0, carHeight).intersectObjects([MAIN.scene.floor]).length > 0;
+    }
+    get directionalSpeed() {
+        return this.getWorldDirection().multiply(this.getLinearVelocity());
+    }
+
+    update() {
+        if (this.actor == undefined) return;
+        this.actor.driveCar(this);
+    }
+
     boost() {
         if (!this.boostTimeout) {
             this.boostTimeout = true;
 
-            this.setLinearVelocity(this.getWorldDirection().multiplyScalar(this.boostPower));
+            this.mesh.setLinearVelocity(this.mesh.getWorldDirection().multiplyScalar(this.boostPower));
 
             setTimeout(() => delete this.boostTimeout, 10 * 1000); // 10 second boost delay
         }
@@ -139,9 +129,18 @@ class NewCar extends Physijs.Vehicle{
 
     jump() {
         if (this.isOnGround) {
-            let currentVelocity = this.getLinearVelocity();
-            this.setLinearVelocity(new THREE.Vector3(currentVelocity.x, currentVelocity.y + 10, currentVelocity.z));
-            this.setAngularVelocity(new THREE.Vector3(4, 0, 0));
+            let currentVelocity = this.mesh.getLinearVelocity();
+            this.mesh.setLinearVelocity(new THREE.Vector3(currentVelocity.x, currentVelocity.y + 2, currentVelocity.z));
         }
+    }
+
+    get actor() {
+        return this._actor;
+    }
+
+    set actor(value) {
+        if (this._actor != undefined) this._actor.disable();
+        this._actor = value;
+        this._actor.init(this);
     }
 }
