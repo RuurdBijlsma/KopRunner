@@ -5,7 +5,7 @@ class Scene extends Physijs.Scene {
         super();
         let scene = this;
         this.main = main;
-        this.setGravity(new THREE.Vector3(0, -30, 0));
+        this.setGravity(new THREE.Vector3(0, -20, 0));
 
         this.renderElement = renderElement;
         console.log(renderElement);
