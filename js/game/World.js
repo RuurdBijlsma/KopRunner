@@ -62,7 +62,6 @@ class World{
                 m.position.set(k.worldPosition.x, 0, k.worldPosition.y);
                 MAIN.scene.add(m);
             }
-        });
     }
 
     static getDistance(nodeA, nodeB) {
