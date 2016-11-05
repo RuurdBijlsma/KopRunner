@@ -32,10 +32,11 @@ class KeyboardActor extends Actor {
             () => {
                 cars.map(car => car.setPosition())
                 cars.map(car => car.setRotation())
+                cars.map(car => car.wheelDirection = 0)
             }
         ]);
 
-        
+
 
     }
 

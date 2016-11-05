@@ -130,7 +130,7 @@ class NewCar extends Physijs.Vehicle {
     jump() {
         if (this.isOnGround) {
             let currentVelocity = this.mesh.getLinearVelocity();
-            this.mesh.setLinearVelocity(new THREE.Vector3(currentVelocity.x, currentVelocity.y + 2, currentVelocity.z));
+            this.mesh.setLinearVelocity(new THREE.Vector3(currentVelocity.x, currentVelocity.y + 4, currentVelocity.z));
         }
     }
 
