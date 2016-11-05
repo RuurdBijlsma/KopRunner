@@ -28,6 +28,15 @@ class KeyboardActor extends Actor {
         keyHandler.setSingleKey("t", "Switch camera", [
             () => MAIN.scene.toggleCamera()
         ]);
+        keyHandler.setSingleKey("Delete", "Reset camera", [
+            () => {
+                cars.map(car => car.setPosition())
+                cars.map(car => car.setRotation())
+            }
+        ]);
+
+        
+
     }
 
     disable(car) {
