@@ -5,7 +5,7 @@ class Scene extends Physijs.Scene {
         super();
         let scene = this;
         this.main = main;
-        this.setGravity(new THREE.Vector3(0, -30, 0));
+        this.setGravity(new THREE.Vector3(0, -20, 0));
 
         this.renderElement = renderElement;
         console.log(renderElement);
@@ -66,21 +66,25 @@ class Scene extends Physijs.Scene {
         this.car = cars[0];
         this.car._actor.init(cars, this.main.keyHandler); //dit moet uncommented worden in de playercar en hier weg
 
-        this.controls = new THREE.OrbitControls(this.camera, renderElement); //uncomment dit voor orbitcontrols
-        this.camera.position.set(10, 10, 10); //uncomment dit voor orbitcontrols
-        this.camera.lookAt(new THREE.Vector3); //uncomment dit voor orbitcontrols
-
-        // main.loop.add(() => this.updateCamera());                                   //comment dit voor orbitcontrols
-        // this.car.add(this.camera);                                                  //comment dit voor orbitcontrols
-
+        this.toggleCamera();
         this.render();
         this.simulate();
         main.loop.add(() => this.simulate());
     }
+    toggleCamera() {
+        if (this.gameView) {
+            this.car.mesh.remove(MAIN.scene.camera)
+            this.gameView = this.main.loop.remove(this.gameView);
+            this.controls = new THREE.OrbitControls(this.camera, this.renderElement);
+            this.camera.lookAt(new THREE.Vector3);
+        } else {
+            this.gameView = this.main.loop.add(() => this.updateCamera());
+            this.car.mesh.add(this.camera);
+        }
+    }
     updateCamera() {
-        let speed = this.car.directionalSpeed;
-        this.camera.position.set(speed.x / 3, 5, -10 - speed.length() / 5);
-        this.camera.lookAt(new THREE.Vector3(0, 0, 10))
+        this.camera.position.set(0, 5, -10);
+        this.camera.lookAt(new THREE.Vector3(0, 0, 10));
             // this.camera.lookAt(this.car.position);
             // let cameraHeight = 5,
             //     cameraDistance = 10,
