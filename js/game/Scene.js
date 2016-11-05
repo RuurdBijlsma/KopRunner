@@ -39,7 +39,7 @@ class Scene extends Physijs.Scene {
                 map: floorMap,
                 bumpScale: 0.45,
             });
-        this.floor = new Physijs.BoxMesh(floorGeometry, material);
+        this.floor = new Physijs.BoxMesh(floorGeometry, floorMaterial);
         floorMap.wrapS = floorMap.wrapT = THREE.RepeatWrapping;
 
         floorMap.repeat.set(floorX / 50, floorZ / 50);
@@ -67,13 +67,26 @@ class Scene extends Physijs.Scene {
         this.car._actor.init(cars, this.main.keyHandler); //dit moet uncommented worden in de playercar en hier weg
 
         this.toggleCamera();
+
         this.render();
         this.simulate();
         main.loop.add(() => this.simulate());
     }
+
+    updateCamera() {
+        this.camera.position.set(0, 5, -10);
+        
+        let newCameraY = this.camera.getWorldPosition().y,
+            floorHeight = 5;
+        if (newCameraY < floorHeight)
+            this.camera.position.set(0, 5 + floorHeight - newCameraY, -10);
+
+        this.camera.lookAt(new THREE.Vector3(0, 0, 10));
+    }
+
     toggleCamera() {
         if (this.gameView) {
-            this.car.mesh.remove(MAIN.scene.camera)
+            this.car.mesh.remove(this.camera)
             this.gameView = this.main.loop.remove(this.gameView);
             this.controls = new THREE.OrbitControls(this.camera, this.renderElement);
             this.camera.lookAt(new THREE.Vector3);
@@ -82,28 +95,14 @@ class Scene extends Physijs.Scene {
             this.car.mesh.add(this.camera);
         }
     }
-    updateCamera() {
-        this.camera.position.set(0, 5, -10);
-        this.camera.lookAt(new THREE.Vector3(0, 0, 10));
-            // this.camera.lookAt(this.car.position);
-            // let cameraHeight = 5,
-            //     cameraDistance = 10,
-            //     direction = this.car.getWorldDirection().clone().multiplyScalar(cameraDistance),
-            //     position = this.car.position.clone(),
-            //     newY = position.y - direction.y;
-            // newY = newY <= 0.5 ? 0.5 : newY;
-            // newY += cameraHeight;
-            // let driftCameraDelay = 300;
 
-        // let newCamPos = new THREE.Vector3(position.x - direction.x, newY, position.z - direction.z);
-        // setTimeout(() => this.cylinder.position.set(newCamPos.x, newCamPos.y, newCamPos.z), driftCameraDelay);
-    }
     render() {
         this.stats.begin();
         this.renderer.render(this, this.camera);
         this.stats.end();
         requestAnimationFrame(() => this.render());
     }
+
     onWindowResize() {
         this.camera.aspect = this.renderElement.offsetWidth / this.renderElement.offsetHeight;
         this.renderer.setSize(this.renderElement.offsetWidth, this.renderElement.offsetHeight);

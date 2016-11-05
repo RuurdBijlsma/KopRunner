@@ -42,6 +42,8 @@ class KeyHandler {
         delete this.singleKeyFunctions[key];
     }
     setContinuousKey(key, name, fun) {
+        if (fun.length < 2)
+            fun[1] = function() {};
         this.continuousKeyFunctions[key] = {
             action: fun,
             name: name
@@ -67,6 +69,8 @@ class KeyHandler {
         let key = e.key;
         if (handler.singleKeyFunctions[key])
             handler.singleKeyFunctions[key].action[1](e);
+        if (handler.continuousKeyFunctions[key])
+            handler.continuousKeyFunctions[key].action[1](e);
 
         handler.keyPressed.splice(handler.keyPressed.map(k => k.key).indexOf(key), 1);
     }

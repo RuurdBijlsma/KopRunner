@@ -1,4 +1,4 @@
-class NewCar extends Physijs.Vehicle{
+class NewCar extends Physijs.Vehicle {
     constructor(scene, x = 0, y = 0, z = 0, color = 'red') {
         let bodyGeometry = new THREE.BoxGeometry(2.5, 0.8, 4),
             roofGeometry = new THREE.BoxGeometry(2.4, 0.8, 2.7),
@@ -72,7 +72,7 @@ class NewCar extends Physijs.Vehicle{
         this.applyEngineForce(accelerationForce);
     }
 
-    stopMotor(){
+    stopMotor() {
         this.applyEngineForce(0);
     }
 
@@ -130,7 +130,7 @@ class NewCar extends Physijs.Vehicle{
     jump() {
         if (this.isOnGround) {
             let currentVelocity = this.mesh.getLinearVelocity();
-            this.mesh.setLinearVelocity(new THREE.Vector3(currentVelocity.x, currentVelocity.y + 2, currentVelocity.z));
+            this.mesh.setLinearVelocity(new THREE.Vector3(currentVelocity.x, currentVelocity.y + 4, currentVelocity.z));
         }
     }
 
@@ -142,5 +142,16 @@ class NewCar extends Physijs.Vehicle{
         if (this._actor != undefined) this._actor.disable();
         this._actor = value;
         this._actor.init(this);
+    }
+
+    setRotation(x = 0, y = 0, z = 0) {
+        this.mesh.rotation.set(x, y, z);
+        this.mesh.setAngularVelocity(new THREE.Vector3);
+        this.mesh.__dirtyRotation = true;
+    }
+    setPosition(x = 0, y = 3, z = 0) {
+        this.mesh.position.set(x, y, z);
+        this.mesh.setLinearVelocity(new THREE.Vector3);
+        this.mesh.__dirtyPosition = true;
     }
 }
