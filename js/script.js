@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', init, false);
 
 function init() {
+        Physijs.scripts.worker = 'js/physijs/physijs_worker.js';
+        Physijs.scripts.ammo = 'ammo.js';
     let renderElement = document.getElementById('renderer');
-    window.MAIN = new Main(renderElement);
-    window.MAIN.initialize();
+    MAIN = new Main(renderElement);
+    // MAIN.initialize();
 }

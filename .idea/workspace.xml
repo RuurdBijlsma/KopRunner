@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="push">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/game/NewCar.backup.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/vehicle.html" />
+    <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/KeyboardActor.js" afterPath="$PROJECT_DIR$/js/game/KeyboardActor.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/NewCar.js" afterPath="$PROJECT_DIR$/js/game/NewCar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Scene.js" afterPath="$PROJECT_DIR$/js/game/Scene.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/World.js" afterPath="$PROJECT_DIR$/js/game/World.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/script.js" afterPath="$PROJECT_DIR$/js/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/vehicle.html" afterPath="$PROJECT_DIR$/js/vehicle.html" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,8 +95,8 @@
       <file leaf-file-name="World.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/World.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="158" column="27" selection-start-line="158" selection-start-column="27" selection-end-line="158" selection-end-column="27" />
+            <state relative-caret-position="442">
+              <caret line="176" column="29" selection-start-line="176" selection-start-column="29" selection-end-line="176" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -306,7 +304,7 @@
       <workItem from="1478186814395" duration="166000" />
       <workItem from="1478196763664" duration="1061000" />
       <workItem from="1478266807608" duration="1198000" />
-      <workItem from="1478359055933" duration="10000" />
+      <workItem from="1478359055933" duration="1385000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -441,11 +439,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478266983505</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added vehicle.html&#10;">
+      <created>1478359074137</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1478359074137</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11601000" />
+    <option name="totallyTimeSpent" value="12976000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -502,7 +507,8 @@
     <MESSAGE value="camera following added" />
     <MESSAGE value="physijs vehicle start" />
     <MESSAGE value="newcar class added" />
-    <option name="LAST_COMMIT_MESSAGE" value="newcar class added" />
+    <MESSAGE value="added vehicle.html&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="added vehicle.html&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -928,8 +934,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/World.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="158" column="27" selection-start-line="158" selection-start-column="27" selection-end-line="158" selection-end-column="27" />
+        <state relative-caret-position="442">
+          <caret line="176" column="29" selection-start-line="176" selection-start-column="29" selection-end-line="176" selection-end-column="29" />
           <folding />
         </state>
       </provider>

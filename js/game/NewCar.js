@@ -1,4 +1,4 @@
-class NewCar {//letterlijk kopie
+class NewCar { //letterlijk kopie
     constructor(scene, x = 0, y = 0, z = 0, color = 'red') {
         let car = this;
         scene.addEventListener(
@@ -13,6 +13,7 @@ class NewCar {//letterlijk kopie
                     car.vehicle.setSteering(window.input.steering, 0);
                     car.vehicle.setSteering(window.input.steering, 1);
                     if (window.input.power === true) {
+                        console.log('input');
                         car.vehicle.applyEngineForce(200);
                     } else if (window.input.power === false) {
                         car.vehicle.setBrake(20, 2);
