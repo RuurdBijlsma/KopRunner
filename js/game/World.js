@@ -1,9 +1,10 @@
 
-const mapSize = 2;
+const mapSize = 3; //MUST BE ODD NUMBER
 const tileSize = 15;
 const tileHeight = 0.1;
 const aiNodePerBlock = 10;
 const tileYlevel = 5;
+const detailRadius = 1; //MUST BE SMALLER THAN mapSize!
 
 
 
@@ -52,7 +53,6 @@ class World{
 
             this.recalculatePaths();
 
-            //let t2 = this.findPath(this.map[0][0].singleAINode, this.map[1][1].singleAINode);
             let t2 = this.findPath(this.map[0][0].detailedAINodes[0][0], this.map[mapSize - 1][mapSize - 1].detailedAINodes[aiNodePerBlock - 1][aiNodePerBlock - 1]);
 
             let geom = new THREE.CylinderGeometry(0.1,0.1,6,8,8);
@@ -71,7 +71,7 @@ class World{
 
     }
 
-    getDistance(nodeA, nodeB) {
+    static getDistance(nodeA, nodeB) {
         let dstX = Math.abs(nodeA.worldPosition.x - nodeB.worldPosition.x);
         let dstY = Math.abs(nodeA.worldPosition.y - nodeB.worldPosition.y);
 
@@ -170,14 +170,16 @@ class World{
     {
         let midpoint = Math.floor(mapSize / 2);
         let arr = [];
-        for(let x = -1; x <= 1; ++x)
+        for(let x = -detailRadius; x <= detailRadius; ++x)
         {
-            for(let y = -1; y <= 1; ++y)
+            for(let y = -detailRadius; y <= detailRadius; ++y)
             {
                 arr.push(this.map[midpoint + x][midpoint + y]);
             }
         }
     }
+
+
 
     getSimpleSet()
     {
@@ -187,7 +189,7 @@ class World{
         {
             for(let y = 0; y < mapSize; ++y)
             {
-                if(!arr.contains(this.map[x][y]))
+                if(!arr.includes(this.map[x][y]))
                     arr2.push(this.map[x][y]);
             }
         }
@@ -197,6 +199,7 @@ class World{
     getSearchRepresentation()
     {
         let m = new Map();
+        let detail = this.getDetailSet();
 
         for(let xt = 0; xt < mapSize; ++xt)
         {
@@ -205,6 +208,9 @@ class World{
                 let tile = this.map[xt][yt];
 
                 m.set(tile.singleAINode, new NodeAstarData(0,0, tile.singleAINode, null));
+
+
+
 
                 for(let x = 0; x < aiNodePerBlock; ++x)
                 {
@@ -218,6 +224,8 @@ class World{
         return m;
     }
 
+
+    //A* algorithm
     findPath(_start, _goal)
     {
         let closedSet = [];
@@ -248,7 +256,7 @@ class World{
             if(mappedData.get(node) === end)
             {
                 //return path
-                return this.retracePath(_start, node, mappedData);
+                return World.retracePath(_start, node, mappedData);
             }
 
             for(let neighbour of node.neighbours)
@@ -258,11 +266,11 @@ class World{
                     continue;
                 }
 
-                let ncth = mappedData.get(node).gCost + this.getDistance(node, neighbour);
+                let ncth = mappedData.get(node).gCost + World.getDistance(node, neighbour);
                 if(ncth < mappedData.get(neighbour).gCost || !openSet.includes(neighbour))
                 {
                     mappedData.get(neighbour).gCost = ncth;
-                    mappedData.get(neighbour).hCost = this.getDistance(neighbour, _goal);
+                    mappedData.get(neighbour).hCost = World.getDistance(neighbour, _goal);
                     mappedData.get(neighbour).parent = node;
 
                     if(!openSet.includes(neighbour))
@@ -274,7 +282,7 @@ class World{
         }
     }
 
-    retracePath(start, goal, data)
+    static retracePath(start, goal, data)
     {
         let path = [];
         let node = goal;
