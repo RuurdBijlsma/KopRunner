@@ -32,9 +32,10 @@ class TextureMap extends Singleton {
 
         image.onload = () => {
 
+            console.log("drawing img");
             canvas.width = image.width;
             canvas.height = image.height;
-            context.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight);
+            context.drawImage(image, 0, 0, image.width, image.height);
 
             --this.filesToLoad;
         };

@@ -82,6 +82,7 @@ class WorldTile {
     }
 
     generateMeshFromHeightMap() {
+        console.log(this.heightmap);
         let fetcher = new PixelFetcher(this.heightmap);
 
         let geometry = new THREE.PlaneGeometry(tileSize, tileSize, this.heightmap.width, this.heightmap.height);
