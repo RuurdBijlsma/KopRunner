@@ -1,6 +1,6 @@
 class Main {
     constructor(renderElement) {
-        new TextureMap;
+        new TextureMap().onLoad = () => this.initialize();
         this.loop = new GameLoop(120);
         this.keyHandler = new KeyHandler(this.loop);
         this.scene = new Scene(renderElement, this);

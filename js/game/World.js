@@ -17,58 +17,51 @@ class World{
 
     createMap()
     {
-        let t = new THREE.TextureLoader();
-        let mat = t.load('img/textures/4way.png', () => {
-
-            for(let x = 0; x < mapSize; ++x)
+        for(let x = 0; x < mapSize; ++x)
+        {
+            let row = [];
+            for(let y = 0; y < mapSize; ++y)
             {
-                let row = [];
-                for(let y = 0; y < mapSize; ++y)
-                {
-                    row.push(new WorldTile(x,y, mat, 'img/textures/4way.png'));
-                }
-                this.map.push(row);
+                row.push(new WorldTile(x,y, '4way'));
             }
+            this.map.push(row);
+        }
 
-            for(let x = 0; x < mapSize; ++x)
+        for(let x = 0; x < mapSize; ++x)
+        {
+            for(let y = 0; y < mapSize; ++y)
             {
-                for(let y = 0; y < mapSize; ++y)
-                {
 
-                    if(y != 0)
-                        this.map[x][y].north = this.map[x][y - 1];
-                    else this.map[x][y].north = null;
-                    if(y != mapSize - 1)
-                        this.map[x][y].south = this.map[x][y + 1];
-                    else this.map[x][y].south = null;
-                    if(x != 0)
-                        this.map[x][y].west = this.map[x - 1][y];
-                    else this.map[x][y].west = null;
-                    if(x != mapSize - 1)
-                        this.map[x][y].east = this.map[x + 1][y];
-                    else this.map[x][y].east = null;
-                }
+                if(y != 0)
+                    this.map[x][y].north = this.map[x][y - 1];
+                else this.map[x][y].north = null;
+                if(y != mapSize - 1)
+                    this.map[x][y].south = this.map[x][y + 1];
+                else this.map[x][y].south = null;
+                if(x != 0)
+                    this.map[x][y].west = this.map[x - 1][y];
+                else this.map[x][y].west = null;
+                if(x != mapSize - 1)
+                    this.map[x][y].east = this.map[x + 1][y];
+                else this.map[x][y].east = null;
             }
+        }
 
-            this.recalculatePaths();
+        this.recalculatePaths();
 
-            //let t2 = this.findPath(this.map[0][0].singleAINode, this.map[1][1].singleAINode);
-            let t2 = this.findPath(this.map[0][0].detailedAINodes[0][0], this.map[mapSize - 1][mapSize - 1].detailedAINodes[aiNodePerBlock - 1][aiNodePerBlock - 1]);
+        //let t2 = this.findPath(this.map[0][0].singleAINode, this.map[1][1].singleAINode);
+        let t2 = this.findPath(this.map[0][0].detailedAINodes[0][0], this.map[mapSize - 1][mapSize - 1].detailedAINodes[aiNodePerBlock - 1][aiNodePerBlock - 1]);
 
-            let geom = new THREE.CylinderGeometry(0.1,0.1,6,8,8);
-            let mat2 = new THREE.MeshPhongMaterial({ color: "yellow"});
-            let mesh = new THREE.Mesh(geom,mat2);
+        let geom = new THREE.CylinderGeometry(0.1,0.1,6,8,8);
+        let mat2 = new THREE.MeshPhongMaterial({ color: "yellow"});
+        let mesh = new THREE.Mesh(geom,mat2);
 
-            for(let k of t2)
-            {
-                let m = mesh.clone();
-                m.position.set(k.worldPosition.x, 0, k.worldPosition.y);
-                MAIN.scene.add(m);
-            }
-        });
-
-
-
+        for(let k of t2)
+        {
+            let m = mesh.clone();
+            m.position.set(k.worldPosition.x, 0, k.worldPosition.y);
+            MAIN.scene.add(m);
+        }
     }
 
     getDistance(nodeA, nodeB) {
