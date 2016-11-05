@@ -43,8 +43,8 @@ class Scene extends Physijs.Scene {
 
         floorMap.repeat.set(floorX / 50, floorZ / 50);
         this.floor.receiveShadow = true;
-        this.add(this.floor);
         this.floor.mass = 0;
+        // this.add(this.floor);
 
         this.lights = {
             ambient: new AmbientLight(this),
@@ -63,7 +63,7 @@ class Scene extends Physijs.Scene {
         //         cars.push(new PlayerCar(this, x, 3, y));
         cars.push(new PlayerCar(this, 0, 3, 0));
         this.car = cars[0];
-        this.car._actor.init(cars, this.main.keyHandler);
+        this.car._actor.init(cars, this.main.keyHandler);//dit moet uncommented worden in de playercar en hier weg
 
         this.controls = new THREE.OrbitControls(this.camera, renderElement); //uncomment dit voor orbitcontrols
         this.camera.position.set(10, 10, 10); //uncomment dit voor orbitcontrols

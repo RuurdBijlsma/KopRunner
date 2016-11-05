@@ -1,36 +1,81 @@
-class NewCar {//letterlijk kopie
-    constructor(scene, x = 0, y = 0, z = 0, color = 'red') {
-        let car = this;
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rigid body - Physijs</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <script type="text/javascript" src="three/three.js"></script>
+    <script type="text/javascript" src="physijs/physi.js"></script>
+    <script type="text/javascript" src="three/OrbitControls.js"></script>
+    <script type="text/javascript">
+    'use strict';
+
+    Physijs.scripts.worker = 'physijs/physijs_worker.js';
+    Physijs.scripts.ammo = 'ammo.js';
+
+    var initScene, render,
+        ground_material, box_material,
+        renderer, scene, ground, light, camera,
+        vehicle_body, vehicle, loader;
+
+    initScene = function() {
+        renderer = new THREE.WebGLRenderer({
+            antialias: true
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMapSoft = true;
+        document.getElementById('viewport').appendChild(renderer.domElement);
+
+        scene = new Physijs.Scene;
+        scene.setGravity(new THREE.Vector3(0, -30, 0));
         scene.addEventListener(
             'update',
             function() {
-                if (window.input && car.vehicle) {
+
+                if (window.input && vehicle) {
                     if (window.input.direction !== null) {
                         window.input.steering += window.input.direction / 50;
                         if (window.input.steering < -.6) window.input.steering = -.6;
                         if (window.input.steering > .6) window.input.steering = .6;
                     }
-                    car.vehicle.setSteering(window.input.steering, 0);
-                    car.vehicle.setSteering(window.input.steering, 1);
+                    vehicle.setSteering(window.input.steering, 0);
+                    vehicle.setSteering(window.input.steering, 1);
+
                     if (window.input.power === true) {
-                        car.vehicle.applyEngineForce(200);
+                        vehicle.applyEngineForce(200);
                     } else if (window.input.power === false) {
-                        car.vehicle.setBrake(20, 2);
-                        car.vehicle.setBrake(20, 3);
+                        vehicle.setBrake(20, 2);
+                        vehicle.setBrake(20, 3);
                     } else {
-                        car.vehicle.applyEngineForce(0);
+                        vehicle.applyEngineForce(0);
                     }
                 }
+
                 scene.simulate();
             }
         );
 
-        var ground_material = new THREE.MeshStandardMaterial({ color: 'green' });
+        camera = new THREE.PerspectiveCamera(
+            35,
+            window.innerWidth / window.innerHeight,
+            1,
+            1000
+        );
+        scene.add(camera);
+
+        // Loader
+        loader = new THREE.TextureLoader();
+
+        // Materials
+        ground_material = new THREE.MeshLambertMaterial({
+            color: 'green'
+        });
 
 
         var ground_geometry = new THREE.BoxGeometry(300, 5, 300);
 
-        var ground = new Physijs.BoxMesh(
+        ground = new Physijs.BoxMesh(
             ground_geometry,
             ground_material,
             0 // mass
@@ -39,7 +84,7 @@ class NewCar {//letterlijk kopie
         ground.receiveShadow = true;
         scene.add(ground);
 
-        // var controls = new THREE.OrbitControls(camera, renderer.domElement);
+        var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
         var mesh = new Physijs.BoxMesh(
             new THREE.BoxGeometry(3, 1.5, 6),
@@ -47,13 +92,13 @@ class NewCar {//letterlijk kopie
                 color: 'red'
             })
         );
-        mesh.position.y = 4;
+        mesh.position.y = 2;
         mesh.castShadow = mesh.receiveShadow = true;
 
 
 
 
-        this.vehicle = new Physijs.Vehicle(mesh, new Physijs.VehicleTuning(
+        vehicle = new Physijs.Vehicle(mesh, new Physijs.VehicleTuning(
             10.88,
             1.83,
             0.28,
@@ -61,7 +106,7 @@ class NewCar {//letterlijk kopie
             10.5,
             6000
         ));
-        scene.add(this.vehicle);
+        scene.add(vehicle);
 
         var wheel_material = new THREE.MeshStandardMaterial({
             color: 'black'
@@ -86,7 +131,7 @@ class NewCar {//letterlijk kopie
         let wheel = new THREE.CylinderGeometry(wheelRadius, wheelRadius, 0.6, 20);
         for (let position in wheels) {
             let wheelPos = wheels[position].position;
-            this.vehicle.addWheel(
+            vehicle.addWheel(
                 wheel,
                 wheel_material,
                 wheelPos,
@@ -97,8 +142,8 @@ class NewCar {//letterlijk kopie
                 position.includes('front')
             );
         }
-        scene.camera.position.copy(this.vehicle.mesh.position).add(new THREE.Vector3(40, 25, 40));
-        scene.camera.lookAt(new THREE.Vector3);
+        camera.position.copy(vehicle.mesh.position).add(new THREE.Vector3(40, 25, 40));
+        camera.lookAt(new THREE.Vector3);
 
         let l = new THREE.AmbientLight();
         l.intensity = 0.6;
@@ -149,6 +194,21 @@ class NewCar {//letterlijk kopie
             }
         });
 
+        requestAnimationFrame(render);
         scene.simulate();
-    }
-}
+    };
+
+    render = function() {
+        requestAnimationFrame(render);
+        renderer.render(scene, camera);
+    };
+
+    window.onload = initScene;
+    </script>
+</head>
+
+<body>
+    <div style="position: fixed; top:0; left:0;" id="viewport"></div>
+</body>
+
+</html>
