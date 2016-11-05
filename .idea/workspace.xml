@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/game/NewCar.backup.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/vehicle.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/KeyboardActor.js" afterPath="$PROJECT_DIR$/js/game/KeyboardActor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/NewCar.js" afterPath="$PROJECT_DIR$/js/game/NewCar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Scene.js" afterPath="$PROJECT_DIR$/js/game/Scene.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/script.js" afterPath="$PROJECT_DIR$/js/script.js" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,8 +92,8 @@
       <file leaf-file-name="World.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/World.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="161" column="21" selection-start-line="161" selection-start-column="21" selection-end-line="161" selection-end-column="21" />
+            <state relative-caret-position="357">
+              <caret line="171" column="21" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -420,7 +415,7 @@
       <workItem from="1478196763664" duration="1061000" />
       <workItem from="1478266807608" duration="1198000" />
       <workItem from="1478359055933" duration="1400000" />
-      <workItem from="1478369719882" duration="650000" />
+      <workItem from="1478369719882" duration="1188000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -569,11 +564,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478363806891</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="car driving working">
+      <created>1478371424395</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1478371424395</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13641000" />
+    <option name="totallyTimeSpent" value="14179000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -632,7 +634,8 @@
     <MESSAGE value="newcar class added" />
     <MESSAGE value="added vehicle.html&#10;" />
     <MESSAGE value="vehicle working" />
-    <option name="LAST_COMMIT_MESSAGE" value="vehicle working" />
+    <MESSAGE value="car driving working" />
+    <option name="LAST_COMMIT_MESSAGE" value="car driving working" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1058,8 +1061,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/World.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="161" column="21" selection-start-line="161" selection-start-column="21" selection-end-line="161" selection-end-column="21" />
+        <state relative-caret-position="357">
+          <caret line="171" column="21" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
           <folding />
         </state>
       </provider>
