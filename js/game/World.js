@@ -52,20 +52,17 @@ class World{
 
             this.recalculatePaths();
 
-            console.log(this.map[0][0].detailedAINodes[0][0]);
-            console.log(this.map[0][0].detailedAINodes[1][1]);
+            //let t2 = this.findPath(this.map[0][0].singleAINode, this.map[1][1].singleAINode);
+            let t2 = this.findPath(this.map[0][0].detailedAINodes[0][0], this.map[mapSize - 1][mapSize - 1].detailedAINodes[aiNodePerBlock - 1][aiNodePerBlock - 1]);
 
-            let t2 = this.findPath(this.map[0][0].detailedAINodes[0][0], this.map[0][0].detailedAINodes[1][1]);
-
-            let geom = new THREE.CylinderGeometry(1,1,2,4,1);
+            let geom = new THREE.CylinderGeometry(0.1,0.1,6,8,8);
             let mat2 = new THREE.MeshPhongMaterial({ color: "yellow"});
             let mesh = new THREE.Mesh(geom,mat2);
-            console.log(t2);
 
             for(let k of t2)
             {
                 let m = mesh.clone();
-                m.position.set(k.worldPosition.x, 0, k.worldPosition.z);
+                m.position.set(k.worldPosition.x, 0, k.worldPosition.y);
                 MAIN.scene.add(m);
             }
         });
@@ -124,16 +121,15 @@ class World{
                 {
                     for(let yt = 0; yt < aiNodePerBlock; ++yt)
                     {
-                        if(xt >= 1 && xt < aiNodePerBlock - 1 && yt >= 1 && yt < aiNodePerBlock - 1)
-                        {
-                            //regular case
+
+                        if(xt - 1 >= 0)
                             tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt - 1][yt]);
+                        if(xt + 1 <= aiNodePerBlock - 1)
                             tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt + 1][yt]);
+                        if(yt - 1 >= 0)
                             tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt][yt - 1]);
+                        if(yt + 1 <= aiNodePerBlock - 1)
                             tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt][yt + 1]);
-
-                        }
-
 
                         if(xt == 0 && tile.west != null)
                         {
@@ -167,26 +163,6 @@ class World{
                 }
             }
         }
-
-
-        for(let x = 0; x < mapSize; ++x)
-        {
-            for(let y = 0; y < mapSize; ++y)
-            {
-                let tile = this.map[x][y];
-                let sainode = tile.singleAINode;
-
-                for(let x = 0; x < aiNodePerBlock; ++x)
-                {
-                    for(let y = 0; y < aiNodePerBlock; ++y)
-                    {
-                       console.log({ t: tile.detailedAINodes[x][y], tr: tile.detailedAINodes[x][y].neighbours });
-                    }
-                }
-            }
-        }
-
-
     }
 
 
@@ -282,11 +258,11 @@ class World{
                     continue;
                 }
 
-                let ncth = mappedData.get(node).gCost + getDistance(node, neighbour);
+                let ncth = mappedData.get(node).gCost + this.getDistance(node, neighbour);
                 if(ncth < mappedData.get(neighbour).gCost || !openSet.includes(neighbour))
                 {
                     mappedData.get(neighbour).gCost = ncth;
-                    mappedData.get(neighbour).hCost = getDistance(neighbour, _goal);
+                    mappedData.get(neighbour).hCost = this.getDistance(neighbour, _goal);
                     mappedData.get(neighbour).parent = node;
 
                     if(!openSet.includes(neighbour))
