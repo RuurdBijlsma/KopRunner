@@ -23,7 +23,7 @@ class WorldTile{
          MAIN.scene.add(mesh2);
         mesh2.position.set(this.worldX, tileYlevel, this.worldZ);
 
-		this._neighbours = [];
+		this._neighbours = new Array(4);
         this.generateAStarNodes();
 	}
 
@@ -130,17 +130,4 @@ class WorldTile{
         }
 
 	}
-
-	getSingleAINode()
-	{
-
-	}
-
-	getDetailedAINodes()
-	{
-
-	}
-
-
-
 }
