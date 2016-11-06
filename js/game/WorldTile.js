@@ -204,9 +204,8 @@ class WorldTile {
         let fetcher = new PixelFetcher(this.channelsImage);
 
         let geom = new THREE.CubeGeometry(1,1,1);
-        geom.applyMatrix(new THREE.Matrix4().makeTranslation(0,0.5,0));
 
-        let mesh = new THREE.Mesh(geom, new THREE.MeshStandardMaterial({ color: "white" }));
+        let mesh = new Physijs.BoxMesh(geom, new THREE.MeshStandardMaterial(),0);
 
         let BuildingCount = Math.floor((Math.random() * (5 - 1)) + 1);
 
@@ -215,23 +214,45 @@ class WorldTile {
         for(let i = 0; i < BuildingCount; ++i)
         {
 
-            let rot = Math.random() * Math.PI*2;
-            let size = Math.floor((Math.random() * (5-1)) + 1);
-            let ySize = Math.floor((Math.random() * (5-1)) + 1);
 
-            let x = Math.floor((Math.random() * (5-1)) + 1);
-            let y = Math.floor((Math.random() * (5-1)) + 1);
+            let rot = Math.random() * Math.PI*2;
+            let size = Math.floor((Math.random() * (tileSize / 6 - tileSize / 16)) + tileSize / 16);
+            let ySize = Math.floor((Math.random() * (64-10)) + 10);
+
+            let x = Math.floor((Math.random() * (tileSize / 2 - 1)) + 1);
+            let y = Math.floor((Math.random() * (tileSize / 2 - 1)) + 1);
+
+            if(Math.random() < 0.5)
+                x = -x;
+            if(Math.random() < 0.5)
+                y = -y;
+
+            //kan het of kan het niet?1
+
+            let midx = this.worldX - halfMapSize + tileSize / 2;
+            let midy = this.worldZ - halfMapSize + tileSize / 2;
+
+            let tx = fetcher.context.canvas.width / tileSize * (x + tileSize / 2);
+            let ty = fetcher.context.canvas.height / tileSize * (y + tileSize / 2);
+
+            if(fetcher.getPixelB(tx,ty) == 0)
+                continue;
 
             arr.push(mesh.clone());
-            arr[arr.length - 1].rotation.y = rot;
-            arr[arr.length - 1].scale.x = size;
-            arr[arr.length - 1].scale.z = arr[arr.length - 1].scale.x;
-            arr[arr.length - 1].scale.y = ySize;
 
-            arr[arr.length - 1].position.x = this.worldX + x - halfMapSize;
-            arr[arr.length - 1].position.z = this.worldZ + y - halfMapSize;
+            let v = Math.random() * (0.6 - 0.01) + 0.01;
+            let clone = arr[arr.length - 1];
+            clone.material.color .setRGB(v,v,v);
 
-            MAIN.scene.add(arr[arr.length - 1]);
+            clone.rotation.y = rot;
+            clone.scale.x = size;
+            clone.scale.z = arr[arr.length - 1].scale.x;
+            clone.scale.y = ySize;
+
+            clone.position.x = x;
+            clone.position.z = y;
+
+            MAIN.scene.add(clone);
         }
     }
 
