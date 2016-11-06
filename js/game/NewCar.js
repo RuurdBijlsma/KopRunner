@@ -159,7 +159,7 @@ class NewCar extends Physijs.Vehicle {
         this.mesh.setAngularVelocity(new THREE.Vector3);
         this.mesh.__dirtyRotation = true;
     }
-    setPosition(x = 0, y = 3, z = 0) {
+    setPosition(x = 0, y = tileYlevel, z = 0) {
         this.mesh.position.set(x, y, z);
         this.mesh.setLinearVelocity(new THREE.Vector3);
         this.mesh.__dirtyPosition = true;

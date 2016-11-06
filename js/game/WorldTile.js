@@ -9,7 +9,7 @@ class WorldTile {
 
         this.heightmap = this.texture_name + ".heightmap";
         this.mesh = this.generateMeshFromHeightMap();
-        this.mesh.position.set(_x * tileSize + tileSize / 2, 0, _z * tileSize + tileSize /2);
+        this.mesh.position.set(_x * tileSize + tileSize / 2 - halfMapSize, 0, _z * tileSize + tileSize /2 - halfMapSize);
 
         MAIN.scene.add(this.mesh);
 
