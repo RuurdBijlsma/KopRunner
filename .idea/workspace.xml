@@ -2,17 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/2wayroad.heightmap.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/2wayroad.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/3wayroad.heightmap.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/3wayroad.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/4wayroad.heightmap.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/4wayroad.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/Thumbs.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/corner.heightmap.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/corner.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/textures/4way.heightmap.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/textures/4way.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="KopRunner.iws" />
@@ -81,8 +70,8 @@
       <file leaf-file-name="NewCar.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/NewCar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+            <state relative-caret-position="306">
+              <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -310,7 +299,7 @@
       <workItem from="1478169538478" duration="28000" />
       <workItem from="1478170231112" duration="1979000" />
       <workItem from="1478430425554" duration="1305000" />
-      <workItem from="1478436399879" duration="330000" />
+      <workItem from="1478436399879" duration="371000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -431,17 +420,24 @@
       <option name="project" value="LOCAL" />
       <updated>1478432751240</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="more textures added">
+      <created>1478436737940</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1478436737940</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10813000" />
+    <option name="totallyTimeSpent" value="10854000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.5125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.4875" order="7" side_tool="false" content_ui="tabs" />
@@ -490,7 +486,8 @@
     <MESSAGE value="physics driving added" />
     <MESSAGE value="car mass upped" />
     <MESSAGE value="steering fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="steering fixed" />
+    <MESSAGE value="more textures added" />
+    <option name="LAST_COMMIT_MESSAGE" value="more textures added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -811,8 +808,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/NewCar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+        <state relative-caret-position="306">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
           <folding />
         </state>
       </provider>
