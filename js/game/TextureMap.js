@@ -30,8 +30,8 @@ class TextureMap extends Singleton {
             let context = canvas.getContext('2d');
             canvas.width = image.width;
             canvas.height = image.height;
-            context.drawImage(image, 0, 0, image.width, image.height);
             context.rotate((Math.PI / 2) * rotation);
+            context.drawImage(image, 0, 0, image.width, image.height);
 
             let dictName;
             if(name.includes(".channels")) {
@@ -43,7 +43,7 @@ class TextureMap extends Singleton {
             this.map[dictName] = {
                 canvas: context,
                 texture: new THREE.Texture(canvas)
-            }
+            };
             this.map[dictName].texture.anisotropy = 16;
             this.map[dictName].texture.magFilter = THREE.LinearFilter;
             this.map[dictName].texture.minFilter = THREE.LinearMipMapNearestFilter;

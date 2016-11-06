@@ -1,4 +1,4 @@
-const showDebugMeshes = true;
+const showDebugMeshes = false;
 
 class WorldTile {
     constructor(_x, _z, _texture_name) {
@@ -25,9 +25,9 @@ class WorldTile {
             mesh2.position.set(this.worldX, tileYlevel, this.worldZ);
         }
 
+        this._neighbours = new Array(4);
         this.generateAStarNodes();
 
-        this._neighbours = new Array(4);
         this._connections = connectionsDictionary[this.texture_name];
 
         // this.generateBuildings();
