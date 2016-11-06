@@ -12,33 +12,32 @@ class TextureMap extends Singleton {
 
     loadTextures(names) {
         console.log(names, this);
-        this.filesToLoad = names.length * 2;
+        this.filesToLoad = names.length;
         let loader = new THREE.TextureLoader();
         for (let name of names) {
             this.map[name] = {
-                texture: loader.load(this.folder + name + this.extension, () => this.onLoadFile()),
-                canvas: this.createCanvasElement(this.folder + name + this.extension)
+                canvas: this.createCanvasElement(name)
             };
-            this.map[name].texture.anisotropy = 16;
-            this.map[name].texture.magFilter = THREE.LinearFilter;
-            this.map[name].texture.minFilter = THREE.LinearMipMapNearestFilter;
         }
     }
 
     createCanvasElement(name) {
-        console.log(name);
         let image = document.createElement('img');
-        image.src = name;
+        image.src = this.folder + name + this.extension;
 
         let canvas = document.createElement('canvas');
         let context = canvas.getContext('2d');
 
         image.onload = () => {
-
-            console.log("drawing img");
             canvas.width = image.width;
             canvas.height = image.height;
             context.drawImage(image, 0, 0, image.width, image.height);
+
+            this.map[name].texture = new THREE.Texture(canvas);
+            this.map[name].texture.anisotropy = 16;
+            this.map[name].texture.magFilter = THREE.LinearFilter;
+            this.map[name].texture.minFilter = THREE.LinearMipMapNearestFilter;
+            this.map[name].texture.needsUpdate = true;
 
             this.onLoadFile();
         };
@@ -55,8 +54,6 @@ class TextureMap extends Singleton {
             console.log("All files loaded");
             this.onLoad();
         }
-
-        console.log(this.filesToLoad);
     }
 
     get fileNames() {
