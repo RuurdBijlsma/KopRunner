@@ -17,11 +17,11 @@ class KeyboardActor extends Actor {
             () => cars.map(car => car.startDecelerating()),
             () => cars.map(car => car.stopMotor())
         ]);
-        keyHandler.setContinuousKey("Shift", "Activate boost", () => [
-            cars.map(car => car.boost())
+        keyHandler.setContinuousKey("Shift", "Activate boost", [
+            () => cars.map(car => car.boost())
         ]);
-        keyHandler.setContinuousKey(" ", "Jump car", () => [
-            cars.map(car => car.jump())
+        keyHandler.setContinuousKey(" ", "Jump car", [
+            () => cars.map(car => car.jump())
         ]);
         keyHandler.setContinuousKey("ArrowLeft", "Turn left", [
             () => cars.map(car => car.turn(1)),
