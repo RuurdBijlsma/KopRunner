@@ -1,3 +1,5 @@
+const showDebugMeshes = false;
+
 class WorldTile {
     constructor(_x, _z, _texture_name) {
         // let geom = new THREE.BoxGeometry(tileSize, tileHeight, tileSize);
@@ -16,11 +18,13 @@ class WorldTile {
         Object.defineProperty(this, "worldX", {value: _x * tileSize, writable: false});
         Object.defineProperty(this, "worldZ", {value: _z * tileSize, writable: false});
 
-        let g = new THREE.SphereGeometry(1, 10, 10);
-        let mat2 = new THREE.MeshPhongMaterial({color: "blue"});
-        let mesh2 = new THREE.Mesh(g, mat2);
-        MAIN.scene.add(mesh2);
-        mesh2.position.set(this.worldX, tileYlevel, this.worldZ);
+        if(showDebugMeshes) {
+            let g = new THREE.SphereGeometry(1, 10, 10);
+            let mat2 = new THREE.MeshPhongMaterial({color: "blue"});
+            let mesh2 = new THREE.Mesh(g, mat2);
+            MAIN.scene.add(mesh2);
+            mesh2.position.set(this.worldX, tileYlevel, this.worldZ);
+        }
 
         this._neighbours = new Array(4);
         this.generateAStarNodes();
@@ -88,7 +92,7 @@ class WorldTile {
         let geometry = new THREE.PlaneGeometry(tileSize, tileSize, this.heightmap.width, this.heightmap.height);
 
         for (let vertex of geometry.vertices) {
-            vertex.z = fetcher.getPixelR(vertex.x, vertex.y) / 255;
+            vertex.z = fetcher.getPixelR(vertex.x, vertex.y) / 120;
         }
 
         geometry.computeFaceNormals();
@@ -124,29 +128,30 @@ class WorldTile {
                 };
             }
         }
-
         let a = fetcher.getPixelA(this.texture.image.width / 2, this.texture.image.height / 2);
         this.singleAINode = new AStarNode();
         this.singleAINode.densityFactor = a;
         this.singleAINode.localPosition = {x: -1, y: -1};
         this.singleAINode.worldPosition = {x: this.worldX + tileSize / 2, y: this.worldZ + tileSize / 2};
 
-        let g1 = new THREE.CylinderGeometry(1, 1, 5, 10, 10);
-        let mat2 = new THREE.MeshPhongMaterial({color: "red"});
-        let mesh2 = new THREE.Mesh(g1, mat2);
-        MAIN.scene.add(mesh2);
-        mesh2.position.set(this.singleAINode.worldPosition.x, tileYlevel, this.singleAINode.worldPosition.y);
+        if(showDebugMeshes) {
+            let g1 = new THREE.CylinderGeometry(1, 1, 5, 10, 10);
+            let mat2 = new THREE.MeshPhongMaterial({color: "red"});
+            let mesh2 = new THREE.Mesh(g1, mat2);
+            MAIN.scene.add(mesh2);
+            mesh2.position.set(this.singleAINode.worldPosition.x, tileYlevel, this.singleAINode.worldPosition.y);
 
-        let g = new THREE.SphereGeometry(0.1, 10, 10);
-        let mat = new THREE.MeshPhongMaterial({color: "green"});
-        let mesh = new THREE.Mesh(g, mat);
+            let g = new THREE.SphereGeometry(0.1, 10, 10);
+            let mat = new THREE.MeshPhongMaterial({color: "green"});
+            let mesh = new THREE.Mesh(g, mat);
 
-        for (let x = 0; x < aiNodePerBlock; ++x) {
-            for (let y = 0; y < aiNodePerBlock; ++y) {
-                let k = this.detailedAINodes[x][y];
-                k.mesh = mesh.clone();
-                k.mesh.position.set(k.worldPosition.x, tileYlevel, k.worldPosition.y);
-                MAIN.scene.add(k.mesh);
+            for (let x = 0; x < aiNodePerBlock; ++x) {
+                for (let y = 0; y < aiNodePerBlock; ++y) {
+                    let k = this.detailedAINodes[x][y];
+                    k.mesh = mesh.clone();
+                    k.mesh.position.set(k.worldPosition.x, tileYlevel, k.worldPosition.y);
+                    MAIN.scene.add(k.mesh);
+                }
             }
         }
 
