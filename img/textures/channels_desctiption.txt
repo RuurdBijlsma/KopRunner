@@ -1,0 +1,9 @@
+r: heightmap
+	0 is laag
+	255 is hoog
+g: astar
+	0 is niet rijbaar
+	255 is zeer rijbaar
+b: buildings
+	0 is hier mogen geen gebouwen
+	255 is hier mag wel gebouwen
