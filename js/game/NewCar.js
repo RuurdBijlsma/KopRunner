@@ -6,6 +6,7 @@ class NewCar extends Physijs.Vehicle {
             roofMesh = new Physijs.BoxMesh(roofGeometry, new THREE.MeshStandardMaterial({ color: '#111111' })),
             bodyMesh = new Physijs.BoxMesh(bodyGeometry, bodyMaterial);
         bodyMesh.add(roofMesh);
+        bodyMesh.mass = 50;
         roofMesh.position.set(0, 0.8, -0.5);
         bodyMesh.position.set(x, y, z);
 
@@ -20,28 +21,20 @@ class NewCar extends Physijs.Vehicle {
         scene.add(this);
 
         let wheels = {
-            frontLeft: {
-                position: new THREE.Vector3(1.2, -0.5, 1.4)
-            },
-            frontRight: {
-                position: new THREE.Vector3(-1.2, -0.5, 1.4)
-            },
-            backLeft: {
-                position: new THREE.Vector3(1.2, -0.5, -1.4)
-            },
-            backRight: {
-                position: new THREE.Vector3(-1.2, -0.5, -1.4)
-            }
+            frontLeft: new THREE.Vector3(1.2, -0.5, 1.4),
+            frontRight: new THREE.Vector3(-1.2, -0.5, 1.4),
+            backLeft: new THREE.Vector3(1.2, -0.5, -1.4),
+            backRight: new THREE.Vector3(-1.2, -0.5, -1.4)
         }
 
-        this.maxSteerRotation = Math.PI / 4;
+        this.maxSteerRotation = Math.PI / 8;
 
         let wheelMaterial = new THREE.MeshStandardMaterial({ color: 'rgb(40, 40, 40)' }),
             wheelRadius = 0.4,
             wheelGeometry = new THREE.CylinderGeometry(wheelRadius, wheelRadius, 0.6, 10);
 
         for (let position in wheels) {
-            let pos = wheels[position].position;
+            let pos = wheels[position];
             this.addWheel(
                 wheelGeometry,
                 wheelMaterial,
@@ -52,7 +45,8 @@ class NewCar extends Physijs.Vehicle {
                 wheelRadius, //wheel radius
                 position.includes('front') //is front wheel
             );
-            let wheelMesh = this.wheels[this.wheels.length - 1];
+            let mesh = this.wheels[this.wheels.length - 1];
+            console.log('mesh: ', mesh);
         }
 
         this.groundDirection = new THREE.Vector3(0, -1, 0);
@@ -64,7 +58,7 @@ class NewCar extends Physijs.Vehicle {
         this.boostPower = 50;
     }
 
-    startAccelerating(accelerationForce = 50) {
+    startAccelerating(accelerationForce = 75) {
         this.applyEngineForce(accelerationForce);
     }
 
@@ -85,6 +79,17 @@ class NewCar extends Physijs.Vehicle {
         //1 = left
         //-1 = right
         this.wheelDirection += direction / 50;
+    }
+
+    setWheels(direction) {
+        //turn wheels until they're pointing at direction
+        this.wheelSetLoop = this.gameLoop.add(() => {
+            this.turn(this.wheelDirection - direction);
+        });
+    }
+
+    stopTurningWheels(){
+        this.wheelSetLoop
     }
 
     get wheelDirection() {
