@@ -12,37 +12,45 @@ class TextureMap extends Singleton {
 
     loadTextures(names) {
         console.log(names, this);
-        this.filesToLoad = names.length;
+        this.filesToLoad = names.length * 4;
         let loader = new THREE.TextureLoader();
         for (let name of names) {
-            this.map[name] = {
-                canvas: this.createCanvasElement(name)
-            };
+            for(let i = 0; i < 4; ++i) {
+                this.createCanvasElement(name, i);
+            }
         }
     }
 
-    createCanvasElement(name) {
+    createCanvasElement(name, rotation) {
         let image = document.createElement('img');
         image.src = this.folder + name + this.extension;
 
-        let canvas = document.createElement('canvas');
-        let context = canvas.getContext('2d');
-
         image.onload = () => {
+            let canvas = document.createElement('canvas');
+            let context = canvas.getContext('2d');
             canvas.width = image.width;
             canvas.height = image.height;
             context.drawImage(image, 0, 0, image.width, image.height);
+            context.rotate((Math.PI / 2) * rotation);
 
-            this.map[name].texture = new THREE.Texture(canvas);
-            this.map[name].texture.anisotropy = 16;
-            this.map[name].texture.magFilter = THREE.LinearFilter;
-            this.map[name].texture.minFilter = THREE.LinearMipMapNearestFilter;
-            this.map[name].texture.needsUpdate = true;
+            let dictName;
+            if(name.includes(".channels")) {
+                name = name.substring(0, name.length - 9);
+                dictName = name + "rotate" + rotation + ".channels";
+            }
+            else dictName = name + "rotate" + rotation;
+
+            this.map[dictName] = {
+                canvas: context,
+                texture: new THREE.Texture(canvas)
+            }
+            this.map[dictName].texture.anisotropy = 16;
+            this.map[dictName].texture.magFilter = THREE.LinearFilter;
+            this.map[dictName].texture.minFilter = THREE.LinearMipMapNearestFilter;
+            this.map[dictName].texture.needsUpdate = true;
 
             this.onLoadFile();
         };
-
-        return context;
     }
 
     onLoad() {
