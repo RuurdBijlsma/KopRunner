@@ -46,9 +46,9 @@ class KeyboardActor extends Actor {
         ]);
         keyHandler.setSingleKey("Delete", "Reset camera", [
             () => {
-                cars.map(car => car.setPosition())
-                cars.map(car => car.setRotation())
-                cars.map(car => car.wheelDirection = 0)
+                cars.map(car => car.setPosition());
+                cars.map(car => car.setRotation());
+                cars.map(car => car.wheelDirection = 0);
             }
         ]);
 

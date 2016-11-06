@@ -5,6 +5,7 @@ const tileHeight = 0.1;
 const aiNodePerBlock = 10;
 const tileYlevel = 5;
 const detailRadius = 1; //MUST BE SMALLER THAN mapSize!
+const halfMapSize = mapSize * tileSize / 2;
 
 
 
