@@ -58,11 +58,17 @@ class NewCar extends Physijs.Vehicle {
     }
 
     startAccelerating(accelerationForce = 75) {
-        this.applyEngineForce(accelerationForce);
+        if (this.directionalSpeed.z < 0)
+            this.brake();
+        else
+            this.applyEngineForce(accelerationForce);
     }
 
     startDecelerating(accelerationForce = -50) {
-        this.applyEngineForce(accelerationForce);
+        if (this.directionalSpeed.z > 0)
+            this.brake();
+        else
+            this.applyEngineForce(accelerationForce);
     }
 
     stopMotor() {
@@ -116,10 +122,16 @@ class NewCar extends Physijs.Vehicle {
 
     get isOnGround() {
         let carHeight = 3;
-        return new THREE.Raycaster(this.mesh.position, this.groundDirection, 0, carHeight).intersectObjects([MAIN.scene.floor]).length > 0;
+        if (!this.floorMeshes) {
+            this.floorMeshes = [];
+            let meshes = MAIN.game.world.map.map(a => a.map(t => t.mesh));
+            for (let mesh of meshes)
+                this.floorMeshes = this.floorMeshes.concat(mesh);
+        }
+        return new THREE.Raycaster(this.mesh.position, this.groundDirection, 0, carHeight).intersectObjects(this.floorMeshes).length > 0;
     }
     get directionalSpeed() {
-        return this.getWorldDirection().multiply(this.getLinearVelocity());
+        return this.mesh.getWorldDirection().multiply(this.mesh.getLinearVelocity());
     }
 
     update() {

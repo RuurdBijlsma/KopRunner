@@ -36,14 +36,6 @@ class Scene extends Physijs.Scene {
         this.stats.showPanel(1);
         document.body.appendChild(this.stats.dom);
 
-        let cars = [];
-        // for (let x = -50; x < 50; x += 100)
-        //     for (let y = -50; y < 50; y += 100)
-        //         cars.push(new PlayerCar(this, x, 3, y));
-        cars.push(new PlayerCar(this, 2, 3, 2));
-        this.car = cars[0];
-        this.car._actor.init(cars, this.main.keyHandler); //dit moet uncommented worden in de playercar en hier weg
-
         this.toggleCamera();
 
         this.render();
@@ -63,14 +55,16 @@ class Scene extends Physijs.Scene {
     }
 
     toggleCamera() {
-        if (this.gameView) {
-            this.car.mesh.remove(this.camera)
-            this.gameView = this.main.loop.remove(this.gameView);
-            this.controls = new THREE.OrbitControls(this.camera, this.renderElement);
-            this.camera.lookAt(new THREE.Vector3);
-        } else {
-            this.gameView = this.main.loop.add(() => this.updateCamera());
-            this.car.mesh.add(this.camera);
+        if (window.MAIN) {
+            if (this.gameView) {
+                MAIN.game.car.mesh.remove(this.camera)
+                this.gameView = this.main.loop.remove(this.gameView);
+                this.controls = new THREE.OrbitControls(this.camera, this.renderElement);
+                this.camera.lookAt(new THREE.Vector3);
+            } else {
+                this.gameView = this.main.loop.add(() => this.updateCamera());
+                MAIN.game.car.mesh.add(this.camera);
+            }
         }
     }
 
