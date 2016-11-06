@@ -6,6 +6,12 @@ const aiNodePerBlock = 10;
 const tileYlevel = 5;
 const detailRadius = 1; //MUST BE SMALLER THAN mapSize!
 const halfMapSize = mapSize * tileSize / 2;
+const connectionsDictionary = {
+    "4wayroad": [true, true, true, true],
+    "3wayroad": [true, true, false, true],
+    "2wayroad": [false, true, false, true],
+    "corner":   [true, false, false, true]
+};
 
 
 
@@ -14,6 +20,8 @@ class World{
 	constructor()
 	{
         this.map = [];
+
+
         this.createMap();
 	}
 
@@ -21,7 +29,7 @@ class World{
         for (let x = 0; x < mapSize; ++x) {
             let row = [];
             for (let y = 0; y < mapSize; ++y) {
-                row.push(new WorldTile(x, y, '4way'));
+                row.push(new WorldTile(x, y, '2wayroad', 0));
             }
             this.map.push(row);
         }
@@ -98,14 +106,14 @@ class World{
                 let sainode = tile.singleAINode;
 
 
-                if(tile.west != null)
-                    sainode.neighbours.push(tile.west.singleAINode);
-                if(tile.east != null)
-                    sainode.neighbours.push(tile.east.singleAINode);
-                if(tile.south != null)
-                    sainode.neighbours.push(tile.south.singleAINode);
-                if(tile.north != null)
-                    sainode.neighbours.push(tile.north.singleAINode);
+                if(tile.westTile != null)
+                    sainode.neighbours.push(tile.westTile.singleAINode);
+                if(tile.eastTile != null)
+                    sainode.neighbours.push(tile.eastTile.singleAINode);
+                if(tile.southTile != null)
+                    sainode.neighbours.push(tile.southTile.singleAINode);
+                if(tile.northTile != null)
+                    sainode.neighbours.push(tile.northTile.singleAINode);
 
                 for(let xt = 0; xt < aiNodePerBlock; ++xt)
                 {
@@ -121,33 +129,33 @@ class World{
                         if(yt + 1 <= aiNodePerBlock - 1)
                             tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt][yt + 1]);
 
-                        if(xt == 0 && tile.west != null)
+                        if(xt == 0 && tile.westTile != null)
                         {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.west.detailedAINodes[aiNodePerBlock - 1][yt]);
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.west.singleAINode);
-                            tile.west.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.westTile.detailedAINodes[aiNodePerBlock - 1][yt]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.westTile.singleAINode);
+                            tile.westTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
                         }
 
 
-                        if(xt == aiNodePerBlock - 1 && tile.east != null)
+                        if(xt == aiNodePerBlock - 1 && tile.eastTile != null)
                         {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.east.detailedAINodes[0][yt]);
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.east.singleAINode);
-                            tile.east.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.eastTile.detailedAINodes[0][yt]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.eastTile.singleAINode);
+                            tile.eastTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
                         }
 
-                        if(yt == 0 && tile.north != null)
+                        if(yt == 0 && tile.northTile != null)
                         {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.north.detailedAINodes[xt][aiNodePerBlock - 1]);
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.north.singleAINode);
-                            tile.north.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.northTile.detailedAINodes[xt][aiNodePerBlock - 1]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.northTile.singleAINode);
+                            tile.northTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
                         }
 
-                        if(yt == aiNodePerBlock - 1 && tile.south != null)
+                        if(yt == aiNodePerBlock - 1 && tile.southTile != null)
                         {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.south.detailedAINodes[xt][0]);
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.south.singleAINode);
-                            tile.south.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.southTile.detailedAINodes[xt][0]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.southTile.singleAINode);
+                            tile.southTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
                         }
                     }
                 }
@@ -190,14 +198,14 @@ class World{
                 {
                     tile.detailedAINodes[midpoint][midpoint].neighbours.push(sainode);
 
-                    if(tile.west != null)
-                        sainode.neighbours.push(tile.west.singleAINode);
-                    if(tile.east != null)
-                        sainode.neighbours.push(tile.east.singleAINode);
-                    if(tile.south != null)
-                        sainode.neighbours.push(tile.south.singleAINode);
-                    if(tile.north != null)
-                        sainode.neighbours.push(tile.north.singleAINode);
+                    if(tile.westTile != null)
+                        sainode.neighbours.push(tile.westTile.singleAINode);
+                    if(tile.eastTile != null)
+                        sainode.neighbours.push(tile.eastTile.singleAINode);
+                    if(tile.southTile != null)
+                        sainode.neighbours.push(tile.southTile.singleAINode);
+                    if(tile.northTile != null)
+                        sainode.neighbours.push(tile.northTile.singleAINode);
                 }
 
                 for(let xt = 0; xt < aiNodePerBlock; ++xt)
@@ -214,45 +222,45 @@ class World{
                         if(yt + 1 <= aiNodePerBlock - 1)
                             tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt][yt + 1]);
 
-                        if(xt == 0 && tile.west != null)
+                        if(xt == 0 && tile.westTile != null)
                         {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.west.detailedAINodes[aiNodePerBlock - 1][yt]);
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.westTile.detailedAINodes[aiNodePerBlock - 1][yt]);
 
-                            if(detailSet.has(tile.west))
+                            if(detailSet.has(tile.westTile))
                             {
-                                tile.detailedAINodes[xt][yt].neighbours.push(tile.west.singleAINode);
-                                tile.west.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
+                                tile.detailedAINodes[xt][yt].neighbours.push(tile.westTile.singleAINode);
+                                tile.westTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
                             }
                         }
 
 
-                        if(xt == aiNodePerBlock - 1 && tile.east != null)
+                        if(xt == aiNodePerBlock - 1 && tile.eastTile != null)
                         {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.east.detailedAINodes[0][yt]);
-                            if(detailSet.has(tile.east))
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.eastTile.detailedAINodes[0][yt]);
+                            if(detailSet.has(tile.eastTile))
                             {
-                                tile.detailedAINodes[xt][yt].neighbours.push(tile.east.singleAINode);
-                                tile.east.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
+                                tile.detailedAINodes[xt][yt].neighbours.push(tile.eastTile.singleAINode);
+                                tile.eastTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
                             }
                         }
 
-                        if(yt == 0 && tile.north != null)
+                        if(yt == 0 && tile.northTile != null)
                         {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.north.detailedAINodes[xt][aiNodePerBlock - 1]);
-                            if(detailSet.has(tile.north))
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.northTile.detailedAINodes[xt][aiNodePerBlock - 1]);
+                            if(detailSet.has(tile.northTile))
                             {
-                                tile.detailedAINodes[xt][yt].neighbours.push(tile.north.singleAINode);
-                                tile.north.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
+                                tile.detailedAINodes[xt][yt].neighbours.push(tile.northTile.singleAINode);
+                                tile.northTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
                             }
                         }
 
-                        if(yt == aiNodePerBlock - 1 && tile.south != null)
+                        if(yt == aiNodePerBlock - 1 && tile.southTile != null)
                         {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.south.detailedAINodes[xt][0]);
-                            if(detailSet.has(tile.south))
+                            tile.detailedAINodes[xt][yt].neighbours.push(tile.southTile.detailedAINodes[xt][0]);
+                            if(detailSet.has(tile.southTile))
                             {
-                                tile.detailedAINodes[xt][yt].neighbours.push(tile.south.singleAINode);
-                                tile.south.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
+                                tile.detailedAINodes[xt][yt].neighbours.push(tile.southTile.singleAINode);
+                                tile.southTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
                             }
                         }
                     }
