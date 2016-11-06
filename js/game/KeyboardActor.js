@@ -23,21 +23,21 @@ class KeyboardActor extends Actor {
         keyHandler.setContinuousKey(" ", "Jump car", () => [
             cars.map(car => car.jump())
         ]);
-        keyHandler.setContinuousKey("ArrowLeft", "Turn left", () => [
-            cars.map(car => car.turn(1)),
-            cars.map(car => car.setWheels(0))
+        keyHandler.setContinuousKey("ArrowLeft", "Turn left", [
+            () => cars.map(car => car.turn(1)),
+            () => cars.map(car => car.setWheels(0))
         ]);
-        keyHandler.setContinuousKey("ArrowRight", "Turn right", () => [
-            cars.map(car => car.turn(-1)),
-            cars.map(car => car.setWheels(0))
+        keyHandler.setContinuousKey("ArrowRight", "Turn right", [
+            () => cars.map(car => car.turn(-1)),
+            () => cars.map(car => car.setWheels(0))
         ]);
-        keyHandler.setContinuousKey("a", "Turn left", () => [
-            cars.map(car => car.turn(1)),
-            cars.map(car => car.setWheels(0))
+        keyHandler.setContinuousKey("a", "Turn left", [
+            () => cars.map(car => car.turn(1)),
+            () => cars.map(car => car.setWheels(0))
         ]);
-        keyHandler.setContinuousKey("d", "Turn right", () => [
-            cars.map(car => car.turn(-1)),
-            cars.map(car => car.setWheels(0))
+        keyHandler.setContinuousKey("d", "Turn right", [
+            () => cars.map(car => car.turn(-1)),
+            () => cars.map(car => car.setWheels(0))
         ]);
 
         //temp misschien hopelijk
