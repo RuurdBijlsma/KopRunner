@@ -428,7 +428,7 @@
       <workItem from="1478170231112" duration="1979000" />
       <workItem from="1478430425554" duration="1305000" />
       <workItem from="1478436399879" duration="1047000" />
-      <workItem from="1478442137925" duration="5371000" />
+      <workItem from="1478442137925" duration="5408000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -626,11 +626,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478449765605</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fixed">
+      <created>1478449876709</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1478449876709</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16901000" />
+    <option name="totallyTimeSpent" value="16938000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -693,7 +700,8 @@
     <MESSAGE value="jump and boost fixed" />
     <MESSAGE value="keymap added" />
     <MESSAGE value="channels updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="channels updated" />
+    <MESSAGE value="fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
