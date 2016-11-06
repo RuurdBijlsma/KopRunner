@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
+    <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="car mass upped">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Game.js" afterPath="$PROJECT_DIR$/js/game/Game.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/KeyHandler.js" afterPath="$PROJECT_DIR$/js/game/KeyHandler.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/KeyboardActor.js" afterPath="$PROJECT_DIR$/js/game/KeyboardActor.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/NewCar.js" afterPath="$PROJECT_DIR$/js/game/NewCar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Scene.js" afterPath="$PROJECT_DIR$/js/game/Scene.js" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,8 +74,8 @@
       <file leaf-file-name="NewCar.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/NewCar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+            <state relative-caret-position="459">
+              <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -397,7 +398,7 @@
       <workItem from="1478168067988" duration="687000" />
       <workItem from="1478169538478" duration="28000" />
       <workItem from="1478170231112" duration="1979000" />
-      <workItem from="1478430425554" duration="651000" />
+      <workItem from="1478430425554" duration="1266000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -504,11 +505,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478186088909</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="car mass upped">
+      <created>1478431349364</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1478431349364</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9829000" />
+    <option name="totallyTimeSpent" value="10444000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -561,7 +569,8 @@
     <MESSAGE value="ground and physics car added" />
     <MESSAGE value="fixmix" />
     <MESSAGE value="physics driving added" />
-    <option name="LAST_COMMIT_MESSAGE" value="physics driving added" />
+    <MESSAGE value="car mass upped" />
+    <option name="LAST_COMMIT_MESSAGE" value="car mass upped" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -840,8 +849,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/NewCar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+        <state relative-caret-position="459">
+          <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
           <folding />
         </state>
       </provider>

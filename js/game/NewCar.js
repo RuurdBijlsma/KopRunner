@@ -25,9 +25,9 @@ class NewCar extends Physijs.Vehicle {
             frontRight: new THREE.Vector3(-1.2, -0.5, 1.4),
             backLeft: new THREE.Vector3(1.2, -0.5, -1.4),
             backRight: new THREE.Vector3(-1.2, -0.5, -1.4)
-        }
+        };
 
-        this.maxSteerRotation = Math.PI / 8;
+        this.maxSteerRotation = Math.PI / 16;
 
         let wheelMaterial = new THREE.MeshStandardMaterial({ color: 'rgb(40, 40, 40)' }),
             wheelRadius = 0.4,
@@ -46,7 +46,6 @@ class NewCar extends Physijs.Vehicle {
                 position.includes('front') //is front wheel
             );
             let mesh = this.wheels[this.wheels.length - 1];
-            console.log('mesh: ', mesh);
         }
 
         this.groundDirection = new THREE.Vector3(0, -1, 0);
@@ -78,18 +77,24 @@ class NewCar extends Physijs.Vehicle {
     turn(direction = 1) {
         //1 = left
         //-1 = right
+        this.stopTurningWheels();
         this.wheelDirection += direction / 50;
     }
 
     setWheels(direction) {
+        let turnSpeed = 2;
         //turn wheels until they're pointing at direction
         this.wheelSetLoop = this.gameLoop.add(() => {
-            this.turn(this.wheelDirection - direction);
+            this.wheelDirection += ((direction - this.wheelDirection) * turnSpeed) / 50;;
+            if (Math.abs(direction - this.wheelDirection) < 0.05) {
+                this.wheelDirection = 0;
+                this.stopTurningWheels();
+            }
         });
     }
 
-    stopTurningWheels(){
-        this.wheelSetLoop
+    stopTurningWheels() {
+        this.wheelSetLoop = this.gameLoop.remove(this.wheelSetLoop);
     }
 
     get wheelDirection() {

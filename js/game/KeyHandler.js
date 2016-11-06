@@ -12,7 +12,9 @@ class KeyHandler {
 
         this.checkLoop = gameLoop.add(function() {
             for (let checkKey in handler.continuousKeyFunctions)
-                handler.isPressed(checkKey) && handler.continuousKeyFunctions[checkKey].action(handler.keyPressed[handler.keyPressed.map(k => k.key).indexOf(checkKey)].event);
+                if (handler.isPressed(checkKey))
+                    if (handler.continuousKeyFunctions[checkKey])
+                        handler.continuousKeyFunctions[checkKey].action[0](handler.continuousKeyFunctions[checkKey].event);
         });
 
         this.singleKeyFunctions = {};
