@@ -11,8 +11,6 @@ class WorldTile {
         this.mesh = this.generateMeshFromHeightMap();
         this.mesh.position.set(_x * tileSize + tileSize / 2 - halfMapSize, 0, _z * tileSize + tileSize /2 - halfMapSize);
 
-        MAIN.scene.add(this.mesh);
-
         Object.defineProperty(this, "x", {value: _x, writable: false});
         Object.defineProperty(this, "z", {value: _z, writable: false});
         Object.defineProperty(this, "worldX", {value: _x * tileSize, writable: false});
@@ -26,15 +24,20 @@ class WorldTile {
             mesh2.position.set(this.worldX, tileYlevel, this.worldZ);
         }
 
+        this.generateAStarNodes();
+
         this._neighbours = new Array(4);
         this._connections = connectionsDictionary[this.texture_name];
 
         for(let i = 0; i < _rotationAmount; ++i) {
             this.connections.push(this.connections.shift());
-        }
+            WorldTile.rotateMatrix(this.detailedAINodes);
+            this.mesh.rotateZ(Math.PI / 2);
+    }
 
-        this.generateAStarNodes();
-        this.generateBuildings();
+        // this.generateBuildings();
+
+        MAIN.scene.add(this.mesh);
     }
 
     get x() {
@@ -126,6 +129,19 @@ class WorldTile {
         return this._neighbours;
     }
 
+    static rotateMatrix(matrix) {
+        let length = matrix.length;
+        let ret = new Array(length);
+            ret.fill(new Array(length));
+
+        for (let i = 0; i < length; ++i) {
+            for (let j = 0; j < length; ++j) {
+                ret[i][j] = matrix[length - j - 1][i];
+            }
+        }
+        return ret;
+}
+
     generateMeshFromHeightMap() {
         let fetcher = new PixelFetcher(this.channelsImage);
 
@@ -201,7 +217,7 @@ class WorldTile {
 
     generateBuildings()
     {
-        let fetcher = new PixelFetcher(this.heightmap);
+        let fetcher = new PixelFetcher(this.channelsImage);
 
         let geom = new CubeGeometry(1,1,1);
         geom.applyMatrix(new THREE.Matrix4().makeTranslation(0,0.5,0));
