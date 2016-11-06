@@ -18,7 +18,10 @@ class TextureMap extends Singleton {
             this.map[name] = {
                 texture: loader.load(this.folder + name + this.extension, () => this.onLoadFile()),
                 canvas: this.createCanvasElement(this.folder + name + this.extension)
-            }
+            };
+            this.map[name].texture.anisotropy = 16;
+            this.map[name].texture.magFilter = THREE.LinearFilter;
+            this.map[name].texture.minFilter = THREE.LinearMipMapNearestFilter;
         }
     }
 
@@ -37,7 +40,7 @@ class TextureMap extends Singleton {
             canvas.height = image.height;
             context.drawImage(image, 0, 0, image.width, image.height);
 
-            --this.filesToLoad;
+            this.onLoadFile();
         };
 
         return context;

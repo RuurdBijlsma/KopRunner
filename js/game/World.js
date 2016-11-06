@@ -1,6 +1,6 @@
 
-const mapSize = 7; //MUST BE ODD NUMBER
-const tileSize = 15;
+const mapSize = 9; //MUST BE ODD NUMBER
+const tileSize = 60;
 const tileHeight = 0.1;
 const aiNodePerBlock = 10;
 const tileYlevel = 5;
@@ -16,33 +16,28 @@ class World{
         this.createMap();
 	}
 
-    createMap()
-    {
-        for(let x = 0; x < mapSize; ++x)
-        {
+    createMap() {
+        for (let x = 0; x < mapSize; ++x) {
             let row = [];
-            for(let y = 0; y < mapSize; ++y)
-            {
-                row.push(new WorldTile(x,y, '4way'));
+            for (let y = 0; y < mapSize; ++y) {
+                row.push(new WorldTile(x, y, '4way'));
             }
             this.map.push(row);
         }
 
-        for(let x = 0; x < mapSize; ++x)
-        {
-            for(let y = 0; y < mapSize; ++y)
-            {
+        for (let x = 0; x < mapSize; ++x) {
+            for (let y = 0; y < mapSize; ++y) {
 
-                if(y != 0)
+                if (y != 0)
                     this.map[x][y].north = this.map[x][y - 1];
                 else this.map[x][y].north = null;
-                if(y != mapSize - 1)
+                if (y != mapSize - 1)
                     this.map[x][y].south = this.map[x][y + 1];
                 else this.map[x][y].south = null;
-                if(x != 0)
+                if (x != 0)
                     this.map[x][y].west = this.map[x - 1][y];
                 else this.map[x][y].west = null;
-                if(x != mapSize - 1)
+                if (x != mapSize - 1)
                     this.map[x][y].east = this.map[x + 1][y];
                 else this.map[x][y].east = null;
             }
@@ -50,18 +45,19 @@ class World{
 
         this.recalculatePaths();
 
-            let t2 = this.findPath(this.map[0][0].detailedAINodes[0][0], this.map[mapSize - 1][mapSize - 1].detailedAINodes[aiNodePerBlock - 1][aiNodePerBlock - 1]);
+        let t2 = this.findPath(this.map[0][0].detailedAINodes[0][0], this.map[mapSize - 1][mapSize - 1].detailedAINodes[aiNodePerBlock - 1][aiNodePerBlock - 1]);
 
-            let geom = new THREE.CylinderGeometry(0.1,0.1,6,8,8);
-            let mat2 = new THREE.MeshPhongMaterial({ color: "yellow"});
-            let mesh = new THREE.Mesh(geom,mat2);
+        if (showDebugMeshes) {
+            let geom = new THREE.CylinderGeometry(0.1, 0.1, 6, 8, 8);
+            let mat2 = new THREE.MeshPhongMaterial({color: "yellow"});
+            let mesh = new THREE.Mesh(geom, mat2);
 
-            for(let k of t2)
-            {
+            for (let k of t2) {
                 let m = mesh.clone();
                 m.position.set(k.worldPosition.x, 0, k.worldPosition.y);
                 MAIN.scene.add(m);
             }
+        }
     }
 
     static getDistance(nodeA, nodeB) {

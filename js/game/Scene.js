@@ -39,18 +39,19 @@ class Scene extends Physijs.Scene {
                 map: floorMap,
                 bumpScale: 0.45,
             });
-        this.floor = new Physijs.BoxMesh(floorGeometry, floorMaterial);
-        floorMap.wrapS = floorMap.wrapT = THREE.RepeatWrapping;
 
-        floorMap.repeat.set(floorX / 50, floorZ / 50);
-        this.floor.receiveShadow = true;
-        this.floor.mass = 0;
-        this.add(this.floor);
+        // this.floor = new Physijs.BoxMesh(floorGeometry, floorMaterial);
+        // floorMap.wrapS = floorMap.wrapT = THREE.RepeatWrapping;
+        //
+        // floorMap.repeat.set(floorX / 50, floorZ / 50);
+        // this.floor.receiveShadow = true;
+        // this.floor.mass = 0;
+        // this.add(this.floor);
 
         this.lights = {
             ambient: new AmbientLight(this),
             directional: new DirectionalLight(this, 20, 11, 5)
-        }
+        };
 
         this.skyBox = new SkyBox(this, 'img/skybox/clouds/');
 
@@ -62,7 +63,7 @@ class Scene extends Physijs.Scene {
         // for (let x = -50; x < 50; x += 100)
         //     for (let y = -50; y < 50; y += 100)
         //         cars.push(new PlayerCar(this, x, 3, y));
-        cars.push(new PlayerCar(this, 0, 3, 0));
+        cars.push(new PlayerCar(this, 2, 3, 2));
         this.car = cars[0];
         this.car._actor.init(cars, this.main.keyHandler); //dit moet uncommented worden in de playercar en hier weg
 
