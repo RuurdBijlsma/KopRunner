@@ -7,7 +7,7 @@ class WorldTile {
         this.texture_name = _texture_name;
         this.texture = TextureMap.instance.map[this.texture_name].texture;
 
-        this.heightmap = this.texture_name + ".heightmap";
+        this.channelsImage = this.texture_name + ".channels";
         this.mesh = this.generateMeshFromHeightMap();
         this.mesh.position.set(_x * tileSize + tileSize / 2 - halfMapSize, 0, _z * tileSize + tileSize /2 - halfMapSize);
 
@@ -127,7 +127,7 @@ class WorldTile {
     }
 
     generateMeshFromHeightMap() {
-        let fetcher = new PixelFetcher(this.heightmap);
+        let fetcher = new PixelFetcher(this.channelsImage);
 
         let verticesPerAxis = aiNodePerBlock * 4;
         let geometry = new THREE.PlaneGeometry(tileSize, tileSize, verticesPerAxis, verticesPerAxis);
@@ -141,7 +141,7 @@ class WorldTile {
         geometry.computeFaceNormals();
         geometry.computeVertexNormals();
 
-        let ground = new Physijs.HeightfieldMesh(geometry, new THREE.MeshPhongMaterial({map: this.texture}), 0, this.heightmap.width, this.heightmap.height);
+        let ground = new Physijs.HeightfieldMesh(geometry, new THREE.MeshPhongMaterial({map: this.texture}), 0, this.channelsImage.width, this.channelsImage.height);
         ground.rotation.x = Math.PI / -2;
         ground.receiveShadow = true;
 

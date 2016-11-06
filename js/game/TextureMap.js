@@ -74,9 +74,11 @@ class TextureMap extends Singleton {
             "4wayroad",
             "3wayroad",
             "2wayroad",
-            "corner"
+            "corner",
+            "grass",
+            "grasshill"
         ];
 
-        return names.concat(names.map(s => s + ".heightmap"));
+        return names.concat(names.map(s => s + ".channels"));
     }
 }
