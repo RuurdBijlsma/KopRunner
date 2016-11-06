@@ -1,4 +1,4 @@
-const showDebugMeshes = false;
+const showDebugMeshes = true;
 
 class WorldTile {
     constructor(_x, _z, _texture_name) {
@@ -9,7 +9,7 @@ class WorldTile {
 
         this.heightmap = this.texture_name + ".heightmap";
         this.mesh = this.generateMeshFromHeightMap();
-        this.mesh.position.set(_x * tileSize, 0, _z * tileSize);
+        this.mesh.position.set(_x * tileSize + tileSize / 2, 0, _z * tileSize + tileSize /2);
 
         MAIN.scene.add(this.mesh);
 
@@ -89,10 +89,13 @@ class WorldTile {
         console.log(this.heightmap);
         let fetcher = new PixelFetcher(this.heightmap);
 
-        let geometry = new THREE.PlaneGeometry(tileSize, tileSize, this.heightmap.width, this.heightmap.height);
+        let geometry = new THREE.PlaneGeometry(tileSize, tileSize, aiNodePerBlock * 2, aiNodePerBlock * 2);
+        let offset =  tileSize / aiNodePerBlock / 2;
 
         for (let vertex of geometry.vertices) {
-            vertex.z = fetcher.getPixelR(vertex.x, vertex.y) / 120;
+            let posX = ((vertex.x + tileSize / 2) * ((fetcher.context.canvas.width + 1)  / (tileSize + 1)));
+            let posY = ((vertex.y + tileSize / 2) * ((fetcher.context.canvas.height + 1) / (tileSize + 1)));
+            vertex.z = fetcher.getPixelR(posX, posY) / 1024;
         }
 
         geometry.computeFaceNormals();

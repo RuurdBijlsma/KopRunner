@@ -37,7 +37,7 @@ class TextureMap extends Singleton {
             canvas.height = image.height;
             context.drawImage(image, 0, 0, image.width, image.height);
 
-            --this.filesToLoad;
+            this.onLoadFile();
         };
 
         return context;
