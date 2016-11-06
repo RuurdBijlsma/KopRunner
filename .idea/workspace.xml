@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/textures/2wayroad.channels.png" afterPath="$PROJECT_DIR$/img/textures/2wayroad.channels.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/textures/3wayroad.channels.png" afterPath="$PROJECT_DIR$/img/textures/3wayroad.channels.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/textures/4wayroad.channels.png" afterPath="$PROJECT_DIR$/img/textures/4wayroad.channels.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/textures/Thumbs.db" afterPath="$PROJECT_DIR$/img/textures/Thumbs.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/textures/corner.channels.png" afterPath="$PROJECT_DIR$/img/textures/corner.channels.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/KeyboardActor.js" afterPath="$PROJECT_DIR$/js/game/KeyboardActor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/NewCar.js" afterPath="$PROJECT_DIR$/js/game/NewCar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Game.js" afterPath="$PROJECT_DIR$/js/game/Game.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Scene.js" afterPath="$PROJECT_DIR$/js/game/Scene.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/World.js" afterPath="$PROJECT_DIR$/js/game/World.js" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,8 +90,8 @@
       <file leaf-file-name="WorldTile.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/WorldTile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
+            <state relative-caret-position="238">
+              <caret line="14" column="71" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -434,7 +435,7 @@
       <workItem from="1478170231112" duration="1979000" />
       <workItem from="1478430425554" duration="1305000" />
       <workItem from="1478436399879" duration="1047000" />
-      <workItem from="1478442137925" duration="3641000" />
+      <workItem from="1478442137925" duration="4257000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -611,11 +612,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478445098635</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="keymap added">
+      <created>1478447759768</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1478447759768</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15171000" />
+    <option name="totallyTimeSpent" value="15787000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -676,7 +684,8 @@
     <MESSAGE value="grass heightmap fixed" />
     <MESSAGE value="grasshill heightmap fixed" />
     <MESSAGE value="jump and boost fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="jump and boost fixed" />
+    <MESSAGE value="keymap added" />
+    <option name="LAST_COMMIT_MESSAGE" value="keymap added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1056,8 +1065,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/WorldTile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="56" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
+        <state relative-caret-position="238">
+          <caret line="14" column="71" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
           <folding />
         </state>
       </provider>
