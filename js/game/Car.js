@@ -1,85 +1,159 @@
-class Car extends Physijs.BoxMesh {
+class Car extends Physijs.Vehicle {
     constructor(scene, x = 0, y = 0, z = 0, color = 'red') {
         let bodyGeometry = new THREE.BoxGeometry(2.5, 0.8, 4),
             roofGeometry = new THREE.BoxGeometry(2.4, 0.8, 2.7),
             bodyMaterial = new THREE.MeshStandardMaterial({ color: color }),
-            wheelMaterial = new THREE.MeshStandardMaterial({ color: 'rgb(40, 40, 40)' }),
-            roofMesh = new Physijs.BoxMesh(roofGeometry, wheelMaterial),
-            wheelRadius = .4,
-            wheelGeometry = new THREE.CylinderGeometry(wheelRadius, wheelRadius, 0.3, 20);
+            roofMesh = new Physijs.BoxMesh(roofGeometry, new THREE.MeshStandardMaterial({ color: '#111111' })),
+            bodyMesh = new Physijs.BoxMesh(bodyGeometry, bodyMaterial);
+        bodyMesh.add(roofMesh);
+        bodyMesh.mass = 50;
+        roofMesh.position.set(0, 0.8, -0.5);
+        bodyMesh.position.set(x, y, z);
 
-        let envMap = scene.skyBox.envMap;
-        wheelMaterial.envMap = envMap;
-        wheelMaterial.envMapIntensity = 2;
-        bodyMaterial.envMap = envMap;
-        bodyMaterial.envMapIntensity = 2;
-        super(bodyGeometry, bodyMaterial);
-        this.position.set(x, y, z);
-
-        roofMesh.position.set(x, y - 2.4, z - 0.5);
-        this.add(roofMesh);
+        super(bodyMesh, new Physijs.VehicleTuning(
+            10.88, //Suspension stiffness
+            1.83, //Suspension compression
+            0.28, //Suspension damping
+            500, //Max suspension travel
+            10.5, //Friction slip
+            6000 //Max suspension force
+        ));
+        scene.add(this);
 
         let wheels = {
-            frontLeft: {
-                mesh: new Physijs.CylinderMesh(wheelGeometry, wheelMaterial),
-                position: new THREE.Vector3(x + 1.2, y - 3.4, z - 1.4)
-            },
-            frontRight: {
-                mesh: new Physijs.CylinderMesh(wheelGeometry, wheelMaterial),
-                position: new THREE.Vector3(x - 1.2, y - 3.4, z - 1.4)
-            },
-            backLeft: {
-                mesh: new Physijs.CylinderMesh(wheelGeometry, wheelMaterial),
-                position: new THREE.Vector3(x + 1.2, y - 3.4, z + 1.4)
-            },
-            backRight: {
-                mesh: new Physijs.CylinderMesh(wheelGeometry, wheelMaterial),
-                position: new THREE.Vector3(x - 1.2, y - 3.4, z + 1.4)
-            }
-        }
+            frontLeft: new THREE.Vector3(1.2, -0.5, 1.4),
+            frontRight: new THREE.Vector3(-1.2, -0.5, 1.4),
+            backLeft: new THREE.Vector3(1.2, -0.5, -1.4),
+            backRight: new THREE.Vector3(-1.2, -0.5, -1.4)
+        };
+
+        this.maxSteerRotation = Math.PI / 16;
+
+        let wheelMaterial = new THREE.MeshStandardMaterial({ color: 'rgb(40, 40, 40)' }),
+            wheelRadius = 0.4,
+            wheelGeometry = new THREE.CylinderGeometry(wheelRadius, wheelRadius, 0.6, 10);
 
         for (let position in wheels) {
-            let pos = wheels[position].position,
-                mesh = wheels[position].mesh;
-            mesh.position.set(pos.x, pos.y, pos.z);
-            mesh.rotateZ(Math.PI / 2);
-            this.add(mesh);
+            let pos = wheels[position];
+            this.addWheel(
+                wheelGeometry,
+                wheelMaterial,
+                pos,
+                new THREE.Vector3(0, -1, 0), // wheel direction
+                new THREE.Vector3(-1, 0, 0), //wheel axle
+                0.5, //suspension rest length
+                wheelRadius, //wheel radius
+                position.includes('front') //is front wheel
+            );
+            let mesh = this.wheels[this.wheels.length - 1];
         }
 
-        scene.add(this);
-        scene.add(this);
+        this.groundDirection = new THREE.Vector3(0, -1, 0);
+        this.maxSteerRotation = Math.PI / 4;
 
         this.gameLoop = scene.main.loop;
         this.gameLoop.add(() => this.update());
 
+        this.boostPower = 50;
+    }
 
-        this.accelerationPerSecond = 10;
-        this.decelerationPerSecond = 20;
-        this.accelerationRate = this.accelerationPerSecond / this.gameLoop.tps;
-        this.decelerationRate = this.decelerationPerSecond / this.gameLoop.tps;
-        this.maxSpeed = 30;
-        this.steerSpeed = 0.01;
+    startAccelerating(accelerationForce = 75) {
+        if (this.directionalSpeed.z < 0)
+            this.brake();
+        else
+            this.applyEngineForce(accelerationForce);
+    }
 
-        this.boostPower = 30;
+    startDecelerating(accelerationForce = -50) {
+        if (this.directionalSpeed.z > 0)
+            this.brake();
+        else
+            this.applyEngineForce(accelerationForce);
+    }
 
-        this.groundDirection = new THREE.Vector3(0, -1, 0);
+    stopMotor() {
+        this.applyEngineForce(0);
+    }
+
+    brake(power = 20) {
+        this.setBrake(power, 2);
+        this.setBrake(power, 3);
+    }
+
+    turn(direction = 1) {
+        //1 = left
+        //-1 = right
+        this.stopTurningWheels();
+        this.wheelDirection += direction / 50;
+    }
+
+    setWheels(direction) {
+        let turnSpeed = 2;
+        //turn wheels until they're pointing at direction
+        this.wheelSetLoop = this.gameLoop.add(() => {
+            this.wheelDirection += ((direction - this.wheelDirection) * turnSpeed) / 50;;
+            if (Math.abs(direction - this.wheelDirection) < 0.05) {
+                this.wheelDirection = 0;
+                this.stopTurningWheels();
+            }
+        });
+    }
+
+    stopTurningWheels() {
+        this.wheelSetLoop = this.gameLoop.remove(this.wheelSetLoop);
+    }
+
+    get wheelDirection() {
+        return this._wheelDirection || 0;
+    }
+
+    set wheelDirection(v) {
+        v = v > this.maxSteerRotation ? this.maxSteerRotation : v;
+        v = v < -this.maxSteerRotation ? -this.maxSteerRotation : v;
+        this.setSteering(v, 0);
+        this.setSteering(v, 1);
+        //0: frontLeft
+        //1: frontRight
+        //2: backLeft
+        //3: backRight
+
+        this._wheelDirection = v;
     }
 
     get isOnGround() {
-        let carHeight = 0.9;
-        return new THREE.Raycaster(this.position, this.groundDirection, 0, carHeight).intersectObjects([MAIN.scene.floor]).length > 0;
+        let carHeight = 3;
+        if (!this.floorMeshes) {
+            this.floorMeshes = [];
+            let meshes = MAIN.game.world.map.map(a => a.map(t => t.mesh));
+            for (let mesh of meshes)
+                this.floorMeshes = this.floorMeshes.concat(mesh);
+        }
+        return new THREE.Raycaster(this.mesh.position, this.groundDirection, 0, carHeight).intersectObjects(this.floorMeshes).length > 0;
+    }
+    get directionalSpeed() {
+        return this.mesh.getWorldDirection().multiply(this.mesh.getLinearVelocity());
     }
 
-    set speed(speed) {
-        if (speed >= this.maxSpeed)
-            speed = this.maxSpeed;
-
-        this.isOnGround && this.setLinearVelocity(this.getWorldDirection().multiplyScalar(speed));
+    update() {
+        if (this.actor == undefined) return;
+        this.actor.driveCar(this);
     }
-    get speed() {
-        let sum = v => v.x + v.y + v.z,
-            speedInCarDirection = this.getWorldDirection().multiply(this.getLinearVelocity());
-        return sum(speedInCarDirection);
+
+    boost() {
+        if (!this.boostTimeout) {
+            this.boostTimeout = true;
+
+            this.mesh.setLinearVelocity(this.mesh.getWorldDirection().multiplyScalar(this.boostPower));
+
+            setTimeout(() => delete this.boostTimeout, 10 * 1000); // 10 second boost delay
+        }
+    }
+
+    jump() {
+        if (this.isOnGround) {
+            let currentVelocity = this.mesh.getLinearVelocity();
+            this.mesh.setLinearVelocity(new THREE.Vector3(currentVelocity.x, currentVelocity.y + 4, currentVelocity.z));
+        }
     }
 
     get actor() {
@@ -92,61 +166,14 @@ class Car extends Physijs.BoxMesh {
         this._actor.init(this);
     }
 
-    update() {
-        if (this.actor == undefined) return;
-        this.actor.driveCar(this);
+    setRotation(x = 0, y = 0, z = 0) {
+        this.mesh.rotation.set(x, y, z);
+        this.mesh.setAngularVelocity(new THREE.Vector3);
+        this.mesh.__dirtyRotation = true;
     }
-
-    accelerate() {
-        if (this.isOnGround)
-            if (this.speed > 0) {
-                this.speed += this.accelerationRate;
-            } else {
-                this.speed += this.decelerationRate;
-            }
-    }
-    decelerate() {
-        if (this.isOnGround)
-            if (this.speed > 0) {
-                this.speed -= this.decelerationRate;
-            } else {
-                this.speed -= this.accelerationRate;
-            }
-    }
-
-    turnWheel(rad) { //SkeerSteer™
-        if (this.isOnGround) {
-            let currentAnglularVelocity = this.getAngularVelocity(),
-                rotationChange = -(rad * this.steerSpeed);
-            if (this.speed > 0) {
-                rotationChange *= this.speed > 1 ? 1 : this.speed; //als je stilstaat kan je niet steeren
-            } else {
-                rotationChange *= this.speed < -1 ? -1 : this.speed;
-                rotationChange *= -1; // als je achteruit gaat moet steering omgekeerd
-            }
-            this.setAngularVelocity(new THREE.Vector3(0, currentAnglularVelocity.y + rotationChange, 0));
-        }
-    }
-
-    boost() {
-        if (!this.boostTimeout) {
-            this.maxSpeed += this.boostPower;
-            this.speed += this.boostPower;
-
-            this.boostTimeout = setTimeout(function() {
-                this.maxSpeed -= this.boostPower;
-                this.speed -= this.boostPower;
-                delete this.boostTimeout;
-            }, 5000);
-            setTimeout(() => delete this.boostTimeout, 10 * 1000); // 10 second boost delay
-        }
-    }
-
-    jump() {
-        if (this.isOnGround) {
-            let currentVelocity = this.getLinearVelocity();
-            this.setLinearVelocity(new THREE.Vector3(currentVelocity.x, currentVelocity.y + 3, currentVelocity.z));
-            this.setAngularVelocity(new THREE.Vector3(4, 0, 0));
-        }
+    setPosition(x = 0, y = tileYlevel - 2, z = 0) {
+        this.mesh.position.set(x, y, z);
+        this.mesh.setLinearVelocity(new THREE.Vector3);
+        this.mesh.__dirtyPosition = true;
     }
 }

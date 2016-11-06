@@ -8,7 +8,7 @@ class Game {
         //     for (let y = -50; y < 50; y += 100)
         //         cars.push(new PlayerCar(this, x, 3, y));
 
-        cars.push(new PlayerCar(MAIN.scene, 0, 8, 0));
+        cars.push(new CopCar(MAIN.scene, 0, 8, 0));
         this.car = cars[0];
         this.car._actor.init(cars, MAIN.keyHandler); //dit moet uncommented worden in de playercar en hier weg
 
