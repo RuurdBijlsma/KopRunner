@@ -1,7 +1,7 @@
-const showDebugMeshes = false;
+const showDebugMeshes = true;
 
 class WorldTile {
-    constructor(_x, _z, _texture_name, _rotationAmount = 0) {
+    constructor(_x, _z, _texture_name) {
         // let geom = new THREE.BoxGeometry(tileSize, tileHeight, tileSize);
         // let mat = new THREE.MeshPhongMaterial({ map: _texture });
         this.texture_name = _texture_name;
@@ -28,12 +28,6 @@ class WorldTile {
 
         this._neighbours = new Array(4);
         this._connections = connectionsDictionary[this.texture_name];
-
-        for(let i = 0; i < _rotationAmount; ++i) {
-            this.connections.push(this.connections.shift());
-            WorldTile.rotateMatrix(this.detailedAINodes);
-            this.mesh.rotateZ(Math.PI / 2);
-    }
 
         // this.generateBuildings();
 
@@ -132,7 +126,7 @@ class WorldTile {
     static rotateMatrix(matrix) {
         let length = matrix.length;
         let ret = new Array(length);
-            ret.fill(new Array(length));
+        ret.fill(new Array(length));
 
         for (let i = 0; i < length; ++i) {
             for (let j = 0; j < length; ++j) {
@@ -176,7 +170,7 @@ class WorldTile {
 
 
         let fetcher = new PixelFetcher(this.texture_name);
-        let pixelsX = this.texture.image.width / aiNodePerBlock, pixelsZ = this.texture.image.height / aiNodePerBlock;
+        let pixelsX = fetcher.context.canvas.width / aiNodePerBlock, pixelsZ = fetcher.context.canvas.height / aiNodePerBlock;
         for (let x = 0; x < aiNodePerBlock; ++x) {
             for (let y = 0; y < aiNodePerBlock; ++y) {
                 this.detailedAINodes[x][y].densityFactor = fetcher.getPixelA(x * pixelsX, y * pixelsZ);
@@ -187,7 +181,7 @@ class WorldTile {
                 };
             }
         }
-        let a = fetcher.getPixelA(this.texture.image.width / 2, this.texture.image.height / 2);
+        let a = fetcher.getPixelA(fetcher.context.canvas.width / 2, fetcher.context.canvas.height / 2);
         this.singleAINode = new AStarNode();
         this.singleAINode.densityFactor = a;
         this.singleAINode.localPosition = {x: -1, y: -1};
