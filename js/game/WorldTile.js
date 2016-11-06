@@ -1,4 +1,4 @@
-const showDebugMeshes = true;
+const showDebugMeshes = false;
 
 class WorldTile {
     constructor(_x, _z, _texture_name) {
@@ -89,13 +89,13 @@ class WorldTile {
         console.log(this.heightmap);
         let fetcher = new PixelFetcher(this.heightmap);
 
-        let geometry = new THREE.PlaneGeometry(tileSize, tileSize, aiNodePerBlock * 2, aiNodePerBlock * 2);
-        let offset =  tileSize / aiNodePerBlock / 2;
+        let verticesPerAxis = aiNodePerBlock * 4;
+        let geometry = new THREE.PlaneGeometry(tileSize, tileSize, verticesPerAxis, verticesPerAxis);
 
         for (let vertex of geometry.vertices) {
             let posX = ((vertex.x + tileSize / 2) * ((fetcher.context.canvas.width + 1)  / (tileSize + 1)));
             let posY = ((vertex.y + tileSize / 2) * ((fetcher.context.canvas.height + 1) / (tileSize + 1)));
-            vertex.z = fetcher.getPixelR(posX, posY) / 1024;
+            vertex.z = fetcher.getPixelR(posX, posY) / 512;
         }
 
         geometry.computeFaceNormals();
