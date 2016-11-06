@@ -219,17 +219,10 @@ class WorldTile {
     {
         let fetcher = new PixelFetcher(this.channelsImage);
 
-        let geom = new CubeGeometry(1,1,1);
+        let geom = new THREE.CubeGeometry(1,1,1);
         geom.applyMatrix(new THREE.Matrix4().makeTranslation(0,0.5,0));
-        geom.faces.splice(3,1);
 
-        //uv map fixen
-        geom.faceVertexUvs[0][2][0].set( 0, 0 );
-        geom.faceVertexUvs[0][2][1].set( 0, 0 );
-        geom.faceVertexUvs[0][2][2].set( 0, 0 );
-        geom.faceVertexUvs[0][2][3].set( 0, 0 );
-
-        let mesh = new THREE.Mesh(geom, new THREE.MeshPhongMaterial({ color: "white" }));
+        let mesh = new THREE.Mesh(geom, new THREE.MeshStandardMaterial({ color: "white" }));
 
         let BuildingCount = Math.floor((Math.random() * (5 - 1)) + 1);
 
@@ -248,11 +241,11 @@ class WorldTile {
             arr.push(mesh.clone());
             arr[arr.length - 1].rotation.y = rot;
             arr[arr.length - 1].scale.x = size;
-            arr[arr.length - 1].scale.z = geom.scale.x;
+            arr[arr.length - 1].scale.z = arr[arr.length - 1].scale.x;
             arr[arr.length - 1].scale.y = ySize;
 
-            arr[arr.length - 1].position.x = this.worldX + x;
-            arr[arr.length - 1].position.z = this.worldZ + y;
+            arr[arr.length - 1].position.x = this.worldX + x - halfMapSize;
+            arr[arr.length - 1].position.z = this.worldZ + y - halfMapSize;
 
             MAIN.scene.add(arr[arr.length - 1]);
         }
