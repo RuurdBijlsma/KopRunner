@@ -21,15 +21,13 @@ class World {
 
 
         this.createMap();
-
-
     }
 
     createMap() {
         for (let x = 0; x < mapSize; ++x) {
             let row = [];
             for (let y = 0; y < mapSize; ++y) {
-                row.push(new WorldTile(x, y, '2wayroad'));
+                row.push(new WorldTile(x, y, 'grasshill'));
             }
             this.map.push(row);
         }
@@ -61,11 +59,12 @@ class World {
             let mat2 = new THREE.MeshPhongMaterial({ color: "yellow" });
             let mesh = new THREE.Mesh(geom, mat2);
 
-            for (let k of t2) {
-                let m = mesh.clone();
-                m.position.set(k.worldPosition.x, 0, k.worldPosition.y);
-                MAIN.scene.add(m);
-            }
+            if (t2)
+                for (let k of t2) {
+                    let m = mesh.clone();
+                    m.position.set(k.worldPosition.x, 0, k.worldPosition.y);
+                    MAIN.scene.add(m);
+                }
         }
     }
 
