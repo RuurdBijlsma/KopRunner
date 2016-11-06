@@ -17,12 +17,28 @@ class KeyboardActor extends Actor {
             () => cars.map(car => car.startDecelerating()),
             () => cars.map(car => car.stopMotor())
         ]);
-        keyHandler.setContinuousKey("Shift", "Activate boost", () => cars.map(car => car.boost()));
-        keyHandler.setContinuousKey(" ", "Jump car", () => cars.map(car => car.jump()));
-        keyHandler.setContinuousKey("ArrowLeft", "Turn left", () => cars.map(car => car.turn(1)));
-        keyHandler.setContinuousKey("ArrowRight", "Turn right", () => cars.map(car => car.turn(-1)));
-        keyHandler.setContinuousKey("a", "Turn left", () => cars.map(car => car.turn(1)));
-        keyHandler.setContinuousKey("d", "Turn right", () => cars.map(car => car.turn(-1)));
+        keyHandler.setContinuousKey("Shift", "Activate boost", () => [
+            cars.map(car => car.boost())
+        ]);
+        keyHandler.setContinuousKey(" ", "Jump car", () => [
+            cars.map(car => car.jump())
+        ]);
+        keyHandler.setContinuousKey("ArrowLeft", "Turn left", () => [
+            cars.map(car => car.turn(1)),
+            cars.map(car => car.setWheels(0))
+        ]);
+        keyHandler.setContinuousKey("ArrowRight", "Turn right", () => [
+            cars.map(car => car.turn(-1)),
+            cars.map(car => car.setWheels(0))
+        ]);
+        keyHandler.setContinuousKey("a", "Turn left", () => [
+            cars.map(car => car.turn(1)),
+            cars.map(car => car.setWheels(0))
+        ]);
+        keyHandler.setContinuousKey("d", "Turn right", () => [
+            cars.map(car => car.turn(-1)),
+            cars.map(car => car.setWheels(0))
+        ]);
 
         //temp misschien hopelijk
         keyHandler.setSingleKey("t", "Switch camera", [

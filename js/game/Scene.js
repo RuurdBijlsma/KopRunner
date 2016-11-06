@@ -75,7 +75,7 @@ class Scene extends Physijs.Scene {
 
     updateCamera() {
         this.camera.position.set(0, 5, -10);
-        
+
         let newCameraY = this.camera.getWorldPosition().y,
             floorHeight = 5;
         if (newCameraY < floorHeight)
