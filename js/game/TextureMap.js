@@ -71,7 +71,10 @@ class TextureMap extends Singleton {
         // The above code doesn't work on servers that don't show folders
         // Instead, we need to hardcode all filenames here
         let names =  [
-            "4way"
+            "4wayroad",
+            "3wayroad",
+            "2wayroad",
+            "corner"
         ];
 
         return names.concat(names.map(s => s + ".heightmap"));

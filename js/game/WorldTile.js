@@ -1,7 +1,7 @@
 const showDebugMeshes = false;
 
 class WorldTile {
-    constructor(_x, _z, _texture_name) {
+    constructor(_x, _z, _texture_name, _rotationAmount = 0) {
         // let geom = new THREE.BoxGeometry(tileSize, tileHeight, tileSize);
         // let mat = new THREE.MeshPhongMaterial({ map: _texture });
         this.texture_name = _texture_name;
@@ -27,6 +27,12 @@ class WorldTile {
         }
 
         this._neighbours = new Array(4);
+        this._connections = connectionsDictionary[this.texture_name];
+
+        for(let i = 0; i < _rotationAmount; ++i) {
+            this.connections.push(this.connections.shift());
+        }
+
         this.generateAStarNodes();
     }
 
@@ -46,39 +52,73 @@ class WorldTile {
         return this.worldZ.clone();
     }
 
+    set northConnectable(connectable) {
+        this.connections[0] = connectable;
+    }
+
+    set eastConnectable(connectable) {
+        this.connections[1] = connectable;
+    }
+
+    set southConnectable(connectable) {
+        this.connections[2] = connectable;
+    }
+
+    set westConnectable(connectable) {
+        this.connections[3] = connectable;
+    }
+
+    get northConnectable() {
+        return this.connections[0];
+    }
+
+    get eastConnectable() {
+        return this.connections[1];
+    }
+
+    get southConnectable() {
+        return this.connections[2];
+    }
+
+    get westConnectable() {
+        return this.connections[3];
+    }
 
     //set and getters for tiles. null == no tile
-
-    set north(tile) {
+    set northTile(tile) {
         this.neighbours[0] = tile;
     }
 
-    set south(tile) {
+    set eastTile(tile) {
         this.neighbours[1] = tile;
     }
 
-    set west(tile) {
+    set southTile(tile) {
         this.neighbours[2] = tile;
     }
 
-    set east(tile) {
-        this.neighbours[3] = tile;
+    set westTile(tile) {
+        this.neighbours[2] = tile;
     }
 
-    get north() {
+    get northTile() {
         return this.neighbours[0];
     }
 
-    get south() {
+    get eastTile() {
         return this.neighbours[1];
     }
 
-    get west() {
+    get southTile() {
         return this.neighbours[2];
     }
 
-    get east() {
+    get westTile() {
         return this.neighbours[3];
+    }
+
+    get connections() {
+        return this._connections;
     }
 
     get neighbours() {
@@ -86,7 +126,6 @@ class WorldTile {
     }
 
     generateMeshFromHeightMap() {
-        console.log(this.heightmap);
         let fetcher = new PixelFetcher(this.heightmap);
 
         let verticesPerAxis = aiNodePerBlock * 4;
@@ -95,7 +134,7 @@ class WorldTile {
         for (let vertex of geometry.vertices) {
             let posX = ((vertex.x + tileSize / 2) * ((fetcher.context.canvas.width + 1)  / (tileSize + 1)));
             let posY = ((vertex.y + tileSize / 2) * ((fetcher.context.canvas.height + 1) / (tileSize + 1)));
-            vertex.z = fetcher.getPixelR(posX, posY) / 512;
+            vertex.z = fetcher.getPixelR(posX, posY) / 128;
         }
 
         geometry.computeFaceNormals();

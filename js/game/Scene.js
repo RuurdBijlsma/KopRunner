@@ -25,29 +25,6 @@ class Scene extends Physijs.Scene {
         this.renderElement.appendChild(this.renderer.domElement);
         window.addEventListener('resize', () => this.onWindowResize());
 
-        let floorZ = 366,
-            floorX = 150,
-            geometry = new THREE.CubeGeometry(1, 2, 1),
-            material = new THREE.MeshStandardMaterial({ color: 'green' }),
-            floorGeometry = new THREE.CubeGeometry(floorX, 1, floorZ),
-            textureLoader = new THREE.TextureLoader(),
-            floorMap = textureLoader.load('img/textures/4way.png'),
-            floorHeight = textureLoader.load('img/textures/4way.heightmap.png'),
-            floorMaterial = new THREE.MeshPhongMaterial({
-                shininess: 20,
-                bumpMap: floorMap,
-                map: floorMap,
-                bumpScale: 0.45,
-            });
-
-        // this.floor = new Physijs.BoxMesh(floorGeometry, floorMaterial);
-        // floorMap.wrapS = floorMap.wrapT = THREE.RepeatWrapping;
-        //
-        // floorMap.repeat.set(floorX / 50, floorZ / 50);
-        // this.floor.receiveShadow = true;
-        // this.floor.mass = 0;
-        // this.add(this.floor);
-
         this.lights = {
             ambient: new AmbientLight(this),
             directional: new DirectionalLight(this, 20, 11, 5)
