@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/2wayroad.channels.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/3waydrempel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/3wayroad.channels.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/4waydrempel.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/4wayroad.channels.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/corner.channels.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/channels_desctiption.txt" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/textures/2wayroad.heightmap.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/textures/3wayroad.heightmap.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/textures/3wayroad.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/textures/4wayroad.heightmap.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/textures/4wayroad.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/textures/Untitled-1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/textures/asfalt.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/textures/corner.heightmap.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/textures/floor.png" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/grass.channels.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/grass.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/grasshill.channels.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/grasshill.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/textures/Thumbs.db" afterPath="$PROJECT_DIR$/img/textures/Thumbs.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -87,8 +75,8 @@
       <file leaf-file-name="NewCar.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/NewCar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+            <state relative-caret-position="221">
+              <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -317,7 +305,7 @@
       <workItem from="1478170231112" duration="1979000" />
       <workItem from="1478430425554" duration="1305000" />
       <workItem from="1478436399879" duration="1047000" />
-      <workItem from="1478442137925" duration="18000" />
+      <workItem from="1478442137925" duration="659000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -452,11 +440,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478436775241</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="extra textures added with channels">
+      <created>1478442170527</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1478442170527</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11548000" />
+    <option name="totallyTimeSpent" value="12189000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -512,7 +507,8 @@
     <MESSAGE value="car mass upped" />
     <MESSAGE value="steering fixed" />
     <MESSAGE value="more textures added" />
-    <option name="LAST_COMMIT_MESSAGE" value="more textures added" />
+    <MESSAGE value="extra textures added with channels" />
+    <option name="LAST_COMMIT_MESSAGE" value="extra textures added with channels" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -875,8 +871,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/NewCar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+        <state relative-caret-position="221">
+          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
           <folding />
         </state>
       </provider>
