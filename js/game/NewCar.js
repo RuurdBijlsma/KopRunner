@@ -122,7 +122,13 @@ class NewCar extends Physijs.Vehicle {
 
     get isOnGround() {
         let carHeight = 3;
-        return new THREE.Raycaster(this.mesh.position, this.groundDirection, 0, carHeight).intersectObjects([MAIN.scene.floor]).length > 0;
+        if (!this.floorMeshes) {
+            this.floorMeshes = [];
+            let meshes = MAIN.game.world.map.map(a => a.map(t => t.mesh));
+            for (let mesh of meshes)
+                this.floorMeshes = this.floorMeshes.concat(mesh);
+        }
+        return new THREE.Raycaster(this.mesh.position, this.groundDirection, 0, carHeight).intersectObjects(this.floorMeshes).length > 0;
     }
     get directionalSpeed() {
         return this.mesh.getWorldDirection().multiply(this.mesh.getLinearVelocity());

@@ -40,13 +40,23 @@ class KeyboardActor extends Actor {
             () => cars.map(car => car.setWheels(0))
         ]);
 
-        //temp misschien hopelijk
+
+        keyHandler.setSingleKey("/", "Show keymap", [
+            () => this.showKeyMap()
+        ]);
         keyHandler.setSingleKey("t", "Switch camera", [
             () => MAIN.scene.toggleCamera()
         ]);
-        keyHandler.setSingleKey("Delete", "Reset camera", [
+        keyHandler.setSingleKey("Delete", "Reset car", [
             () => {
                 cars.map(car => car.setPosition());
+                cars.map(car => car.setRotation());
+                cars.map(car => car.wheelDirection = 0);
+            }
+        ]);
+        keyHandler.setSingleKey("Backspace", "Fix car rotation", [
+            () => {
+                cars.map(car => car.setPosition(car.mesh.position.x, car.mesh.position.y + 1, car.mesh.position.z));
                 cars.map(car => car.setRotation());
                 cars.map(car => car.wheelDirection = 0);
             }
@@ -74,4 +84,37 @@ class KeyboardActor extends Actor {
         // Don't need to take action every frame when using the keyboard
     }
 
+
+
+
+    showKeyMap() {
+        let keyMap = MAIN.keyHandler.keyMap,
+            singleKeyElement = document.getElementById('single'),
+            continuousKeyElement = document.getElementById('continuous'),
+            singleHTML = '<ul>',
+            continuousHTML = '<ul>';
+
+        for (let key in keyMap.single)
+            singleHTML += `<li>
+                        <div class='key'>${key==' '?'Space':key}</div>
+                        <div class='bindName'>${keyMap.single[key].name}
+                    </li>`;
+        singleHTML += '</ul>';
+
+        for (let key in keyMap.continuous)
+            continuousHTML += `<li>
+                        <div class='key'>${key==' '?'Space':key}</div>
+                        <div class='bindName'>${keyMap.continuous[key].name}
+                    </li>`;
+        continuousHTML += '</ul>';
+
+        singleKeyElement.innerHTML = singleHTML;
+        continuousKeyElement.innerHTML = continuousHTML;
+        let helpElement = document.getElementById('help');
+        if (this.keyDisplay === 'block')
+            this.keyDisplay = 'none';
+        else
+            this.keyDisplay = 'block';
+        helpElement.style.display = this.keyDisplay;
+    }
 }
