@@ -30,7 +30,7 @@ class WorldTile {
         this._neighbours = new Array(4);
         this._connections = connectionsDictionary[this.texture_name];
 
-        // this.generateBuildings();
+        this.generateBuildings();
 
         MAIN.scene.add(this.mesh);
     }
@@ -216,9 +216,9 @@ class WorldTile {
 
         let geom = new THREE.CubeGeometry(1,1,1);
 
-        let mesh = new Physijs.BoxMesh(geom, new THREE.MeshStandardMaterial(),0);
+        let mesh = new THREE.Mesh(geom, new THREE.MeshStandardMaterial(),0);
 
-        let BuildingCount = Math.floor((Math.random() * (5 - 1)) + 1);
+        let BuildingCount = Math.floor((Math.random() * (50 - 1)) + 1);
 
         let arr = [];
 
@@ -260,8 +260,8 @@ class WorldTile {
             clone.scale.z = arr[arr.length - 1].scale.x;
             clone.scale.y = ySize;
 
-            clone.position.x = x;
-            clone.position.z = y;
+            clone.position.x = midx + x;
+            clone.position.z = midy + y;
 
             MAIN.scene.add(clone);
         }
