@@ -5,6 +5,7 @@ class WorldTile {
         // let geom = new THREE.BoxGeometry(tileSize, tileHeight, tileSize);
         // let mat = new THREE.MeshPhongMaterial({ map: _texture });
         this.texture_name = _texture_name;
+        console.log(this.texture_name);
         this.texture = TextureMap.instance.map[this.texture_name].texture;
 
         this.channelsImage = this.texture_name + ".channels";
