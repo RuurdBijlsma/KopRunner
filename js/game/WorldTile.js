@@ -201,17 +201,11 @@ class WorldTile {
 
     generateBuildings()
     {
-        let fetcher = new PixelFetcher(this.heightmap);
+        let fetcher = new PixelFetcher(this.channelsImage);
 
-        let geom = new CubeGeometry(1,1,1);
+        let geom = new THREE.CubeGeometry(1,1,1);
         geom.applyMatrix(new THREE.Matrix4().makeTranslation(0,0.5,0));
         geom.faces.splice(3,1);
-
-        //uv map fixen
-        geom.faceVertexUvs[0][2][0].set( 0, 0 );
-        geom.faceVertexUvs[0][2][1].set( 0, 0 );
-        geom.faceVertexUvs[0][2][2].set( 0, 0 );
-        geom.faceVertexUvs[0][2][3].set( 0, 0 );
 
         let mesh = new THREE.Mesh(geom, new THREE.MeshPhongMaterial({ color: "white" }));
 
