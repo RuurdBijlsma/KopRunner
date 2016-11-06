@@ -8,6 +8,7 @@ class Main {
 
     initialize() {
         this.game = new Game();
+        this.game.start();
     }
 
     animateObject(object, newPos, time = 1000, target = null, easing = TWEEN.Easing.Quartic.InOut) {

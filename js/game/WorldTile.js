@@ -1,17 +1,16 @@
-const showDebugMeshes = false;
+const showDebugMeshes = true;
 
 class WorldTile {
-    constructor(_x, _z, _texture_name, _rotationAmount = 0) {
+    constructor(_x, _z, _texture_name) {
         // let geom = new THREE.BoxGeometry(tileSize, tileHeight, tileSize);
         // let mat = new THREE.MeshPhongMaterial({ map: _texture });
         this.texture_name = _texture_name;
+        console.log(this.texture_name);
         this.texture = TextureMap.instance.map[this.texture_name].texture;
 
         this.channelsImage = this.texture_name + ".channels";
         this.mesh = this.generateMeshFromHeightMap();
         this.mesh.position.set(_x * tileSize + tileSize / 2 - halfMapSize, 0, _z * tileSize + tileSize /2 - halfMapSize);
-
-        MAIN.scene.add(this.mesh);
 
         Object.defineProperty(this, "x", {value: _x, writable: false});
         Object.defineProperty(this, "z", {value: _z, writable: false});
@@ -26,15 +25,14 @@ class WorldTile {
             mesh2.position.set(this.worldX, tileYlevel, this.worldZ);
         }
 
+        this.generateAStarNodes();
+
         this._neighbours = new Array(4);
         this._connections = connectionsDictionary[this.texture_name];
 
-        for(let i = 0; i < _rotationAmount; ++i) {
-            this.connections.push(this.connections.shift());
-        }
+        // this.generateBuildings();
 
-        this.generateAStarNodes();
-        this.generateBuildings();
+        MAIN.scene.add(this.mesh);
     }
 
     get x() {
@@ -126,6 +124,19 @@ class WorldTile {
         return this._neighbours;
     }
 
+    static rotateMatrix(matrix) {
+        let length = matrix.length;
+        let ret = new Array(length);
+        ret.fill(new Array(length));
+
+        for (let i = 0; i < length; ++i) {
+            for (let j = 0; j < length; ++j) {
+                ret[i][j] = matrix[length - j - 1][i];
+            }
+        }
+        return ret;
+}
+
     generateMeshFromHeightMap() {
         let fetcher = new PixelFetcher(this.channelsImage);
 
@@ -160,7 +171,7 @@ class WorldTile {
 
 
         let fetcher = new PixelFetcher(this.texture_name);
-        let pixelsX = this.texture.image.width / aiNodePerBlock, pixelsZ = this.texture.image.height / aiNodePerBlock;
+        let pixelsX = fetcher.context.canvas.width / aiNodePerBlock, pixelsZ = fetcher.context.canvas.height / aiNodePerBlock;
         for (let x = 0; x < aiNodePerBlock; ++x) {
             for (let y = 0; y < aiNodePerBlock; ++y) {
                 this.detailedAINodes[x][y].densityFactor = fetcher.getPixelA(x * pixelsX, y * pixelsZ);
@@ -171,7 +182,7 @@ class WorldTile {
                 };
             }
         }
-        let a = fetcher.getPixelA(this.texture.image.width / 2, this.texture.image.height / 2);
+        let a = fetcher.getPixelA(fetcher.context.canvas.width / 2, fetcher.context.canvas.height / 2);
         this.singleAINode = new AStarNode();
         this.singleAINode.densityFactor = a;
         this.singleAINode.localPosition = {x: -1, y: -1};
