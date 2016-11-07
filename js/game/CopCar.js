@@ -9,6 +9,34 @@ class CopCar extends Car {
         this._actor = KeyboardActor.instance;
 
         this.flickerInterval = 500;
+
+        this.followCar();
+    }
+
+    followCar(car = MAIN.game.car) {
+        this.targetCar = car;
+        if (this.followInterval)
+            clearInterval(this.followInterval);
+        this.followInterval = setInterval(() => {
+            this.goTo(car);
+        }, 1000);
+    }
+
+    goTo(car) {
+        if (this.isUpsideDown || this.isCrashed) {
+            console.log("i've fallen and i can't get up");
+            this.explode();
+        } else {
+            let vectors = this.getVectorsToCar(car)
+            this.driveRoute(vectors);
+        }
+    }
+
+    handleExplosion() {
+        let safePos = MAIN.game.randomSafePosition();
+        this.setPosition(safePos.x, tileYlevel - 2, safePos.z);
+        this.setRotation();
+        this.followCar(this.targetCar);
     }
 
     enableLights() {
@@ -24,8 +52,10 @@ class CopCar extends Car {
         }
     }
     disableLights() {
-        if (this.lightInterval)
+        if (this.lightInterval) {
             clearInterval(this.lightInterval);
+            delete this.lightInterval;
+        }
         this.light.intensity = 0;
     }
 
@@ -41,7 +71,8 @@ class CopCar extends Car {
     }
 
     driveTo(point) { // check if point is in front of car
-        console.log('driving to ', point);
+        if (this.aimChecker)
+            MAIN.loop.remove(this.aimChecker);
         return new Promise(resolve => {
             this.startAccelerating();
             this.aimChecker = MAIN.loop.add(() => this.checkAim(point, resolve));
@@ -74,21 +105,42 @@ class CopCar extends Car {
         return determinant;
     }
 
-    getVectorsToCar(playerCar)
-    {
-        let vecTarget = new THREE.Vector2(playerCar.mesh.position.x, playerCar.mesh.position.z);
+    getVectorsToCar(playerCar) {
+        let vecTarget = new THREE.Vector2(playerCar.mesh.position.x, playerCar.mesh.position.z).clone();
         let vecThis = new THREE.Vector2(this.mesh.position.x, this.mesh.position.z);
 
         let tileTarget = MAIN.game.world.getAINodeOnVector(vecTarget);
         let tileThis = MAIN.game.world.getAINodeOnVector(vecThis);
 
-        let path = MAIN.game.world.findPath(tileThis,tileTarget);
+        let path = MAIN.game.world.findPath(tileThis, tileTarget);
 
         let arr = [];
-        for(let elem of path)
-        {
-            arr.push(elem.worldPosition.x, elem.worldPosition.z);
+        for (let elem of path) {
+            arr.push(new THREE.Vector2(elem.worldPosition.x, elem.worldPosition.z));
         }
+        arr.splice(0, 1);
+        arr.push(vecTarget);
         return arr;
+    }
+
+    get otherCops() {
+        if (!this._otherCops) {
+            let allCops = MAIN.game.copCars;
+            this._otherCops = allCops.filter(c => c != this).map(c => c.mesh);
+        }
+        return this._otherCops;
+    }
+
+    get isCrashed() {
+        if (!this.buildingMeshes) {
+            this.buildingMeshes = [];
+            let tiles = MAIN.game.world.map;
+            for (let tileArray of tiles)
+                for (let tile of tileArray)
+                    this.buildingMeshes = this.buildingMeshes.concat(tile.buildingMeshes);
+        }
+        this.buildingMeshes = this.buildingMeshes.concat(this.otherCops);
+        let crashDirection = 5;
+        return new THREE.Raycaster(this.mesh.position, this.mesh.getWorldDirection(), 0, crashDirection).intersectObjects(this.buildingMeshes).length > 0;
     }
 }

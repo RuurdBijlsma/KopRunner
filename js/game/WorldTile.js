@@ -1,4 +1,3 @@
-
 class WorldTile {
     constructor(_x, _z, _texture_name) {
         // let geom = new THREE.BoxGeometry(tileSize, tileHeight, tileSize);
@@ -220,8 +219,7 @@ class WorldTile {
         }
     }
 
-    generateSimpleAStar()
-    {
+    generateSimpleAStar() {
         let pf = new PixelFetcher(this.channelsImage);
         let a = pf.getPixelG(pf.context.canvas.width / 2, pf.context.canvas.width / 2);
         this.singleAINode = new AStarNode();
@@ -237,9 +235,11 @@ class WorldTile {
 
         let mesh = new Physijs.BoxMesh(geom, new THREE.MeshStandardMaterial(), 0);
 
-        let BuildingCount = Math.floor(((Math.random() * (500 - 1)) + 1) / 5);
+        let BuildingCount = Math.floor(((Math.random() * (50 - 1)) + 1) / 5);
 
         let arr = [];
+
+        this.buildingMeshes = [];
 
         for (let i = 0; i < BuildingCount; ++i) {
 
@@ -257,7 +257,7 @@ class WorldTile {
                 y = -y;
 
             //kan het of kan het niet?
-1
+            1
             let midx = this.worldX - halfMapSize + tileSize / 2;
             let midy = this.worldZ - halfMapSize + tileSize / 2;
 
@@ -271,7 +271,7 @@ class WorldTile {
 
             let v = Math.random() * (1.0 - 0.5) + 0.5;
             let clone = arr[arr.length - 1];
-            clone.material.color.setRGB(0, 0, v);
+            clone.material.color.setRGB(0,0,v);
 
             clone.rotation.y = rot;
             clone.scale.x = size;
@@ -284,6 +284,7 @@ class WorldTile {
             clone.mass = 0;
 
             MAIN.scene.add(clone);
+            this.buildingMeshes.push(clone);
         }
     }
 
