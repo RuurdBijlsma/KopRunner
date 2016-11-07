@@ -10,16 +10,16 @@ class WorldTile {
 
         this.channelsImage = this.texture_name + ".channels";
         this.mesh = this.generateMeshFromHeightMap();
-        this.mesh.position.set(_x * tileSize + tileSize / 2 - halfMapSize, 0, _z * tileSize + tileSize /2 - halfMapSize);
+        this.mesh.position.set(_x * tileSize + tileSize / 2 - halfMapSize, 0, _z * tileSize + tileSize / 2 - halfMapSize);
 
-        Object.defineProperty(this, "x", {value: _x, writable: false});
-        Object.defineProperty(this, "z", {value: _z, writable: false});
-        Object.defineProperty(this, "worldX", {value: _x * tileSize, writable: false});
-        Object.defineProperty(this, "worldZ", {value: _z * tileSize, writable: false});
+        Object.defineProperty(this, "x", { value: _x, writable: false });
+        Object.defineProperty(this, "z", { value: _z, writable: false });
+        Object.defineProperty(this, "worldX", { value: _x * tileSize, writable: false });
+        Object.defineProperty(this, "worldZ", { value: _z * tileSize, writable: false });
 
-        if(showDebugMeshes) {
+        if (showDebugMeshes) {
             let g = new THREE.SphereGeometry(1, 10, 10);
-            let mat2 = new THREE.MeshPhongMaterial({color: "blue"});
+            let mat2 = new THREE.MeshPhongMaterial({ color: "blue" });
             let mesh2 = new THREE.Mesh(g, mat2);
             MAIN.scene.add(mesh2);
             mesh2.position.set(this.worldX - halfMapSize, tileYlevel, this.worldZ - halfMapSize);
@@ -135,7 +135,7 @@ class WorldTile {
             }
         }
         return ret;
-}
+    }
 
     generateMeshFromHeightMap() {
         let fetcher = new PixelFetcher(this.channelsImage);
@@ -152,7 +152,7 @@ class WorldTile {
         geometry.computeFaceNormals();
         geometry.computeVertexNormals();
 
-        let ground = new Physijs.HeightfieldMesh(geometry, new THREE.MeshPhongMaterial({map: this.texture}), 0, this.channelsImage.width, this.channelsImage.height);
+        let ground = new Physijs.HeightfieldMesh(geometry, new THREE.MeshPhongMaterial({ map: this.texture }), 0, this.channelsImage.width, this.channelsImage.height);
         ground.rotation.x = Math.PI / -2;
         ground.receiveShadow = true;
 
@@ -171,11 +171,12 @@ class WorldTile {
 
 
         let fetcher = new PixelFetcher(this.texture_name);
-        let pixelsX = fetcher.context.canvas.width / aiNodePerBlock, pixelsZ = fetcher.context.canvas.height / aiNodePerBlock;
+        let pixelsX = fetcher.context.canvas.width / aiNodePerBlock,
+            pixelsZ = fetcher.context.canvas.height / aiNodePerBlock;
         for (let x = 0; x < aiNodePerBlock; ++x) {
             for (let y = 0; y < aiNodePerBlock; ++y) {
                 this.detailedAINodes[x][y].densityFactor = fetcher.getPixelA(x * pixelsX, y * pixelsZ);
-                this.detailedAINodes[x][y].localPosition = {x: x, y: y};
+                this.detailedAINodes[x][y].localPosition = { x: x, y: y };
                 this.detailedAINodes[x][y].worldPosition = {
                     x: this.worldX + (tileSize / aiNodePerBlock) * x - halfMapSize,
                     y: this.worldZ + (tileSize / aiNodePerBlock) * y - halfMapSize
@@ -188,15 +189,15 @@ class WorldTile {
         this.singleAINode.localPosition = { x: -1, y: -1 };
         this.singleAINode.worldPosition = { x: this.worldX + tileSize / 2 - halfMapSize, y: this.worldZ + tileSize / 2 - halfMapSize };
 
-        if(showDebugMeshes) {
+        if (showDebugMeshes) {
             let g1 = new THREE.CylinderGeometry(1, 1, 5, 10, 10);
-            let mat2 = new THREE.MeshPhongMaterial({color: "red"});
+            let mat2 = new THREE.MeshPhongMaterial({ color: "red" });
             let mesh2 = new THREE.Mesh(g1, mat2);
             MAIN.scene.add(mesh2);
             mesh2.position.set(this.singleAINode.worldPosition.x, tileYlevel, this.singleAINode.worldPosition.y);
 
             let g = new THREE.SphereGeometry(0.1, 10, 10);
-            let mat = new THREE.MeshPhongMaterial({color: "green"});
+            let mat = new THREE.MeshPhongMaterial({ color: "green" });
             let mesh = new THREE.Mesh(g, mat);
 
             for (let x = 0; x < aiNodePerBlock; ++x) {
@@ -210,20 +211,18 @@ class WorldTile {
         }
     }
 
-    generateBuildings()
-    {
+    generateBuildings() {
         let fetcher = new PixelFetcher(this.channelsImage);
 
-        let geom = new THREE.CubeGeometry(1,1,1);
+        let geom = new THREE.CubeGeometry(1, 1, 1);
 
-        let mesh = new THREE.Mesh(geom, new THREE.MeshStandardMaterial(),0);
+        let mesh = new Physijs.BoxMesh(geom, new THREE.MeshStandardMaterial(), 0);
 
         let BuildingCount = Math.floor(((Math.random() * (50 - 1)) + 1) / 5);
 
         let arr = [];
 
-        for(let i = 0; i < BuildingCount; ++i)
-        {
+        for (let i = 0; i < BuildingCount; ++i) {
 
 
             let rot = Math.random() * Math.PI * 2;
@@ -233,9 +232,9 @@ class WorldTile {
             let x = Math.floor((Math.random() * (tileSize / 2 - 1)) + 1);
             let y = Math.floor((Math.random() * (tileSize / 2 - 1)) + 1);
 
-            if(Math.random() < 0.5)
+            if (Math.random() < 0.5)
                 x = -x;
-            if(Math.random() < 0.5)
+            if (Math.random() < 0.5)
                 y = -y;
 
             //kan het of kan het niet?
@@ -246,14 +245,14 @@ class WorldTile {
             let tx = fetcher.context.canvas.width / tileSize * (x + tileSize / 2);
             let ty = fetcher.context.canvas.height / tileSize * (y + tileSize / 2);
 
-            if(fetcher.getPixelB(tx,ty) == 0)
+            if (fetcher.getPixelB(tx, ty) == 0)
                 continue;
 
             arr.push(mesh.clone());
 
             let v = Math.random() * (0.6 - 0.01) + 0.01;
             let clone = arr[arr.length - 1];
-            clone.material.color .setRGB(v,v,v);
+            clone.material.color.setRGB(v, v, v);
 
             clone.rotation.y = rot;
             clone.scale.x = size;
@@ -262,6 +261,8 @@ class WorldTile {
 
             clone.position.x = midx + x;
             clone.position.z = midy + y;
+
+            clone.mass = 0;
 
             MAIN.scene.add(clone);
         }
