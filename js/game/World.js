@@ -41,6 +41,7 @@ class World {
     constructor() {
         this.map = [];
 
+        // MAIN.loop.add(()=>{console.log(MAIN.game.world.getAINodeOnVector(new THREE.Vector2(MAIN.game.car.mesh.position.x, MAIN.game.car.mesh.position.z)))});
         MAIN.loop.add(() => {
             MAIN.game.world.getAINodeOnVector(
                 new THREE.Vector2(
@@ -87,7 +88,7 @@ class World {
                 else this.map[x][y].eastTile = null;
 
 
-                console.log(this.map[x][y].neighbours);
+                // console.log(this.map[x][y].neighbours);
             }
         }
 
@@ -96,7 +97,7 @@ class World {
 
 
         let t2 = this.findPath(this.map[0][0].singleAINode, this.map[mapSize - 1][mapSize - 1].singleAINode);
-        console.log(t2);
+        // console.log(t2);
         if (showDebugMeshes) {
             let geom = new THREE.CylinderGeometry(0.1, 0.1, 6, 8, 8);
             let mat2 = new THREE.MeshPhongMaterial({ color: "yellow" });
@@ -249,7 +250,7 @@ class World {
                 if (tile.northTile != null && tile.northConnectable)
                     sainode.neighbours.push(tile.northTile.singleAINode);
 
-                console.log(sainode.neighbours);
+                // console.log(sainode.neighbours);
             }
         }
     }
