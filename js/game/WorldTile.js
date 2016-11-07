@@ -22,7 +22,7 @@ class WorldTile {
             let mat2 = new THREE.MeshPhongMaterial({color: "blue"});
             let mesh2 = new THREE.Mesh(g, mat2);
             MAIN.scene.add(mesh2);
-            mesh2.position.set(this.worldX, tileYlevel, this.worldZ);
+            mesh2.position.set(this.worldX - halfMapSize, tileYlevel, this.worldZ - halfMapSize);
         }
 
         this.generateAStarNodes();
@@ -144,8 +144,8 @@ class WorldTile {
         let geometry = new THREE.PlaneGeometry(tileSize, tileSize, verticesPerAxis, verticesPerAxis);
 
         for (let vertex of geometry.vertices) {
-            let posX = ((vertex.x + tileSize / 2) * ((fetcher.context.canvas.width + 1)  / (tileSize + 1)));
-            let posY = ((vertex.y + tileSize / 2) * ((fetcher.context.canvas.height + 1) / (tileSize + 1)));
+            let posX = ((vertex.x + (tileSize + 1) / 2) * ((fetcher.context.canvas.width)  / (tileSize + 1)));
+            let posY = ((vertex.y + (tileSize + 1) / 2) * ((fetcher.context.canvas.height) / (tileSize + 1)));
             vertex.z = fetcher.getPixelR(posX, posY) / 128;
         }
 
@@ -177,8 +177,8 @@ class WorldTile {
                 this.detailedAINodes[x][y].densityFactor = fetcher.getPixelA(x * pixelsX, y * pixelsZ);
                 this.detailedAINodes[x][y].localPosition = {x: x, y: y};
                 this.detailedAINodes[x][y].worldPosition = {
-                    x: this.worldX + (tileSize / aiNodePerBlock) * x,
-                    y: this.worldZ + (tileSize / aiNodePerBlock) * y
+                    x: this.worldX + (tileSize / aiNodePerBlock) * x - halfMapSize,
+                    y: this.worldZ + (tileSize / aiNodePerBlock) * y - halfMapSize
                 };
             }
         }
@@ -186,7 +186,7 @@ class WorldTile {
         this.singleAINode = new AStarNode();
         this.singleAINode.densityFactor = a;
         this.singleAINode.localPosition = {x: -1, y: -1};
-        this.singleAINode.worldPosition = {x: this.worldX + tileSize / 2, y: this.worldZ + tileSize / 2};
+        this.singleAINode.worldPosition = {x: this.worldX + tileSize / 2 - halfMapSize, y: this.worldZ + tileSize / 2 - halfMapSize};
 
         if(showDebugMeshes) {
             let g1 = new THREE.CylinderGeometry(1, 1, 5, 10, 10);
