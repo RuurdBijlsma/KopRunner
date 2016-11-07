@@ -68,6 +68,16 @@ class World {
                     MAIN.scene.add(m);
                 }
         }
+        this.generateSideFaces();
+    }
+
+    generateSideFaces()
+    {
+        let geom = new THREE.PlaneGeometry(tileSize * mapSize, tileSize, 1,1);
+
+        let mat = new THREE.MeshBasicMaterial();
+
+
     }
 
     static getDistance(nodeA, nodeB) {

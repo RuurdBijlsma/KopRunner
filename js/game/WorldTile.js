@@ -238,7 +238,7 @@ class WorldTile {
             if(Math.random() < 0.5)
                 y = -y;
 
-            //kan het of kan het niet?1
+            //kan het of kan het niet?
 
             let midx = this.worldX - halfMapSize + tileSize / 2;
             let midy = this.worldZ - halfMapSize + tileSize / 2;
