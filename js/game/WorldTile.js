@@ -1,4 +1,3 @@
-const showDebugMeshes = false;
 
 class WorldTile {
     constructor(_x, _z, _texture_name) {
@@ -27,7 +26,9 @@ class WorldTile {
         }
 
         this._neighbours = new Array(4);
-        this.generateAStarNodes();
+        //this.generateAStarNodes();
+
+        this.generateSimpleAStar();
 
         this._connections = connectionsDictionary[this.texture_name];
 
@@ -98,7 +99,7 @@ class WorldTile {
     }
 
     set westTile(tile) {
-        this.neighbours[2] = tile;
+        this.neighbours[3] = tile;
     }
 
     get northTile() {
@@ -217,6 +218,16 @@ class WorldTile {
                 }
             }
         }
+    }
+
+    generateSimpleAStar()
+    {
+        let pf = new PixelFetcher(this.channelsImage);
+        let a = pf.getPixelG(pf.context.canvas.width / 2, pf.context.canvas.width / 2);
+        this.singleAINode = new AStarNode();
+        this.singleAINode.densityFactor = a;
+        this.singleAINode.localPosition = { x: -1, y: -1 };
+        this.singleAINode.worldPosition = { x: this.worldX + tileSize / 2 - halfMapSize, y: this.worldZ + tileSize / 2 - halfMapSize };
     }
 
     generateBuildings() {

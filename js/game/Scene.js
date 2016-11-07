@@ -11,6 +11,7 @@ class Scene extends Physijs.Scene {
         this.camera = new THREE.PerspectiveCamera(45, this.renderElement.offsetWidth / this.renderElement.offsetHeight, 0.1, 10000);
 
         this.renderer = new THREE.WebGLRenderer({
+            maxLights: 6,
             alpha: false,
             antialias: true
         });
@@ -25,8 +26,8 @@ class Scene extends Physijs.Scene {
         window.addEventListener('resize', () => this.onWindowResize());
 
         this.lights = {
-            // ambient: new AmbientLight(this),
-            // directional: new DirectionalLight(this, 20, 11, 5)
+             ambient: new AmbientLight(this),
+             directional: new DirectionalLight(this, 20, 11, 5)
         };
 
         this.skyBox = new SkyBox(this, 'img/skybox/space/');

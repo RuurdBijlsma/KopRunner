@@ -5,6 +5,8 @@ const aiNodePerBlock = 10;
 const tileYlevel = 5;
 const detailRadius = 1; //MUST BE SMALLER THAN mapSize!
 const halfMapSize = mapSize * tileSize / 2;
+const showDebugMeshes = true;
+
 const connectionsDictionary = {
     "4wayroadrotate0": [true, true, true, true],
     "4wayroadrotate1": [true, true, true, true],
@@ -42,17 +44,17 @@ class World {
 
         this.createMap();
 
-        let testMesh = new THREE.Mesh(new THREE.SphereGeometry(10), new THREE.MeshPhongMaterial({color: "pink"}));
+        //let testMesh = new THREE.Mesh(new THREE.SphereGeometry(10), new THREE.MeshPhongMaterial({color: "pink"}));
 
-        testMesh.position.copy(this.map[1][1].northTile.mesh.position);
-        MAIN.scene.add(testMesh);
+        //testMesh.position.copy(this.map[1][1].northTile.mesh.position);
+        //MAIN.scene.add(testMesh);
     }
 
     createMap() {
         for (let x = 0; x < mapSize; ++x) {
             let row = [];
             for (let y = 0; y < mapSize; ++y) {
-                row.push(new WorldTile(x, y, '3wayroadrotate2'));
+                row.push(new WorldTile(x, y, '4wayroadrotate0'));
             }
             this.map.push(row);
         }
@@ -63,22 +65,30 @@ class World {
                 if (y != 0)
                     this.map[x][y].northTile = this.map[x][y - 1];
                 else this.map[x][y].northTile = null;
+
                 if (y != mapSize - 1)
                     this.map[x][y].southTile = this.map[x][y + 1];
                 else this.map[x][y].southTile = null;
+
                 if (x != 0)
                     this.map[x][y].westTile = this.map[x - 1][y];
                 else this.map[x][y].westTile = null;
+
                 if (x != mapSize - 1)
                     this.map[x][y].eastTile = this.map[x + 1][y];
                 else this.map[x][y].eastTile = null;
+
+
+                console.log(this.map[x][y].neighbours);
             }
         }
 
         this.recalculatePaths();
 
-        let t2 = this.findPath(this.map[0][0].detailedAINodes[0][0], this.map[mapSize - 1][mapSize - 1].detailedAINodes[aiNodePerBlock - 1][aiNodePerBlock - 1]);
 
+
+        let t2 = this.findPath(this.map[0][0].singleAINode, this.map[mapSize - 1][mapSize - 1].singleAINode);
+        console.log(t2);
         if (showDebugMeshes) {
             let geom = new THREE.CylinderGeometry(0.1, 0.1, 6, 8, 8);
             let mat2 = new THREE.MeshPhongMaterial({ color: "yellow" });
@@ -91,6 +101,8 @@ class World {
                     MAIN.scene.add(m);
                 }
         }
+
+
         this.generateSideFaces();
     }
 
@@ -98,7 +110,7 @@ class World {
     {
         let geom = new THREE.PlaneGeometry(tileSize * mapSize, tileSize, 1,1);
 
-        let texture = TextureMap.instance.map['skylinerotate0'].texture;
+        let texture = TextureMap.instance.map['skylinerotate2'].texture;
         let mat = new THREE.MeshBasicMaterial({map: texture, transparent: true});
         let mesh = new Physijs.PlaneMesh(geom,mat);
         mesh.translateY(tileSize / 3);
@@ -133,7 +145,7 @@ class World {
             return 14 * dstY + 10 * (dstX - dstY);
         return 14 * dstX + 10 * (dstY - dstX);
     }
-
+    /*
     recalculatePaths() {
         for (let x = 0; x < mapSize; ++x) {
             for (let y = 0; y < mapSize; ++y) {
@@ -205,7 +217,37 @@ class World {
             }
         }
     }
+*/
+    recalculatePaths() {
+        for (let x = 0; x < mapSize; ++x) {
+            for (let y = 0; y < mapSize; ++y) {
+                let tile = this.map[x][y];
+                let sainode = tile.singleAINode;
+                sainode.neighbours = [];
+            }
+        }
 
+        for (let x = 0; x < mapSize; ++x) {
+            for (let y = 0; y < mapSize; ++y) {
+                let tile = this.map[x][y];
+                let sainode = tile.singleAINode;
+
+
+                if (tile.westTile != null && tile.westConnectable)
+                    sainode.neighbours.push(tile.westTile.singleAINode);
+                if (tile.eastTile != null && tile.eastConnectable)
+                    sainode.neighbours.push(tile.eastTile.singleAINode);
+                if (tile.southTile != null && tile.southConnectable)
+                    sainode.neighbours.push(tile.southTile.singleAINode);
+                if (tile.northTile != null && tile.northConnectable)
+                    sainode.neighbours.push(tile.northTile.singleAINode);
+
+                console.log(sainode.neighbours);
+            }
+        }
+    }
+
+    /*
     precalculatedPaths() {
         let detailSet = this.getDetailSet();
 
@@ -292,9 +334,9 @@ class World {
                 }
             }
         }
-    }
+    } */
 
-
+    /*
     getDetailSet() {
         let midpoint = Math.floor(mapSize / 2);
         let m = new Map();
@@ -337,12 +379,11 @@ class World {
             }
         }
         return arr2;
-    }
+    } */
 
     getSearchRepresentation() {
         let m = new Map();
-        let detail = this.getDetailMapSet();
-        let term = mapSize * mapSize * tileSize * tileSize * aiNodePerBlock * aiNodePerBlock;
+        let term = mapSize * mapSize * tileSize * tileSize;
         for (let xt = 0; xt < mapSize; ++xt) {
             for (let yt = 0; yt < mapSize; ++yt) {
                 let tile = this.map[xt][yt];
@@ -350,16 +391,9 @@ class World {
                 m.set(tile.singleAINode, new NodeAstarData(0, 0, tile.singleAINode, null));
 
 
-                if (detail.has(tile.singleAINode)) {
+                if (tile.singleAINode.densityFactor == 0) {
                     m.get(tile.singleAINode).multiplyFactor = term;
                 } else m.get(tile.singleAINode).multiplyFactor = 1;
-
-
-                for (let x = 0; x < aiNodePerBlock; ++x) {
-                    for (let y = 0; y < aiNodePerBlock; ++y) {
-                        m.set(tile.detailedAINodes[x][y], new NodeAstarData(0, 0, tile.detailedAINodes[x][y], null));
-                    }
-                }
             }
         }
         return m;
@@ -428,7 +462,7 @@ class World {
         return path;
     }
 
-
+    
 
 
 
