@@ -68,7 +68,7 @@ class Car extends Physijs.Vehicle {
 
     collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal) {
         let damage = collisionVelocity.length();
-        if(damage < 10){
+        if(damage > 10){
             this.health -= damage / 10;
         }else{
             console.log('no damage');
