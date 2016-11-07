@@ -56,6 +56,8 @@ class TextureMap extends Singleton {
             }
             else dictName = name + "rotate" + rotation;
 
+            document.body.appendChild(canvas);
+
             this.map[dictName] = {
                 canvas: context,
                 texture: new THREE.Texture(canvas)

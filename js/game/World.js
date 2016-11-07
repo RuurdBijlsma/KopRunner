@@ -6,10 +6,30 @@ const tileYlevel = 5;
 const detailRadius = 1; //MUST BE SMALLER THAN mapSize!
 const halfMapSize = mapSize * tileSize / 2;
 const connectionsDictionary = {
-    "4wayroad": [true, true, true, true],
-    "3wayroad": [true, true, false, true],
-    "2wayroad": [false, true, false, true],
-    "corner": [true, false, false, true]
+    "4wayroadrotate0": [true, true, true, true],
+    "4wayroadrotate1": [true, true, true, true],
+    "4wayroadrotate2": [true, true, true, true],
+    "4wayroadrotate3": [true, true, true, true],
+    "3wayroadrotate0": [true, false, true, true],
+    "3wayroadrotate1": [true, true, false, true],
+    "3wayroadrotate2": [true, true, true, false],
+    "3wayroadrotate3": [false, true, true, true],
+    "2wayroadrotate0": [true, false, true, false],
+    "2wayroadrotate1": [false, true, false, true],
+    "2wayroadrotate2": [true, false, true, false],
+    "2wayroadrotate3": [false, true, false, true],
+    "cornerrotate0": [false, false, true, true],
+    "cornerrotate1": [true, false, false, true],
+    "cornerrotate2": [true, true, false, false],
+    "cornerrotate3": [false, true, true, false],
+    "grassrotate0": [false, false, false, false],
+    "grassrotate1": [false, false, false, false],
+    "grassrotate2": [false, false, false, false],
+    "grassrotate3": [false, false, false, false],
+    "grasshillrotate0": [false, false, false, false],
+    "grasshillrotate1": [false, false, false, false],
+    "grasshillrotate2": [false, false, false, false],
+    "grasshillrotate3": [false, false, false, false],
 };
 
 
@@ -22,14 +42,17 @@ class World {
 
         this.createMap();
 
+        let testMesh = new THREE.Mesh(new THREE.SphereGeometry(10), new THREE.MeshPhongMaterial({color: "pink"}));
 
+        testMesh.position.copy(this.map[1][1].northTile.mesh.position);
+        MAIN.scene.add(testMesh);
     }
 
     createMap() {
         for (let x = 0; x < mapSize; ++x) {
             let row = [];
             for (let y = 0; y < mapSize; ++y) {
-                row.push(new WorldTile(x, y, '3wayroadrotate3'));
+                row.push(new WorldTile(x, y, 'cornerrotate0'));
             }
             this.map.push(row);
         }
@@ -38,17 +61,17 @@ class World {
             for (let y = 0; y < mapSize; ++y) {
 
                 if (y != 0)
-                    this.map[x][y].north = this.map[x][y - 1];
-                else this.map[x][y].north = null;
+                    this.map[x][y].northTile = this.map[x][y - 1];
+                else this.map[x][y].northTile = null;
                 if (y != mapSize - 1)
-                    this.map[x][y].south = this.map[x][y + 1];
-                else this.map[x][y].south = null;
+                    this.map[x][y].southTile = this.map[x][y + 1];
+                else this.map[x][y].southTile = null;
                 if (x != 0)
-                    this.map[x][y].west = this.map[x - 1][y];
-                else this.map[x][y].west = null;
+                    this.map[x][y].westTile = this.map[x - 1][y];
+                else this.map[x][y].westTile = null;
                 if (x != mapSize - 1)
-                    this.map[x][y].east = this.map[x + 1][y];
-                else this.map[x][y].east = null;
+                    this.map[x][y].eastTile = this.map[x + 1][y];
+                else this.map[x][y].eastTile = null;
             }
         }
 
