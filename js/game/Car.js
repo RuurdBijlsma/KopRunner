@@ -43,7 +43,6 @@ class Car extends Physijs.Vehicle {
                 wheelRadius, //wheel radius
                 position.includes('front') //is front wheel
             );
-            let mesh = this.wheels[this.wheels.length - 1];
         }
 
         this.groundDirection = new THREE.Vector3(0, -1, 0);
@@ -53,6 +52,11 @@ class Car extends Physijs.Vehicle {
         this.gameLoop.add(() => this.update());
 
         this.boostPower = 50;
+        this.mesh.addEventListener('collision', (collisionObject, collisionVelocity, collisionRotation, normal)=>this.collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal));
+    }
+
+    collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal){
+        console.log('collision', collisionObject.type, collisionVelocity);
     }
 
     startAccelerating(accelerationForce = 75) {
