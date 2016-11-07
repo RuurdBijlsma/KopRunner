@@ -18,6 +18,7 @@ class Game {
             this.copCars.push(copper);
         }
         this.fixCopPositions();
+        document.getElementById("loadingDisplay").style.display = "none";
     }
     fixCopPositions() {
         for (let car of this.copCars) {

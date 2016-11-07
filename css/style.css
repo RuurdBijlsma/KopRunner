@@ -13,10 +13,20 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-#renderer {
+#renderer, #loadingDisplay {
     width: 100%;
     position: fixed;
     height: 100%;
+}
+
+#loadingDisplay {
+    background-color: black;
+}
+
+#loadingDisplay #loadingText {
+    margin-top: 40%;
+    text-align: center;
+    font-size: 60px;
 }
 
 html {

@@ -86,7 +86,7 @@ class World {
                  */
             }
         }
-        
+
         let lastTilePosX = -1;
         let lastTilePosY = -1;
 
@@ -181,16 +181,6 @@ class World {
 
         for (let x = 0; x < mapSize; ++x) {
             for (let y = 0; y < mapSize; ++y) {
-
-
-                // if(x == 0){
-                //     let g = new THREE.SphereGeometry(5,5,5);
-                //     let m = new THREE.MeshPhysicalMaterial();
-                //     let mesh = new THREE.Mesh(g,m);
-                //     mesh.position.set(this.map[x][y].worldX - halfMapSize,8,this.map[x][y].worldZ - halfMapSize);
-                //     MAIN.scene.add(mesh);
-                // }
-
 
                 if (y != 0)
                     this.map[x][y].northTile = this.map[x][y - 1];
