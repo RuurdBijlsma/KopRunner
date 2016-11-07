@@ -5,7 +5,8 @@ class WorldTile {
         // let geom = new THREE.BoxGeometry(tileSize, tileHeight, tileSize);
         // let mat = new THREE.MeshPhongMaterial({ map: _texture });
         this.texture_name = _texture_name;
-        console.log(this.texture_name);
+        WorldTile.tileCount = WorldTile.tileCount || 0;
+        console.log(++WorldTile.tileCount + ' / ' + mapSize ** 2);
         this.texture = TextureMap.instance.map[this.texture_name].texture;
 
         this.channelsImage = this.texture_name + ".channels";
@@ -226,7 +227,7 @@ class WorldTile {
 
 
             let rot = Math.random() * Math.PI * 2;
-            let size = Math.floor((Math.random() * (tileSize / 6 - tileSize / 16)) + tileSize / 16);
+            let size = Math.floor((Math.random() * (tileSize / 3 - tileSize / 16)) + tileSize / 16);
             let ySize = Math.floor((Math.random() * (64 - 10)) + 10);
 
             let x = Math.floor((Math.random() * (tileSize / 2 - 1)) + 1);
