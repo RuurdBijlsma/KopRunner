@@ -11,7 +11,6 @@ class TextureMap extends Singleton {
     }
 
     loadTextures(names) {
-        console.log(names, this);
         this.filesToLoad = names.length * 4;
         let loader = new THREE.TextureLoader();
         for (let name of names) {
@@ -77,7 +76,6 @@ class TextureMap extends Singleton {
     onLoadFile() {
         if (--this.filesToLoad <= 0) {
             // Done
-            console.log("All files loaded");
             this.onLoad();
         }
     }
@@ -106,7 +104,7 @@ class TextureMap extends Singleton {
 
         // Textures that don't have a channels image
         let namesWithoutChannels = [
-
+            "skyline"
         ];
 
         return names.concat(namesWithoutChannels);

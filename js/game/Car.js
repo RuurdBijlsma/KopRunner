@@ -58,14 +58,14 @@ class Car extends Physijs.Vehicle {
     }
 
     startAccelerating(accelerationForce = 75) {
-        if (this.directionalSpeed.z < 0)
+        if (this.directionalSpeed.z < -0.1)
             this.brake();
         else
             this.applyEngineForce(accelerationForce);
     }
 
     startDecelerating(accelerationForce = -50) {
-        if (this.directionalSpeed.z > 0)
+        if (this.directionalSpeed.z > 0.1)
             this.brake();
         else
             this.applyEngineForce(accelerationForce);
@@ -94,7 +94,7 @@ class Car extends Physijs.Vehicle {
         if (this.wheelSetLoop)
             this.stopTurningWheels();
         this.wheelSetLoop = this.gameLoop.add(() => {
-            this.wheelDirection += ((direction - this.wheelDirection) * turnSpeed) / 50;;
+            this.wheelDirection += ((direction - this.wheelDirection) * turnSpeed) / 50;
             if (Math.abs(direction - this.wheelDirection) < 0.05) {
                 this.wheelDirection = 0;
                 this.stopTurningWheels();
