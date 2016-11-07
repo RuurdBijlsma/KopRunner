@@ -63,6 +63,7 @@ class TextureMap extends Singleton {
                 texture: new THREE.Texture(canvas)
             };
 
+            this.map[dictName].texture.flipY = false;
             this.map[dictName].texture.anisotropy = 16;
             this.map[dictName].texture.magFilter = THREE.LinearFilter;
             this.map[dictName].texture.minFilter = THREE.LinearMipMapNearestFilter;
