@@ -269,7 +269,7 @@ class WorldTile {
 
             arr.push(mesh.clone());
 
-            let v = Math.random() * (0.6 - 0.4) + 0.4;
+            let v = Math.random() * (1.0 - 0.5) + 0.5;
             let clone = arr[arr.length - 1];
             clone.material.color.setRGB(0, 0, v);
 

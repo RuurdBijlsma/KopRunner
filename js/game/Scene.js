@@ -26,8 +26,8 @@ class Scene extends Physijs.Scene {
         window.addEventListener('resize', () => this.onWindowResize());
 
         this.lights = {
-             ambient: new AmbientLight(this),
-             directional: new DirectionalLight(this, 20, 11, 5)
+             //ambient: new AmbientLight(this),
+             //directional: new DirectionalLight(this, 20, 11, 5)
         };
 
         this.skyBox = new SkyBox(this, 'img/skybox/space/');
