@@ -3,18 +3,26 @@ class Game {
         this.world = new World();
     }
     start() {
-        let cars = [];
-        // for (let x = -50; x < 50; x += 100)
-        //     for (let y = -50; y < 50; y += 100)
-        //         cars.push(new PlayerCar(this, x, 3, y));
-
-        cars.push(new CopCar(MAIN.scene, 0, 8, 0));
-        this.car = cars[0];
-        this.car._actor.init(cars, MAIN.keyHandler); //dit moet uncommented worden in de playercar en hier weg
+        this.car = new PlayerCar(MAIN.scene, 0, 8, 0); //dit moet uncommented worden in de playercar en hier weg
 
         MAIN.scene.toggleCamera();
         this.car.setPosition();
         this.car.setRotation();
         this.car.wheelDirection = 0;
+
+        this.copCars = [];
+        for (let i = 0; i < 20; i++) {
+            let x = (halfMapSize - Math.random() * halfMapSize * 2) / 1.5,
+                z = (halfMapSize - Math.random() * halfMapSize * 2) / 1.5,
+                copper = new CopCar(MAIN.scene, x, 8, z);
+            this.copCars.push(copper);
+        }
+        this.fixCopPositions();
+    }
+    fixCopPositions() {
+        for (let car of this.copCars) {
+            car.setPosition(car.mesh.position.x, 1, car.mesh.position.z);
+            car.setRotation();
+        }
     }
 }
