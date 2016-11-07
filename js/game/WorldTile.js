@@ -237,7 +237,7 @@ class WorldTile {
 
         let mesh = new Physijs.BoxMesh(geom, new THREE.MeshStandardMaterial(), 0);
 
-        let BuildingCount = Math.floor(((Math.random() * (50 - 1)) + 1) / 5);
+        let BuildingCount = Math.floor(((Math.random() * (500 - 1)) + 1) / 5);
 
         let arr = [];
 

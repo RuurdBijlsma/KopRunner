@@ -1,4 +1,4 @@
-const mapSize = 5; //MUST BE ODD NUMBER
+const mapSize = 11; //MUST BE ODD NUMBER
 const tileSize = 60;
 const tileHeight = 0.1;
 const aiNodePerBlock = 10;
@@ -41,6 +41,7 @@ class World {
     constructor() {
         this.map = [];
 
+        MAIN.loop.add(()=>{console.log(MAIN.game.world.getAINodeOnVector(new THREE.Vector2(MAIN.game.car.mesh.position.x, MAIN.game.car.mesh.position.z)))});
 
         this.createMap();
 
@@ -462,7 +463,34 @@ class World {
         return path;
     }
 
-    
+    getAINodeOnVector(vector2)
+    {
+        let dst = 99999999;
+        let tile = null;
+
+        for(let x = 0; x < mapSize; ++x)
+        {
+            for(let y = 0; y < mapSize; ++y)
+            {
+                let dstX = Math.abs(this.map[x][y].singleAINode.worldPosition.x - vector2.x);
+                let dstY = Math.abs(this.map[x][y].singleAINode.worldPosition.y - vector2.y);
+
+                if (dstX > dstY) {
+                    let calc = 14 * dstY + 10 * (dstX - dstY) / 1000;
+                    dst = calc < dst ? calc : dst;
+                    if(calc <= dst)
+                        tile = this.map[x][y];
+                }
+                else {
+                    let calc = 14 * dstX + 10 * (dstY - dstX) / 1000;
+                    dst = calc < dst ? calc : dst;
+                    if(calc <= dst)
+                        tile = this.map[x][y];
+                }
+            }
+        }
+        return tile.singleAINode;
+    }
 
 
 
