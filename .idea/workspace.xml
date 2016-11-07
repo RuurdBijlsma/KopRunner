@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Game.js" afterPath="$PROJECT_DIR$/js/game/Game.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/KeyboardActor.js" afterPath="$PROJECT_DIR$/js/game/KeyboardActor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Scene.js" afterPath="$PROJECT_DIR$/js/game/Scene.js" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -423,7 +420,7 @@
       <workItem from="1478515663912" duration="121000" />
       <workItem from="1478517523987" duration="195000" />
       <workItem from="1478527390659" duration="1283000" />
-      <workItem from="1478560609671" duration="1219000" />
+      <workItem from="1478560609671" duration="1231000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -677,11 +674,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478561176572</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="explosions fixed">
+      <created>1478562994896</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1478562994896</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21642000" />
+    <option name="totallyTimeSpent" value="21654000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
