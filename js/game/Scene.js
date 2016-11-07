@@ -48,27 +48,48 @@ class Scene extends Physijs.Scene {
     }
 
     updateCamera() {
-        this.camera.position.set(0, 5, -10);
+        this.camera.position.set(0, 5, this.cDown ? 10 : -10);
 
         let newCameraY = this.camera.getWorldPosition().y,
-            floorHeight = 5;
+            floorHeight = tileYlevel + 5;
         if (newCameraY < floorHeight)
-            this.camera.position.set(0, 5 + floorHeight - newCameraY, -10);
+            this.camera.position.set(0, 5 + floorHeight - newCameraY, this.cDown ? 10 : -10);
 
-        this.camera.lookAt(new THREE.Vector3(0, 0, 10));
+        this.camera.lookAt(new THREE.Vector3(0, 0, this.cDown ? -10 : 10));
     }
 
     toggleCamera() {
-        if (window.MAIN) {
-            if (this.gameView) {
+        if (window.MAIN && MAIN.keyHandler) {
+            MAIN.keyHandler.deleteSingleKey('c');
+            if (!this.cameraStatus) {
+                this.cameraStatus = 1;
+                if (this.gameView)
+                    this.main.loop.remove(this.gameView);
+                this.gameView = this.main.loop.add(() => this.updateCamera());
+                MAIN.game.car.mesh.add(this.camera);
+
+                MAIN.keyHandler.setSingleKey('c', 'Reverse camera view', [() => this.cDown = true, () => this.cDown = false]);
+            } else if (this.cameraStatus === 1) {
+                this.cameraStatus = true;
                 MAIN.game.car.mesh.remove(this.camera)
                 this.gameView = this.main.loop.remove(this.gameView);
                 this.controls = new THREE.OrbitControls(this.camera, this.renderElement);
                 this.camera.lookAt(new THREE.Vector3);
             } else {
-                this.gameView = this.main.loop.add(() => this.updateCamera());
-                MAIN.game.car.mesh.add(this.camera);
+                this.cameraStatus = false;
+                if (this.gameView)
+                    this.main.loop.remove(this.gameView);
+                this.gameView = this.main.loop.add(() => this.gtaCamera());
             }
+        }
+    }
+
+    gtaCamera() {
+        if (MAIN.game.car) {
+            let height = 50;
+            let carPos = MAIN.game.car.mesh.position;
+            this.camera.position.copy(carPos.clone().add(new THREE.Vector3(0, height, 0)));
+            this.camera.lookAt(carPos.clone());
         }
     }
 

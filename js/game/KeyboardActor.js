@@ -61,6 +61,9 @@ class KeyboardActor extends Actor {
                 car.wheelDirection = 0;
             }
         ]);
+        keyHandler.setSingleKey("r", "Add random cop", [
+            () => MAIN.game.addRandomCopper()
+        ]);
     }
 
     disable(car) {
