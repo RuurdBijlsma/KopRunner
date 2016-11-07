@@ -3,7 +3,7 @@ class PlayerCar extends Car {
         super(scene, x, y, z, 'red');
 
         let light = new THREE.PointLight(0xffffff, 1, 100);
-        this.mesh.add(light);
+        // this.mesh.add(light);
         light.position.set(0, 4, 0);
 
         let target = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 2), new THREE.MeshStandardMaterial());
@@ -25,7 +25,7 @@ class PlayerCar extends Car {
     enableNearestLights() {
         let cops = MAIN.game.copCars;
         cops.sort((a, b) => a.mesh.position.distanceTo(this.mesh.position) - b.mesh.position.distanceTo(this.mesh.position));
-        cops.slice(0,4).map(copper=>copper.enableLights());
-        cops.slice(4).map(copper=>copper.disableLights());
+        cops.slice(0, 4).map(copper => copper.enableLights());
+        cops.slice(4).map(copper => copper.disableLights());
     }
 }
