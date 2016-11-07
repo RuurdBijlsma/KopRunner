@@ -7,9 +7,9 @@ class WorldTile {
         this.texture_name = _texture_name;
         WorldTile.tileCount = WorldTile.tileCount || 0;
         console.log(++WorldTile.tileCount + ' / ' + mapSize ** 2);
-        this.texture = TextureMap.instance.map[this.texture_name].texture;
 
         this.channelsImage = this.texture_name + ".channels";
+        this.texture = TextureMap.instance.map[this.texture_name].texture;
         this.mesh = this.generateMeshFromHeightMap();
         this.mesh.position.set(_x * tileSize + tileSize / 2 - halfMapSize, 0, _z * tileSize + tileSize / 2 - halfMapSize);
 
@@ -246,7 +246,7 @@ class WorldTile {
                 y = -y;
 
             //kan het of kan het niet?
-
+1
             let midx = this.worldX - halfMapSize + tileSize / 2;
             let midy = this.worldZ - halfMapSize + tileSize / 2;
 
