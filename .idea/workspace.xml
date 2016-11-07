@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Car.js" afterPath="$PROJECT_DIR$/js/game/Car.js" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -398,7 +397,7 @@
       <workItem from="1478369719882" duration="2646000" />
       <workItem from="1478380724174" duration="30000" />
       <workItem from="1478471116123" duration="1068000" />
-      <workItem from="1478515159540" duration="6936000" />
+      <workItem from="1478515159540" duration="6953000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -645,11 +644,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478528203644</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="health fix">
+      <created>1478529440088</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1478529440088</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23671000" />
+    <option name="totallyTimeSpent" value="23688000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -688,7 +694,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="road texture added" />
     <MESSAGE value="physics driving" />
     <MESSAGE value="ground and physics car added" />
     <MESSAGE value="fixmix" />
@@ -713,7 +718,8 @@
     <MESSAGE value="car spotlights added" />
     <MESSAGE value="mn ding gedaan" />
     <MESSAGE value="update connections dictionary after fixing texture rotations" />
-    <option name="LAST_COMMIT_MESSAGE" value="update connections dictionary after fixing texture rotations" />
+    <MESSAGE value="health fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="health fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
