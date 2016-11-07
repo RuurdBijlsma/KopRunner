@@ -18,5 +18,14 @@ class PlayerCar extends Car {
         this._actor = KeyboardActor.instance;
         this._actor.init(this, scene.main.keyHandler);
         // this.actor = MobileActor.instance;
+
+        this.copChecker = setInterval(() => this.enableNearestLights(), 100);
+    }
+
+    enableNearestLights() {
+        let cops = MAIN.game.copCars;
+        cops.sort((a, b) => a.mesh.position.distanceTo(this.mesh.position) - b.mesh.position.distanceTo(this.mesh.position));
+        cops.slice(0,4).map(copper=>copper.enableLights());
+        cops.slice(4).map(copper=>copper.disableLights());
     }
 }

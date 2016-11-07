@@ -9,17 +9,24 @@ class CopCar extends Car {
         this._actor = KeyboardActor.instance;
 
         this.flickerInterval = 500;
-        setTimeout(() => this.flickerLights(), 10000 + Math.random() * this.flickerInterval);
     }
 
-    flickerLights() {
-        setInterval(() => {
-            if(this.light.color.b){
-                this.light.color = new THREE.Color(1,0,0);
-            }else{
-                this.light.color = new THREE.Color(0,0,1);
-            }
-        }, this.flickerInterval);
+    enableLights() {
+        if (!this.lightInterval) {
+            this.light.intensity = 1;
+            this.lightInterval = setInterval(() => {
+                if (this.light.color.b) {
+                    this.light.color = new THREE.Color(1, 0, 0);
+                } else {
+                    this.light.color = new THREE.Color(0, 0, 1);
+                }
+            }, this.flickerInterval);
+        }
+    }
+    disableLights() {
+        if (this.lightInterval)
+            clearInterval(this.lightInterval);
+        this.light.intensity = 0;
     }
 
     driveRoute(route) {

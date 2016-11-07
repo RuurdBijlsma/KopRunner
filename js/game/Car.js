@@ -68,12 +68,11 @@ class Car extends Physijs.Vehicle {
 
     collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal) {
         let damage = collisionVelocity.length();
-        if(damage > 10){
-            this.health -= damage / 10;
-        }else{
+        if (damage > 10) {
+            this.health -= damage / 5;
+        } else {
             console.log('no damage');
         }
-        console.log(this.constructor.name, 'collision', collisionObject.type, collisionVelocity);
     }
 
     startAccelerating(accelerationForce = 75) {
@@ -171,10 +170,10 @@ class Car extends Physijs.Vehicle {
         }
     }
 
-    jump() {
+    jump(height = 4) {
         if (this.isOnGround) {
             let currentVelocity = this.mesh.getLinearVelocity();
-            this.mesh.setLinearVelocity(new THREE.Vector3(currentVelocity.x, currentVelocity.y + 4, currentVelocity.z));
+            this.mesh.setLinearVelocity(new THREE.Vector3(currentVelocity.x, currentVelocity.y + height, currentVelocity.z));
         }
     }
 
