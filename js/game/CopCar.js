@@ -13,7 +13,7 @@ class CopCar extends Car {
 
     enableLights() {
         if (!this.lightInterval) {
-            this.light.intensity = 1;
+            this.light.intensity = 2;
             this.lightInterval = setInterval(() => {
                 if (this.light.color.b) {
                     this.light.color = new THREE.Color(1, 0, 0);

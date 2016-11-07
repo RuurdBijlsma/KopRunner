@@ -27,9 +27,12 @@ class Car extends Physijs.Vehicle {
             backRight: new THREE.Vector3(-1.2, -0.5, -1.4)
         };
 
-        let wheelMaterial = new THREE.MeshStandardMaterial({ color: 'rgb(40, 40, 40)' }),
+        let wheelMaterial = new THREE.MeshStandardMaterial({
+                color: 'rgb(40, 40, 40)'
+            }),
             wheelRadius = 0.4,
-            wheelGeometry = new THREE.CylinderGeometry(wheelRadius, wheelRadius, 0.6, 10);
+            wheelGeometry = new THREE.CylinderGeometry(wheelRadius, wheelRadius, 0.3, 20);
+        wheelGeometry.rotateZ(Math.PI / 2);
 
         for (let position in wheels) {
             let pos = wheels[position];
