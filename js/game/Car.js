@@ -38,10 +38,10 @@ class Car extends Physijs.Vehicle {
                 wheelMaterial,
                 pos,
                 new THREE.Vector3(0, -1, 0), // wheel direction
-                new THREE.Vector3(-1, 0, 0), //wheel axle
-                0.5, //suspension rest length
-                wheelRadius, //wheel radius
-                position.includes('front') //is front wheel
+                new THREE.Vector3(-1, 0, 0), // wheel axle
+                0.5, // suspension rest length
+                wheelRadius, // wheel radius
+                position.includes('front') // is front wheel
             );
         }
 
@@ -60,14 +60,19 @@ class Car extends Physijs.Vehicle {
         return this._health;
     }
     set health(h) {
-        if(h<0){
+        if (h < 0) {
             alert('dead');
         }
         this._health = h;
     }
 
     collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal) {
-        this.health -= collisionVelocity.length() / 2;
+        let damage = collisionVelocity.length();
+        if(damage < 10){
+            this.health -= damage / 10;
+        }else{
+            console.log('no damage');
+        }
         console.log(this.constructor.name, 'collision', collisionObject.type, collisionVelocity);
     }
 
