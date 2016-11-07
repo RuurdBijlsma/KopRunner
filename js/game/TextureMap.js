@@ -84,6 +84,13 @@ class TextureMap extends Singleton {
             "grasshill"
         ];
 
-        return names.concat(names.map(s => s + ".channels"));
+        names = names.concat(names.map(s => s + ".channels"));
+
+        // Textures that don't have a channels image
+        let namesWithoutChannels = [
+
+        ];
+
+        return names.concat(namesWithoutChannels);
     }
 }
