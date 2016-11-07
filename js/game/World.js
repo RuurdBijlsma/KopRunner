@@ -1,4 +1,4 @@
-const mapSize = 5; //MUST BE ODD NUMBER
+const mapSize = 10;
 const tileSize = 60;
 const tileHeight = 0.1;
 const aiNodePerBlock = 10;
@@ -42,28 +42,141 @@ class World {
         this.map = [];
 
         // MAIN.loop.add(()=>{console.log(MAIN.game.world.getAINodeOnVector(new THREE.Vector2(MAIN.game.car.mesh.position.x, MAIN.game.car.mesh.position.z)))});
-        MAIN.loop.add(() => {
-            MAIN.game.world.getAINodeOnVector(
-                new THREE.Vector2(
-                    MAIN.game.car.mesh.position.x,
-                    MAIN.game.car.mesh.position.z
-                    )
-            )
-        });
 
         this.createMap();
 
-        //let testMesh = new THREE.Mesh(new THREE.SphereGeometry(10), new THREE.MeshPhongMaterial({color: "pink"}));
+        // let testMesh = new THREE.Mesh(new THREE.SphereGeometry(10), new THREE.MeshPhongMaterial({color: "pink"}));
+        //
+        // testMesh.position.copy(this.map[1][1].northTile.mesh.position);
+        // MAIN.scene.add(testMesh);
+    }
 
-        //testMesh.position.copy(this.map[1][1].northTile.mesh.position);
-        //MAIN.scene.add(testMesh);
+    generatePath()
+    {
+        let columns = [];
+        for(let row = 0; row < mapSize; ++row)
+        {
+            columns.push([]);
+        }
+
+
+
+        for(let column = 0; column < mapSize; ++column)
+        {
+            for(let row = 0; row < mapSize; ++row)
+            {
+                let arr = columns[column][row] = [];
+                for(let i = 0; i < 4; ++i) {
+                    arr.push(true);
+                }
+
+
+                if (column === 0)
+                    arr[2] = false;
+                if (column === mapSize - 1)
+                    arr[0] = false;
+                if (row === 0)
+                    arr[3] = false;
+                if (row === mapSize - 1)
+                    arr[1] = false;
+
+                /*
+                 arr 3 is west
+                 arr 2 is zuid
+                 arr 1 oost
+                 aarr 0 noord
+                 */
+            }
+        }
+
+        let lastTilePosX = -1;
+        let lastTilePosY = -1;
+
+        let tilesVisited = 0;
+
+        let messedWith = [];
+        for(let column = 1; column < mapSize - 1; ++column)
+        {
+            rowLoop:
+            for(let row = 1; row < mapSize - 1; ++row) {
+                ++tilesVisited;
+                if (Math.random() * 2 > 1)
+                    continue;
+
+                let result;
+                let count = 0;
+                for(let k in connectionsDictionary) {
+                    if(Math.random() < 1 / ++count) {
+                        result = connectionsDictionary[k];
+                    }
+                }
+
+                for(let tile of messedWith) {
+                    let xDiff = Math.abs(column - tile.column);
+                    let yDiff = Math.abs(row - tile.row);
+
+                    if(xDiff + yDiff < 3) {
+                        continue rowLoop;
+                    }
+                }
+
+                console.log("fucking up");
+                columns[column][row] = result;
+
+                columns[column + 1][row][2] = columns[column][row][0];
+                columns[column - 1][row][0] = columns[column][row][2];
+
+                columns[column][row + 1][3] = columns[column][row][1];
+                columns[column][row - 1][1] = columns[column][row][3];
+
+                messedWith.push({
+                    column: column,
+                    row: row
+                });
+
+            }
+        }
+        console.log("visited tiles", tilesVisited);
+        return columns;
     }
 
     createMap() {
+
+
+        let data = this.generatePath();
+
         for (let x = 0; x < mapSize; ++x) {
             let row = [];
             for (let y = 0; y < mapSize; ++y) {
-                row.push(new WorldTile(x, y, '4wayroadrotate0'));
+
+                let b = false;
+
+                for(let key in connectionsDictionary)
+                {
+                    if(connectionsDictionary[key][0] !== data[x][y][0]){
+                        b = true;
+                        continue;
+                    }else b = false;
+                    if(connectionsDictionary[key][1] !== data[x][y][1]){
+                        b = true;
+                        continue;
+                    }else b = false;
+                    if(connectionsDictionary[key][2] !== data[x][y][2]){
+                        b = true;
+                        continue;
+                    }else b = false;
+                    if(connectionsDictionary[key][3] !== data[x][y][3]){
+                        b = true;
+                        continue;
+                    } else b = false;
+
+                    row.push(new WorldTile(x, y, key));
+                    break;
+                }
+                if(b == true) {
+                    console.log(data[x][y]);
+                    console.log("FAIL");
+                }
             }
             this.map.push(row);
         }
@@ -86,9 +199,6 @@ class World {
                 if (x != mapSize - 1)
                     this.map[x][y].eastTile = this.map[x + 1][y];
                 else this.map[x][y].eastTile = null;
-
-
-                // console.log(this.map[x][y].neighbours);
             }
         }
 
@@ -146,86 +256,14 @@ class World {
     }
 
     static getDistance(nodeA, nodeB) {
-            let dstX = Math.abs(nodeA.worldPosition.x - nodeB.worldPosition.x);
-            let dstY = Math.abs(nodeA.worldPosition.y - nodeB.worldPosition.y);
+        let dstX = Math.abs(nodeA.worldPosition.x - nodeB.worldPosition.x);
+        let dstY = Math.abs(nodeA.worldPosition.y - nodeB.worldPosition.y);
 
-            if (dstX > dstY)
-                return 14 * dstY + 10 * (dstX - dstY);
-            return 14 * dstX + 10 * (dstY - dstX);
-        }
-        /*
-    recalculatePaths() {
-        for (let x = 0; x < mapSize; ++x) {
-            for (let y = 0; y < mapSize; ++y) {
-                let tile = this.map[x][y];
-                let sainode = tile.singleAINode;
-                sainode.neighbours = [];
-
-                for (let x = 0; x < aiNodePerBlock; ++x) {
-                    for (let y = 0; y < aiNodePerBlock; ++y) {
-                        tile.detailedAINodes[x][y].neighbours = [];
-                    }
-                }
-            }
-        }
-
-        for (let x = 0; x < mapSize; ++x) {
-            for (let y = 0; y < mapSize; ++y) {
-                let tile = this.map[x][y];
-                let sainode = tile.singleAINode;
-
-
-                if (tile.westTile != null)
-                    sainode.neighbours.push(tile.westTile.singleAINode);
-                if (tile.eastTile != null)
-                    sainode.neighbours.push(tile.eastTile.singleAINode);
-                if (tile.southTile != null)
-                    sainode.neighbours.push(tile.southTile.singleAINode);
-                if (tile.northTile != null)
-                    sainode.neighbours.push(tile.northTile.singleAINode);
-
-                for (let xt = 0; xt < aiNodePerBlock; ++xt) {
-                    for (let yt = 0; yt < aiNodePerBlock; ++yt) {
-
-                        if (xt - 1 >= 0)
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt - 1][yt]);
-                        if (xt + 1 <= aiNodePerBlock - 1)
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt + 1][yt]);
-                        if (yt - 1 >= 0)
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt][yt - 1]);
-                        if (yt + 1 <= aiNodePerBlock - 1)
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt][yt + 1]);
-
-                        if (xt == 0 && tile.westTile != null) {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.westTile.detailedAINodes[aiNodePerBlock - 1][yt]);
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.westTile.singleAINode);
-                            tile.westTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
-                        }
-
-
-                        if (xt == aiNodePerBlock - 1 && tile.eastTile != null) {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.eastTile.detailedAINodes[0][yt]);
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.eastTile.singleAINode);
-                            tile.eastTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
-                        }
-
-                        if (yt == 0 && tile.northTile != null) {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.northTile.detailedAINodes[xt][aiNodePerBlock - 1]);
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.northTile.singleAINode);
-                            tile.northTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
-                        }
-
-                        if (yt == aiNodePerBlock - 1 && tile.southTile != null) {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.southTile.detailedAINodes[xt][0]);
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.southTile.singleAINode);
-                            tile.southTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
-                        }
-                    }
-                }
-            }
-        }
+        if (dstX > dstY)
+            return 14 * dstY + 10 * (dstX - dstY);
+        return 14 * dstX + 10 * (dstY - dstX);
     }
-*/
+
     recalculatePaths() {
         for (let x = 0; x < mapSize; ++x) {
             for (let y = 0; y < mapSize; ++y) {
@@ -254,140 +292,6 @@ class World {
             }
         }
     }
-
-    /*
-    precalculatedPaths() {
-        let detailSet = this.getDetailSet();
-
-        for (let x = 0; x < mapSize; ++x) {
-            for (let y = 0; y < mapSize; ++y) {
-                let tile = this.map[x][y];
-                let sainode = tile.singleAINode;
-                sainode.neighbours = [];
-
-                for (let x = 0; x < aiNodePerBlock; ++x) {
-                    for (let y = 0; y < aiNodePerBlock; ++y) {
-                        tile.detailedAINodes[x][y].neighbours = [];
-                    }
-                }
-            }
-        }
-
-        for (let x = 0; x < mapSize; ++x) {
-            for (let y = 0; y < mapSize; ++y) {
-                let tile = this.map[x][y];
-                let sainode = tile.singleAINode;
-
-                let midpoint = Math.floor(aiNodePerBlock / 2);
-
-                if (!detailSet.has(tile)) {
-                    tile.detailedAINodes[midpoint][midpoint].neighbours.push(sainode);
-
-                    if (tile.westTile != null)
-                        sainode.neighbours.push(tile.westTile.singleAINode);
-                    if (tile.eastTile != null)
-                        sainode.neighbours.push(tile.eastTile.singleAINode);
-                    if (tile.southTile != null)
-                        sainode.neighbours.push(tile.southTile.singleAINode);
-                    if (tile.northTile != null)
-                        sainode.neighbours.push(tile.northTile.singleAINode);
-                }
-
-                for (let xt = 0; xt < aiNodePerBlock; ++xt) {
-                    for (let yt = 0; yt < aiNodePerBlock; ++yt) {
-
-                        if (xt - 1 >= 0)
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt - 1][yt]);
-                        if (xt + 1 <= aiNodePerBlock - 1)
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt + 1][yt]);
-                        if (yt - 1 >= 0)
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt][yt - 1]);
-                        if (yt + 1 <= aiNodePerBlock - 1)
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.detailedAINodes[xt][yt + 1]);
-
-                        if (xt == 0 && tile.westTile != null) {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.westTile.detailedAINodes[aiNodePerBlock - 1][yt]);
-
-                            if (detailSet.has(tile.westTile)) {
-                                tile.detailedAINodes[xt][yt].neighbours.push(tile.westTile.singleAINode);
-                                tile.westTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
-                            }
-                        }
-
-
-                        if (xt == aiNodePerBlock - 1 && tile.eastTile != null) {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.eastTile.detailedAINodes[0][yt]);
-                            if (detailSet.has(tile.eastTile)) {
-                                tile.detailedAINodes[xt][yt].neighbours.push(tile.eastTile.singleAINode);
-                                tile.eastTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
-                            }
-                        }
-
-                        if (yt == 0 && tile.northTile != null) {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.northTile.detailedAINodes[xt][aiNodePerBlock - 1]);
-                            if (detailSet.has(tile.northTile)) {
-                                tile.detailedAINodes[xt][yt].neighbours.push(tile.northTile.singleAINode);
-                                tile.northTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
-                            }
-                        }
-
-                        if (yt == aiNodePerBlock - 1 && tile.southTile != null) {
-                            tile.detailedAINodes[xt][yt].neighbours.push(tile.southTile.detailedAINodes[xt][0]);
-                            if (detailSet.has(tile.southTile)) {
-                                tile.detailedAINodes[xt][yt].neighbours.push(tile.southTile.singleAINode);
-                                tile.southTile.singleAINode.neighbours.push(tile.detailedAINodes[xt][yt]);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    } */
-
-    /*
-    getDetailSet() {
-        let midpoint = Math.floor(mapSize / 2);
-        let m = new Map();
-        for (let x = -detailRadius; x <= detailRadius; ++x) {
-            for (let y = -detailRadius; y <= detailRadius; ++y) {
-                m.set(this.map[midpoint + x][midpoint + y], true);
-            }
-        }
-        return m;
-    }
-
-    getDetailMapSet() {
-        let m = new Map();
-
-        let midpoint = Math.floor(mapSize / 2);
-
-        for (let x = -detailRadius; x <= detailRadius; ++x) {
-            for (let y = -detailRadius; y <= detailRadius; ++y) {
-                let tile = this.map[midpoint + x][midpoint + y];
-                m.set(tile.singleAINode, true);
-
-                for (let xt = 0; xt < aiNodePerBlock; ++xt) {
-                    for (let yt = 0; yt < aiNodePerBlock; ++yt) {
-                        m.set(tile.detailedAINodes[xt][yt], true);
-                    }
-                }
-
-            }
-        }
-        return m;
-    }
-
-    getSimpleSet() {
-        let arr = this.getDetailSet();
-        let arr2 = [];
-        for (let x = 0; x < mapSize; ++x) {
-            for (let y = 0; y < mapSize; ++y) {
-                if (!arr.has(this.map[x][y]))
-                    arr2.push(this.map[x][y]);
-            }
-        }
-        return arr2;
-    } */
 
     getSearchRepresentation() {
         let m = new Map();

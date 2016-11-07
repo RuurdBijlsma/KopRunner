@@ -65,6 +65,7 @@ class CopCar extends Car {
             route.splice(0, 1)
             for (let point of route)
                 promiseChain += `.then(() => this.driveTo({x: ${point.x}, y: ${point.y}}))`;
+
             eval(promiseChain); //goeie code
         }
     }
@@ -91,10 +92,11 @@ class CopCar extends Car {
             carPointDistance = carPos.distanceTo(point);
         if (carPointDistance < 10) {
             this.stopMotor();
+            this.brake(10);
             this.aimChecker = MAIN.loop.remove(this.aimChecker);
             resolve();
         } else {
-            this.turn(-distance / carPointDistance * 10);
+            this.turn(-distance / carPointDistance);
         }
     }
 

@@ -235,7 +235,7 @@ class WorldTile {
 
         let mesh = new Physijs.BoxMesh(geom, new THREE.MeshStandardMaterial(), 0);
 
-        let BuildingCount = Math.floor(((Math.random() * (500 - 1)) + 1) / 5);
+        let BuildingCount = Math.floor(((Math.random() * (50 - 1)) + 1) / 5);
 
         let arr = [];
 
@@ -271,7 +271,7 @@ class WorldTile {
 
             let v = Math.random() * (1.0 - 0.5) + 0.5;
             let clone = arr[arr.length - 1];
-            clone.material.color.setRGB(0, 0, v);
+            clone.material.color.setRGB(0,0,v);
 
             clone.rotation.y = rot;
             clone.scale.x = size;
