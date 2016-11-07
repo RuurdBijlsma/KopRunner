@@ -8,7 +8,6 @@ class Scene extends Physijs.Scene {
         this.setGravity(new THREE.Vector3(0, -20, 0));
 
         this.renderElement = renderElement;
-        console.log(renderElement);
         this.camera = new THREE.PerspectiveCamera(45, this.renderElement.offsetWidth / this.renderElement.offsetHeight, 0.1, 10000);
 
         this.renderer = new THREE.WebGLRenderer({
@@ -33,7 +32,7 @@ class Scene extends Physijs.Scene {
         this.skyBox = new SkyBox(this, 'img/skybox/clouds/');
 
         this.stats = new Stats();
-        this.stats.showPanel(1);
+        this.stats.showPanel(0);
         document.body.appendChild(this.stats.dom);
 
         this.toggleCamera();
