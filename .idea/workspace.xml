@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="health fix">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/game/Explosion.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/three/SPE.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/textures/Thumbs.db" afterPath="$PROJECT_DIR$/img/textures/Thumbs.db" />
+    <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Car.js" afterPath="$PROJECT_DIR$/js/game/Car.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/CopCar.js" afterPath="$PROJECT_DIR$/js/game/CopCar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/PlayerCar.js" afterPath="$PROJECT_DIR$/js/game/PlayerCar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/TextureMap.js" afterPath="$PROJECT_DIR$/js/game/TextureMap.js" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/js/game/Car.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="334">
-              <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
+              <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -229,8 +221,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/js/game/Scene.js</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/js/game/World.js</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/js/game/WorldTile.js</PATH>
         </FILE-GROUP>
@@ -410,7 +400,7 @@
       <workItem from="1478369719882" duration="2646000" />
       <workItem from="1478380724174" duration="30000" />
       <workItem from="1478471116123" duration="1068000" />
-      <workItem from="1478515159540" duration="8287000" />
+      <workItem from="1478515159540" duration="8910000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -692,20 +682,27 @@
       <option name="project" value="LOCAL" />
       <updated>1478531421287</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="hink pousyh">
+      <created>1478534330269</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1478534330269</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25022000" />
+    <option name="totallyTimeSpent" value="25645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.525" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.475" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.475" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -735,7 +732,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="physics driving" />
     <MESSAGE value="ground and physics car added" />
     <MESSAGE value="fixmix" />
     <MESSAGE value="physics driving added" />
@@ -760,7 +756,8 @@
     <MESSAGE value="mn ding gedaan" />
     <MESSAGE value="update connections dictionary after fixing texture rotations" />
     <MESSAGE value="health fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="health fix" />
+    <MESSAGE value="hink pousyh" />
+    <option name="LAST_COMMIT_MESSAGE" value="hink pousyh" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1158,7 +1155,7 @@
     <entry file="file://$PROJECT_DIR$/js/game/Car.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
-          <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
+          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
           <folding />
         </state>
       </provider>
