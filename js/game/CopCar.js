@@ -9,6 +9,13 @@ class CopCar extends Car {
         this._actor = KeyboardActor.instance;
 
         this.flickerInterval = 500;
+
+        this.routeInterval = setInterval(()=>{
+
+
+
+        }, 1000);
+
     }
 
     enableLights() {
