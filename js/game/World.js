@@ -10,18 +10,18 @@ const connectionsDictionary = {
     "4wayroadrotate1": [true, true, true, true],
     "4wayroadrotate2": [true, true, true, true],
     "4wayroadrotate3": [true, true, true, true],
-    "3wayroadrotate0": [true, false, true, true],
+    "3wayroadrotate0": [true, true, true, false],
     "3wayroadrotate1": [true, true, false, true],
-    "3wayroadrotate2": [true, true, true, false],
+    "3wayroadrotate2": [true, false, true, true],
     "3wayroadrotate3": [false, true, true, true],
     "2wayroadrotate0": [true, false, true, false],
     "2wayroadrotate1": [false, true, false, true],
     "2wayroadrotate2": [true, false, true, false],
     "2wayroadrotate3": [false, true, false, true],
-    "cornerrotate0": [false, false, true, true],
-    "cornerrotate1": [true, false, false, true],
-    "cornerrotate2": [true, true, false, false],
-    "cornerrotate3": [false, true, true, false],
+    "cornerrotate0": [false, true, true, false],
+    "cornerrotate1": [true, true, false, false],
+    "cornerrotate2": [true, false, false, true],
+    "cornerrotate3": [false, false, true, true],
     "grassrotate0": [false, false, false, false],
     "grassrotate1": [false, false, false, false],
     "grassrotate2": [false, false, false, false],
@@ -52,7 +52,7 @@ class World {
         for (let x = 0; x < mapSize; ++x) {
             let row = [];
             for (let y = 0; y < mapSize; ++y) {
-                row.push(new WorldTile(x, y, 'cornerrotate0'));
+                row.push(new WorldTile(x, y, '3wayroadrotate2'));
             }
             this.map.push(row);
         }
