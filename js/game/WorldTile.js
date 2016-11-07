@@ -1,4 +1,3 @@
-const showDebugMeshes = false;
 
 class WorldTile {
     constructor(_x, _z, _texture_name) {
@@ -27,7 +26,9 @@ class WorldTile {
         }
 
         this._neighbours = new Array(4);
-        this.generateAStarNodes();
+        //this.generateAStarNodes();
+
+        this.generateSimpleAStar();
 
         this._connections = connectionsDictionary[this.texture_name];
 
@@ -98,7 +99,7 @@ class WorldTile {
     }
 
     set westTile(tile) {
-        this.neighbours[2] = tile;
+        this.neighbours[3] = tile;
     }
 
     get northTile() {
@@ -219,6 +220,16 @@ class WorldTile {
         }
     }
 
+    generateSimpleAStar()
+    {
+        let pf = new PixelFetcher(this.channelsImage);
+        let a = pf.getPixelG(pf.context.canvas.width / 2, pf.context.canvas.width / 2);
+        this.singleAINode = new AStarNode();
+        this.singleAINode.densityFactor = a;
+        this.singleAINode.localPosition = { x: -1, y: -1 };
+        this.singleAINode.worldPosition = { x: this.worldX + tileSize / 2 - halfMapSize, y: this.worldZ + tileSize / 2 - halfMapSize };
+    }
+
     generateBuildings() {
         let fetcher = new PixelFetcher(this.channelsImage);
 
@@ -226,7 +237,7 @@ class WorldTile {
 
         let mesh = new Physijs.BoxMesh(geom, new THREE.MeshStandardMaterial(), 0);
 
-        let BuildingCount = Math.floor(((Math.random() * (50 - 1)) + 1) / 5);
+        let BuildingCount = Math.floor(((Math.random() * (500 - 1)) + 1) / 5);
 
         let arr = [];
 
@@ -258,7 +269,7 @@ class WorldTile {
 
             arr.push(mesh.clone());
 
-            let v = Math.random() * (0.6 - 0.4) + 0.4;
+            let v = Math.random() * (1.0 - 0.5) + 0.5;
             let clone = arr[arr.length - 1];
             clone.material.color.setRGB(0, 0, v);
 

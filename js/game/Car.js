@@ -27,9 +27,12 @@ class Car extends Physijs.Vehicle {
             backRight: new THREE.Vector3(-1.2, -0.5, -1.4)
         };
 
-        let wheelMaterial = new THREE.MeshStandardMaterial({ color: 'rgb(40, 40, 40)' }),
+        let wheelMaterial = new THREE.MeshStandardMaterial({
+                color: 'rgb(40, 40, 40)'
+            }),
             wheelRadius = 0.4,
-            wheelGeometry = new THREE.CylinderGeometry(wheelRadius, wheelRadius, 0.6, 10);
+            wheelGeometry = new THREE.CylinderGeometry(wheelRadius, wheelRadius, 0.3, 20);
+        wheelGeometry.rotateZ(Math.PI / 2);
 
         for (let position in wheels) {
             let pos = wheels[position];
@@ -61,17 +64,14 @@ class Car extends Physijs.Vehicle {
     }
     set health(h) {
         if (h < 0) {
-            alert('dead');
+            console.log('dead');
         }
         this._health = h;
     }
 
     collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal) {
-        let damage = collisionVelocity.length();
-        if (damage > 10) {
+        if (collisionObject instanceof Car) {
             this.health -= damage / 5;
-        } else {
-            console.log('no damage');
         }
     }
 
@@ -162,11 +162,19 @@ class Car extends Physijs.Vehicle {
 
     boost() {
         if (!this.boostTimeout) {
+            let boostFX = new Explosion(this);
             this.boostTimeout = true;
+            let loop = MAIN.loop.add(() => {
+                this.mesh.setLinearVelocity(this.mesh.getWorldDirection().multiplyScalar(this.boostPower));
+            });
+            setTimeout(() => {
+                MAIN.loop.remove(loop);
+                boostFX.dispose();
+            }, 1000);
 
-            this.mesh.setLinearVelocity(this.mesh.getWorldDirection().multiplyScalar(this.boostPower));
-
-            setTimeout(() => delete this.boostTimeout, 10 * 1000); // 10 second boost delay
+            setTimeout(() => {
+                delete this.boostTimeout
+            }, 10 * 1000); // 10 second boost delay
         }
     }
 

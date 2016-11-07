@@ -13,7 +13,7 @@ class CopCar extends Car {
 
     enableLights() {
         if (!this.lightInterval) {
-            this.light.intensity = 1;
+            this.light.intensity = 2;
             this.lightInterval = setInterval(() => {
                 if (this.light.color.b) {
                     this.light.color = new THREE.Color(1, 0, 0);
@@ -72,5 +72,23 @@ class CopCar extends Car {
     distanceToLine(linePoint1, linePoint2, checkPoint) {
         let determinant = ((linePoint2.x - linePoint1.x) * (checkPoint.y - linePoint1.z) - (linePoint2.z - linePoint1.z) * (checkPoint.x - linePoint1.x));
         return determinant;
+    }
+
+    getVectorsToCar(playerCar)
+    {
+        let vecTarget = new THREE.Vector2(playerCar.mesh.position.x, playerCar.mesh.position.z);
+        let vecThis = new THREE.Vector2(this.mesh.position.x, this.mesh.position.z);
+
+        let tileTarget = MAIN.game.world.getAINodeOnVector(vecTarget);
+        let tileThis = MAIN.game.world.getAINodeOnVector(vecThis);
+
+        let path = MAIN.game.world.findPath(tileThis,tileTarget);
+
+        let arr = [];
+        for(let elem of path)
+        {
+            arr.push(elem.worldPosition.x, elem.worldPosition.z);
+        }
+        return arr;
     }
 }
