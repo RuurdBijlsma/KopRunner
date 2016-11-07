@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/brightline.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/textures/Thumbs.db" afterPath="$PROJECT_DIR$/img/textures/Thumbs.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/textures/skyline.png" afterPath="$PROJECT_DIR$/img/textures/skyline.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/CopCar.js" afterPath="$PROJECT_DIR$/js/game/CopCar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/PlayerCar.js" afterPath="$PROJECT_DIR$/js/game/PlayerCar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Scene.js" afterPath="$PROJECT_DIR$/js/game/Scene.js" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +44,8 @@
       <file leaf-file-name="CopCar.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/CopCar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+            <state relative-caret-position="202">
+              <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -388,7 +393,7 @@
       <workItem from="1478369719882" duration="2646000" />
       <workItem from="1478380724174" duration="30000" />
       <workItem from="1478471116123" duration="1068000" />
-      <workItem from="1478515159540" duration="2510000" />
+      <workItem from="1478515159540" duration="3138000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -600,11 +605,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478516469908</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="copcars added, errors surpressed">
+      <created>1478520492388</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1478520492388</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19245000" />
+    <option name="totallyTimeSpent" value="19873000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -643,7 +655,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="boost power property added" />
     <MESSAGE value="redundant files removed" />
     <MESSAGE value="console.log removed" />
     <MESSAGE value="redundant code removed" />
@@ -668,7 +679,8 @@
     <MESSAGE value="skyline added" />
     <MESSAGE value="skyline fixed" />
     <MESSAGE value="skyline updated, logs improved" />
-    <option name="LAST_COMMIT_MESSAGE" value="skyline updated, logs improved" />
+    <MESSAGE value="copcars added, errors surpressed" />
+    <option name="LAST_COMMIT_MESSAGE" value="copcars added, errors surpressed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1060,8 +1072,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/CopCar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+        <state relative-caret-position="202">
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
           <folding />
         </state>
       </provider>

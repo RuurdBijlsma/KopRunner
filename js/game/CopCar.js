@@ -1,7 +1,25 @@
 class CopCar extends Car {
     constructor(scene, x, y, z) {
         super(scene, x, y, z, 'blue');
+
+        this.light = new THREE.PointLight(0x000000, 1, 100);
+        this.mesh.add(this.light);
+        this.light.position.set(0, 4, 0);
+
         this._actor = KeyboardActor.instance;
+
+        this.flickerInterval = 500;
+        setTimeout(() => this.flickerLights(), 5000 + Math.random() * this.flickerInterval);
+    }
+
+    flickerLights() {
+        setInterval(() => {
+            if(this.light.color.b){
+                this.light.color = new THREE.Color(1,0,0);
+            }else{
+                this.light.color = new THREE.Color(0,0,1);
+            }
+        }, this.flickerInterval);
     }
 
     driveRoute(route) {
@@ -11,7 +29,7 @@ class CopCar extends Car {
             for (let point of route)
                 promiseChain += `.then(() => this.driveTo({x: ${point.x}, y: ${point.y}}))`;
 
-            eval(promiseChain);//goeie code
+            eval(promiseChain); //goeie code
         }
     }
 
