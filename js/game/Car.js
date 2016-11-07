@@ -90,6 +90,9 @@ class Car extends Physijs.Vehicle {
     setWheels(direction) {
         let turnSpeed = 2;
         //turn wheels until they're pointing at direction
+        direction = direction > this.maxSteerRotation ? this.maxSteerRotation : direction;
+        if (this.wheelSetLoop)
+            this.stopTurningWheels();
         this.wheelSetLoop = this.gameLoop.add(() => {
             this.wheelDirection += ((direction - this.wheelDirection) * turnSpeed) / 50;;
             if (Math.abs(direction - this.wheelDirection) < 0.05) {

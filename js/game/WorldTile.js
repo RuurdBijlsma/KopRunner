@@ -22,7 +22,7 @@ class WorldTile {
             let mat2 = new THREE.MeshPhongMaterial({color: "blue"});
             let mesh2 = new THREE.Mesh(g, mat2);
             MAIN.scene.add(mesh2);
-            mesh2.position.set(this.worldX, tileYlevel, this.worldZ);
+            mesh2.position.set(this.worldX - halfMapSize, tileYlevel, this.worldZ - halfMapSize);
         }
 
         this._neighbours = new Array(4);
@@ -30,7 +30,7 @@ class WorldTile {
 
         this._connections = connectionsDictionary[this.texture_name];
 
-        // this.generateBuildings();
+        this.generateBuildings();
 
         MAIN.scene.add(this.mesh);
     }
@@ -144,8 +144,8 @@ class WorldTile {
         let geometry = new THREE.PlaneGeometry(tileSize, tileSize, verticesPerAxis, verticesPerAxis);
 
         for (let vertex of geometry.vertices) {
-            let posX = ((vertex.x + tileSize / 2) * ((fetcher.context.canvas.width + 1)  / (tileSize + 1)));
-            let posY = ((vertex.y + tileSize / 2) * ((fetcher.context.canvas.height + 1) / (tileSize + 1)));
+            let posX = ((vertex.x + (tileSize + 1) / 2) * ((fetcher.context.canvas.width)  / (tileSize + 1)));
+            let posY = ((vertex.y + (tileSize + 1) / 2) * ((fetcher.context.canvas.height) / (tileSize + 1)));
             vertex.z = fetcher.getPixelR(posX, posY) / 128;
         }
 
@@ -177,8 +177,8 @@ class WorldTile {
                 this.detailedAINodes[x][y].densityFactor = fetcher.getPixelA(x * pixelsX, y * pixelsZ);
                 this.detailedAINodes[x][y].localPosition = {x: x, y: y};
                 this.detailedAINodes[x][y].worldPosition = {
-                    x: this.worldX + (tileSize / aiNodePerBlock) * x,
-                    y: this.worldZ + (tileSize / aiNodePerBlock) * y
+                    x: this.worldX + (tileSize / aiNodePerBlock) * x - halfMapSize,
+                    y: this.worldZ + (tileSize / aiNodePerBlock) * y - halfMapSize
                 };
             }
         }
@@ -186,7 +186,7 @@ class WorldTile {
         this.singleAINode = new AStarNode();
         this.singleAINode.densityFactor = a;
         this.singleAINode.localPosition = {x: -1, y: -1};
-        this.singleAINode.worldPosition = {x: this.worldX + tileSize / 2, y: this.worldZ + tileSize / 2};
+        this.singleAINode.worldPosition = {x: this.worldX + tileSize / 2 - halfMapSize, y: this.worldZ + tileSize / 2 - halfMapSize};
 
         if(showDebugMeshes) {
             let g1 = new THREE.CylinderGeometry(1, 1, 5, 10, 10);
@@ -215,34 +215,55 @@ class WorldTile {
         let fetcher = new PixelFetcher(this.channelsImage);
 
         let geom = new THREE.CubeGeometry(1,1,1);
-        geom.applyMatrix(new THREE.Matrix4().makeTranslation(0,0.5,0));
 
-        let mesh = new THREE.Mesh(geom, new THREE.MeshStandardMaterial({ color: "white" }));
+        let mesh = new THREE.Mesh(geom, new THREE.MeshStandardMaterial(),0);
 
-        let BuildingCount = Math.floor((Math.random() * (5 - 1)) + 1);
+        let BuildingCount = Math.floor((Math.random() * (50 - 1)) + 1);
 
         let arr = [];
 
         for(let i = 0; i < BuildingCount; ++i)
         {
 
-            let rot = Math.random() * Math.PI*2;
-            let size = Math.floor((Math.random() * (5-1)) + 1);
-            let ySize = Math.floor((Math.random() * (5-1)) + 1);
 
-            let x = Math.floor((Math.random() * (5-1)) + 1);
-            let y = Math.floor((Math.random() * (5-1)) + 1);
+            let rot = Math.random() * Math.PI*2;
+            let size = Math.floor((Math.random() * (tileSize / 6 - tileSize / 16)) + tileSize / 16);
+            let ySize = Math.floor((Math.random() * (64-10)) + 10);
+
+            let x = Math.floor((Math.random() * (tileSize / 2 - 1)) + 1);
+            let y = Math.floor((Math.random() * (tileSize / 2 - 1)) + 1);
+
+            if(Math.random() < 0.5)
+                x = -x;
+            if(Math.random() < 0.5)
+                y = -y;
+
+            //kan het of kan het niet?1
+
+            let midx = this.worldX - halfMapSize + tileSize / 2;
+            let midy = this.worldZ - halfMapSize + tileSize / 2;
+
+            let tx = fetcher.context.canvas.width / tileSize * (x + tileSize / 2);
+            let ty = fetcher.context.canvas.height / tileSize * (y + tileSize / 2);
+
+            if(fetcher.getPixelB(tx,ty) == 0)
+                continue;
 
             arr.push(mesh.clone());
-            arr[arr.length - 1].rotation.y = rot;
-            arr[arr.length - 1].scale.x = size;
-            arr[arr.length - 1].scale.z = arr[arr.length - 1].scale.x;
-            arr[arr.length - 1].scale.y = ySize;
 
-            arr[arr.length - 1].position.x = this.worldX + x - halfMapSize;
-            arr[arr.length - 1].position.z = this.worldZ + y - halfMapSize;
+            let v = Math.random() * (0.6 - 0.01) + 0.01;
+            let clone = arr[arr.length - 1];
+            clone.material.color .setRGB(v,v,v);
 
-            MAIN.scene.add(arr[arr.length - 1]);
+            clone.rotation.y = rot;
+            clone.scale.x = size;
+            clone.scale.z = arr[arr.length - 1].scale.x;
+            clone.scale.y = ySize;
+
+            clone.position.x = midx + x;
+            clone.position.z = midy + y;
+
+            MAIN.scene.add(clone);
         }
     }
 
