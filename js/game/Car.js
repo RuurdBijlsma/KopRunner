@@ -64,17 +64,14 @@ class Car extends Physijs.Vehicle {
     }
     set health(h) {
         if (h < 0) {
-            alert('dead');
+            console.log('dead');
         }
         this._health = h;
     }
 
     collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal) {
-        let damage = collisionVelocity.length();
-        if (damage > 10) {
+        if (collisionObject instanceof Car) {
             this.health -= damage / 5;
-        } else {
-            console.log('no damage');
         }
     }
 
@@ -165,11 +162,19 @@ class Car extends Physijs.Vehicle {
 
     boost() {
         if (!this.boostTimeout) {
+            let boostFX = new Explosion(this);
             this.boostTimeout = true;
+            let loop = MAIN.loop.add(() => {
+                this.mesh.setLinearVelocity(this.mesh.getWorldDirection().multiplyScalar(this.boostPower));
+            });
+            setTimeout(() => {
+                MAIN.loop.remove(loop);
+                boostFX.dispose();
+            }, 1000);
 
-            this.mesh.setLinearVelocity(this.mesh.getWorldDirection().multiplyScalar(this.boostPower));
-
-            setTimeout(() => delete this.boostTimeout, 10 * 1000); // 10 second boost delay
+            setTimeout(() => {
+                delete this.boostTimeout
+            }, 10 * 1000); // 10 second boost delay
         }
     }
 
