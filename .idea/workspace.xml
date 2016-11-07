@@ -39,8 +39,8 @@
       <file leaf-file-name="Car.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/Car.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="58" column="36" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
+            <state relative-caret-position="408">
+              <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -418,7 +418,7 @@
       <workItem from="1478512482199" duration="799000" />
       <workItem from="1478515663912" duration="121000" />
       <workItem from="1478517523987" duration="195000" />
-      <workItem from="1478527390659" duration="874000" />
+      <workItem from="1478527390659" duration="1283000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -651,11 +651,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478515029388</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="collision detection added">
+      <created>1478528278534</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1478528278534</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20014000" />
+    <option name="totallyTimeSpent" value="20423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -694,7 +701,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="get speed fixed, driving backwards now possible" />
     <MESSAGE value="jump added, boost fixed" />
     <MESSAGE value="boost power property added" />
     <MESSAGE value="redundant files removed" />
@@ -719,7 +725,8 @@
     <MESSAGE value="fixed" />
     <MESSAGE value="copcar added" />
     <MESSAGE value="driveroute function added" />
-    <option name="LAST_COMMIT_MESSAGE" value="driveroute function added" />
+    <MESSAGE value="collision detection added" />
+    <option name="LAST_COMMIT_MESSAGE" value="collision detection added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1116,8 +1123,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/Car.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="58" column="36" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
+        <state relative-caret-position="408">
+          <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
           <folding />
         </state>
       </provider>

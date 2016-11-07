@@ -52,11 +52,23 @@ class Car extends Physijs.Vehicle {
         this.gameLoop.add(() => this.update());
 
         this.boostPower = 50;
-        this.mesh.addEventListener('collision', (collisionObject, collisionVelocity, collisionRotation, normal)=>this.collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal));
+        this.health = 100;
+        this.mesh.addEventListener('collision', (collisionObject, collisionVelocity, collisionRotation, normal) => this.collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal));
     }
 
-    collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal){
-        console.log('collision', collisionObject.type, collisionVelocity);
+    get health() {
+        return this._health;
+    }
+    set health(h) {
+        if(h<0){
+            alert('dead');
+        }
+        this._health = h;
+    }
+
+    collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal) {
+        this.health -= collisionVelocity.length() / 2;
+        console.log(this.constructor.name, 'collision', collisionObject.type, collisionVelocity);
     }
 
     startAccelerating(accelerationForce = 75) {
