@@ -1,43 +1,43 @@
 class KeyboardActor extends Actor {
-    init(cars, keyHandler = MAIN.keyHandler) {
+    init(car, keyHandler = MAIN.keyHandler) {
         //Car controls
         keyHandler.setSingleKey("w", "Accelerate car", [
-            () => cars.map(car => car.startAccelerating()),
-            () => cars.map(car => car.stopMotor())
+            () => car.startAccelerating(),
+            () => car.stopMotor()
         ]);
         keyHandler.setSingleKey("s", "Decelerate car", [
-            () => cars.map(car => car.startDecelerating()),
-            () => cars.map(car => car.stopMotor())
+            () => car.startDecelerating(),
+            () => car.stopMotor()
         ]);
         keyHandler.setSingleKey("ArrowUp", "Accelerate car", [
-            () => cars.map(car => car.startAccelerating()),
-            () => cars.map(car => car.stopMotor())
+            () => car.startAccelerating(),
+            () => car.stopMotor()
         ]);
         keyHandler.setSingleKey("ArrowDown", "Decelerate car", [
-            () => cars.map(car => car.startDecelerating()),
-            () => cars.map(car => car.stopMotor())
+            () => car.startDecelerating(),
+            () => car.stopMotor()
         ]);
         keyHandler.setContinuousKey("Shift", "Activate boost", [
-            () => cars.map(car => car.boost())
+            () => car.boost()
         ]);
         keyHandler.setContinuousKey(" ", "Jump car", [
-            () => cars.map(car => car.jump())
+            () => car.jump()
         ]);
         keyHandler.setContinuousKey("ArrowLeft", "Turn left", [
-            () => cars.map(car => car.turn(1)),
-            () => cars.map(car => car.setWheels(0))
+            () => car.turn(1),
+            () => car.setWheels(0)
         ]);
         keyHandler.setContinuousKey("ArrowRight", "Turn right", [
-            () => cars.map(car => car.turn(-1)),
-            () => cars.map(car => car.setWheels(0))
+            () => car.turn(-1),
+            () => car.setWheels(0)
         ]);
         keyHandler.setContinuousKey("a", "Turn left", [
-            () => cars.map(car => car.turn(1)),
-            () => cars.map(car => car.setWheels(0))
+            () => car.turn(1),
+            () => car.setWheels(0)
         ]);
         keyHandler.setContinuousKey("d", "Turn right", [
-            () => cars.map(car => car.turn(-1)),
-            () => cars.map(car => car.setWheels(0))
+            () => car.turn(-1),
+            () => car.setWheels(0)
         ]);
 
 
@@ -49,21 +49,18 @@ class KeyboardActor extends Actor {
         ]);
         keyHandler.setSingleKey("Delete", "Reset car", [
             () => {
-                cars.map(car => car.setPosition());
-                cars.map(car => car.setRotation());
-                cars.map(car => car.wheelDirection = 0);
+                car.setPosition();
+                car.setRotation();
+                car.wheelDirection = 0;
             }
         ]);
         keyHandler.setSingleKey("Backspace", "Fix car rotation", [
             () => {
-                cars.map(car => car.setPosition(car.mesh.position.x, car.mesh.position.y + 1, car.mesh.position.z));
-                cars.map(car => car.setRotation());
-                cars.map(car => car.wheelDirection = 0);
+                car.setPosition(car.mesh.position.x, car.mesh.position.y + 1, car.mesh.position.z);
+                car.setRotation();
+                car.wheelDirection = 0;
             }
         ]);
-
-
-
     }
 
     disable(car) {
@@ -84,9 +81,7 @@ class KeyboardActor extends Actor {
         // Don't need to take action every frame when using the keyboard
     }
 
-
-
-
+    
     showKeyMap() {
         let keyMap = MAIN.keyHandler.keyMap,
             singleKeyElement = document.getElementById('single'),

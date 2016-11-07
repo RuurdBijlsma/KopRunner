@@ -27,8 +27,6 @@ class Car extends Physijs.Vehicle {
             backRight: new THREE.Vector3(-1.2, -0.5, -1.4)
         };
 
-        this.maxSteerRotation = Math.PI / 16;
-
         let wheelMaterial = new THREE.MeshStandardMaterial({ color: 'rgb(40, 40, 40)' }),
             wheelRadius = 0.4,
             wheelGeometry = new THREE.CylinderGeometry(wheelRadius, wheelRadius, 0.6, 10);
@@ -49,7 +47,7 @@ class Car extends Physijs.Vehicle {
         }
 
         this.groundDirection = new THREE.Vector3(0, -1, 0);
-        this.maxSteerRotation = Math.PI / 4;
+        this.maxSteerRotation = Math.PI / 10;
 
         this.gameLoop = scene.main.loop;
         this.gameLoop.add(() => this.update());

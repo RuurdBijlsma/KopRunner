@@ -6,13 +6,17 @@ class CopCar extends Car {
 
     driveRoute(route) {
         if (route.length > 1) {
-            for (let i = 0; i < route.length - 1; i++) {
-                this.driveTo(route[i].then(driveTo(route[i+1])));
-            }
+            let promiseChain = `this.driveTo({x: ${route[0].x}, y: ${route[0].y}})`;
+            route.splice(0, 1)
+            for (let point of route)
+                promiseChain += `.then(() => this.driveTo({x: ${point.x}, y: ${point.y}}))`;
+
+            eval(promiseChain);//goeie code
         }
     }
 
     driveTo(point) { // check if point is in front of car
+        console.log('driving to ', point);
         return new Promise(resolve => {
             this.startAccelerating();
             this.aimChecker = MAIN.loop.add(() => this.checkAim(point, resolve));
@@ -30,11 +34,10 @@ class CopCar extends Car {
         let distance = this.pointDirectionOffset(point),
             carPos = new THREE.Vector2(this.mesh.position.x, this.mesh.position.z),
             carPointDistance = carPos.distanceTo(point);
-        if (carPointDistance < 5) {
+        if (carPointDistance < 10) {
             this.stopMotor();
             this.brake(10);
             this.aimChecker = MAIN.loop.remove(this.aimChecker);
-            console.log('current pos: ', carPos);
             resolve();
         } else {
             this.turn(-distance / carPointDistance);
