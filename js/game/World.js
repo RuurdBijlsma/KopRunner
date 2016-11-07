@@ -1,4 +1,4 @@
-const mapSize = 9; //MUST BE ODD NUMBER
+const mapSize = 5; //MUST BE ODD NUMBER
 const tileSize = 60;
 const tileHeight = 0.1;
 const aiNodePerBlock = 10;
@@ -29,7 +29,7 @@ class World {
         for (let x = 0; x < mapSize; ++x) {
             let row = [];
             for (let y = 0; y < mapSize; ++y) {
-                row.push(new WorldTile(x, y, '4wayroadrotate0'));
+                row.push(new WorldTile(x, y, '2wayroadrotate0'));
             }
             this.map.push(row);
         }
