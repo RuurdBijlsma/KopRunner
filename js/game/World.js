@@ -1,4 +1,4 @@
-const mapSize = 11; //MUST BE ODD NUMBER
+const mapSize = 5; //MUST BE ODD NUMBER
 const tileSize = 60;
 const tileHeight = 0.1;
 const aiNodePerBlock = 10;

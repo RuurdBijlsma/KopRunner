@@ -61,7 +61,6 @@ class Explosion {
             for (let prop in this.config)
                 initConfig[prop] = this.config[prop];
 
-        console.log('explosion position: ', initConfig.position);
         this.emitter = new SPE.Emitter(initConfig);
 
         this.particleGroup.addEmitter(this.emitter);

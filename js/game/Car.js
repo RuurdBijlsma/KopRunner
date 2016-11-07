@@ -19,6 +19,7 @@ class Car extends Physijs.Vehicle {
             6000 //Max suspension force
         ));
         scene.add(this);
+        this.roofMesh = roofMesh;
 
         let wheels = {
             frontLeft: new THREE.Vector3(1.2, -0.5, 1.4),
@@ -66,13 +67,27 @@ class Car extends Physijs.Vehicle {
                 spread: new THREE.Vector3(0, 0, 0)
             }
         });
+        this.splosionEmitter = new Explosion(this, {
+            velocity: {
+                value: new THREE.Vector3(0, 0.5, 0),
+                spread: new THREE.Vector3(10, 10, 10)
+            },
+            acceleration: {
+                value: new THREE.Vector3(0, 0, 0),
+                spread: new THREE.Vector3(0, 0, 0)
+            },
+            color: {
+                value: [new THREE.Color('orange'), new THREE.Color('yellow')]
+            },
+            particleCount: 50000
+        });
     }
 
     get health() {
         return this._health;
     }
     set health(h) {
-        if (h < 0) {
+        if (h <= 0) {
             console.log('dead');
             this.explode();
         }
@@ -81,7 +96,9 @@ class Car extends Physijs.Vehicle {
 
     collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal) {
         if (collisionObject instanceof Car) {
+            let damage = collisionVelocity.length();
             this.health -= damage / 5;
+            console.log(this.constructor.name + ' health: ' + this.health);
         }
     }
 
@@ -116,25 +133,12 @@ class Car extends Physijs.Vehicle {
     }
 
     explode() {
-        let splosion = new Explosion(MAIN.game.car, {
-            velocity: {
-                value: new THREE.Vector3(0, 0.5, 0),
-                spread: new THREE.Vector3(10, 10, 10)
-            },
-            acceleration: {
-                value: new THREE.Vector3(0, 0, 0),
-                spread: new THREE.Vector3(0, 0, 0)
-            },
-            color: {
-                value: [new THREE.Color('orange'), new THREE.Color('yellow')]
-            },
-            particleCount: 50000
-        }).start();
-        setTimeout(() => splosion.dispose(), 200);
+        this.splosionEmitter.start();
+        setTimeout(() => this.splosionEmitter.dispose(), 200);
         setTimeout(() => this.handleExplosion(), 2000);
     }
 
-    handleExplosion(){
+    handleExplosion() {
         //player exploded
     }
 
@@ -172,6 +176,35 @@ class Car extends Physijs.Vehicle {
         //3: backRight
 
         this._wheelDirection = v;
+    }
+
+    get isUpsideDown() {
+        let roofPos = this.roofMesh.getWorldPosition(),
+            bodyPos = this.mesh.getWorldPosition();
+        return roofPos.y < bodyPos.y;
+    }
+
+    get isCrashed() {
+        if (!this.buildingMeshes) {
+            this.buildingMeshes = [];
+            let tiles = MAIN.game.world.map;
+            for (let tileArray of tiles)
+                for (let tile of tileArray)
+                    this.buildingMeshes = this.buildingMeshes.concat(tile.buildingMeshes);
+        }
+        let crashDirection = 5;
+        return new THREE.Raycaster(this.mesh.position, this.mesh.getWorldDirection(), 0, crashDirection).intersectObjects(this.buildingMeshes).length > 0;
+    }
+
+    get rayDown() {
+        let carHeight = 3;
+        if (!this.floorMeshes) {
+            this.floorMeshes = [];
+            let meshes = MAIN.game.world.map.map(a => a.map(t => t.mesh));
+            for (let mesh of meshes)
+                this.floorMeshes = this.floorMeshes.concat(mesh);
+        }
+        return new THREE.Raycaster(this.mesh.position, this.groundDirection, 0, carHeight).intersectObjects(this.floorMeshes).length > 0;
     }
 
     get isOnGround() {

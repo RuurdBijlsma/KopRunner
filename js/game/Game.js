@@ -13,7 +13,7 @@ class Game {
 
         this.copCars = [];
         for (let i = 0; i < 1; i++) {
-            let pos = this.randomSafePosition();
+            let pos = this.randomSafePosition(),
                 copper = new CopCar(MAIN.scene, pos.x, 8, pos.z);
             this.copCars.push(copper);
         }
