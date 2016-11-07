@@ -20,13 +20,23 @@
 }
 
 #loadingDisplay {
-    background-color: black;
+    background: black url("../img/textures/splash.jpg") no-repeat;
 }
 
 #loadingDisplay #loadingText {
     text-align: center;
     font-size: 60px;
     bottom:100px;
+}
+
+#keymapHint {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 40px;
+    color: white;
+    margin-bottom: 5px;
+    margin-right: 10px;
 }
 
 html {
