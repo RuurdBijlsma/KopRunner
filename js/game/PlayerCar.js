@@ -3,7 +3,8 @@ class PlayerCar extends Car {
         super(scene, x, y, z, 'red');
 
         let light = new THREE.PointLight(0xffffff, 1, 100);
-        // this.mesh.add(light);
+        light.intensity = 0.1;
+        this.mesh.add(light);
         light.position.set(0, 4, 0);
 
         let target = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 2), new THREE.MeshStandardMaterial());

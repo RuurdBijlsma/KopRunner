@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/smoke.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/skybox/space/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/explosion.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/posterFinal.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/textures/Thumbs.db" afterPath="$PROJECT_DIR$/img/textures/Thumbs.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/textures/kat/Thumbs.db" afterPath="$PROJECT_DIR$/img/textures/kat/Thumbs.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Car.js" afterPath="$PROJECT_DIR$/js/game/Car.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/CopCar.js" afterPath="$PROJECT_DIR$/js/game/CopCar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Explosion.js" afterPath="$PROJECT_DIR$/js/game/Explosion.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Game.js" afterPath="$PROJECT_DIR$/js/game/Game.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/PlayerCar.js" afterPath="$PROJECT_DIR$/js/game/PlayerCar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/World.js" afterPath="$PROJECT_DIR$/js/game/World.js" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +50,10 @@
       <file leaf-file-name="CopCar.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/game/CopCar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="60" column="7" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+            <state relative-caret-position="338">
+              <caret line="65" column="7" selection-start-line="65" selection-start-column="7" selection-end-line="65" selection-end-column="7" />
               <folding>
-                <marker date="1478537743695" expanded="true" signature="59:327" ph="{...}" />
-                <marker date="1478537743695" expanded="true" signature="879:886" ph="{...}" />
+                <marker date="1478550894307" expanded="true" signature="59:327" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -52,8 +62,8 @@
       <file leaf-file-name="Car.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/Car.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state relative-caret-position="283">
+              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -401,7 +411,7 @@
       <workItem from="1478369719882" duration="2646000" />
       <workItem from="1478380724174" duration="30000" />
       <workItem from="1478471116123" duration="1068000" />
-      <workItem from="1478515159540" duration="8956000" />
+      <workItem from="1478515159540" duration="9723000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -704,11 +714,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478537754474</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="smoke added">
+      <created>1478537781098</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1478537781098</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25691000" />
+    <option name="totallyTimeSpent" value="26458000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -747,7 +764,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="fixmix" />
     <MESSAGE value="physics driving added" />
     <MESSAGE value="orbit controls are back" />
     <MESSAGE value="camera following added" />
@@ -772,7 +788,8 @@
     <MESSAGE value="health fix" />
     <MESSAGE value="hink pousyh" />
     <MESSAGE value="boost vfx added" />
-    <option name="LAST_COMMIT_MESSAGE" value="boost vfx added" />
+    <MESSAGE value="smoke added" />
+    <option name="LAST_COMMIT_MESSAGE" value="smoke added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1158,19 +1175,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/CopCar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="60" column="7" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+        <state relative-caret-position="338">
+          <caret line="65" column="7" selection-start-line="65" selection-start-column="7" selection-end-line="65" selection-end-column="7" />
           <folding>
-            <marker date="1478537743695" expanded="true" signature="59:327" ph="{...}" />
-            <marker date="1478537743695" expanded="true" signature="879:886" ph="{...}" />
+            <marker date="1478550894307" expanded="true" signature="59:327" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/Car.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state relative-caret-position="283">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -11,6 +11,11 @@ class CopCar extends Car {
         this.flickerInterval = 500;
     }
 
+    handleExplosion() {
+        let safePos = MAIN.game.randomSafePosition();
+        this.setPosition(safePos.x, tileYlevel - 2, safePos.z);
+    }
+
     enableLights() {
         if (!this.lightInterval) {
             this.light.intensity = 2;
@@ -74,20 +79,18 @@ class CopCar extends Car {
         return determinant;
     }
 
-    getVectorsToCar(playerCar)
-    {
+    getVectorsToCar(playerCar) {
         let vecTarget = new THREE.Vector2(playerCar.mesh.position.x, playerCar.mesh.position.z);
         let vecThis = new THREE.Vector2(this.mesh.position.x, this.mesh.position.z);
 
         let tileTarget = MAIN.game.world.getAINodeOnVector(vecTarget);
         let tileThis = MAIN.game.world.getAINodeOnVector(vecThis);
 
-        let path = MAIN.game.world.findPath(tileThis,tileTarget);
+        let path = MAIN.game.world.findPath(tileThis, tileTarget);
 
         let arr = [];
-        for(let elem of path)
-        {
-            arr.push(elem.worldPosition.x, elem.worldPosition.z);
+        for (let elem of path) {
+            arr.push(new THREE.Vector2(elem.worldPosition.x, elem.worldPosition.z));
         }
         return arr;
     }

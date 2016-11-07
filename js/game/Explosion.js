@@ -1,6 +1,5 @@
 class Explosion {
-    constructor(car, config, position) {
-        this.position = position;
+    constructor(car, config) {
         this.config = config;
         this.car = car;
         this.tex = new THREE.TextureLoader().load('img/textures/smoke.png');
@@ -14,6 +13,15 @@ class Explosion {
         this.loop = MAIN.loop.add(() => this.update());
 
         this.initParticles();
+        this.emitter.disable();
+    }
+    start() {
+        this.emitter.enable();
+        return this;
+    }
+    stop() {
+        this.emitter.disable();
+        return this;
     }
     update() {
         let cd = this.clock.getDelta();
@@ -25,7 +33,7 @@ class Explosion {
                 value: 2
             },
             position: {
-                value: this.position || this.car.mesh.position.clone().sub(new THREE.Vector3(0, 1.5, 0)),
+                value: new THREE.Vector3(0, 1.5, 0),
                 spread: new THREE.Vector3(0, 0, 0)
             },
 
@@ -53,6 +61,7 @@ class Explosion {
             for (let prop in this.config)
                 initConfig[prop] = this.config[prop];
 
+        console.log('explosion position: ', initConfig.position);
         this.emitter = new SPE.Emitter(initConfig);
 
         this.particleGroup.addEmitter(this.emitter);
@@ -60,7 +69,10 @@ class Explosion {
     }
 
     dispose() {
-        MAIN.loop.remove(this.loop);
-        this.car.mesh.remove(this.particleGroup.mesh);
+        this.stop();
+        setTimeout(() => {
+            MAIN.loop.remove(this.loop);
+            this.car.mesh.remove(this.particleGroup.mesh);
+        }, 5000);
     }
 }

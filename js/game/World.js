@@ -41,7 +41,14 @@ class World {
     constructor() {
         this.map = [];
 
-        MAIN.loop.add(()=>{console.log(MAIN.game.world.getAINodeOnVector(new THREE.Vector2(MAIN.game.car.mesh.position.x, MAIN.game.car.mesh.position.z)))});
+        MAIN.loop.add(() => {
+            MAIN.game.world.getAINodeOnVector(
+                new THREE.Vector2(
+                    MAIN.game.car.mesh.position.x,
+                    MAIN.game.car.mesh.position.z
+                    )
+            )
+        });
 
         this.createMap();
 
@@ -107,13 +114,12 @@ class World {
         this.generateSideFaces();
     }
 
-    generateSideFaces()
-    {
-        let geom = new THREE.PlaneGeometry(tileSize * mapSize, tileSize, 1,1);
+    generateSideFaces() {
+        let geom = new THREE.PlaneGeometry(tileSize * mapSize, tileSize, 1, 1);
 
         let texture = TextureMap.instance.map['skylinerotate2'].texture;
-        let mat = new THREE.MeshBasicMaterial({map: texture, transparent: true});
-        let mesh = new Physijs.PlaneMesh(geom,mat);
+        let mat = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
+        let mesh = new Physijs.PlaneMesh(geom, mat);
         mesh.translateY(tileSize / 3);
 
         let mesh0 = mesh.clone();
@@ -139,14 +145,14 @@ class World {
     }
 
     static getDistance(nodeA, nodeB) {
-        let dstX = Math.abs(nodeA.worldPosition.x - nodeB.worldPosition.x);
-        let dstY = Math.abs(nodeA.worldPosition.y - nodeB.worldPosition.y);
+            let dstX = Math.abs(nodeA.worldPosition.x - nodeB.worldPosition.x);
+            let dstY = Math.abs(nodeA.worldPosition.y - nodeB.worldPosition.y);
 
-        if (dstX > dstY)
-            return 14 * dstY + 10 * (dstX - dstY);
-        return 14 * dstX + 10 * (dstY - dstX);
-    }
-    /*
+            if (dstX > dstY)
+                return 14 * dstY + 10 * (dstX - dstY);
+            return 14 * dstX + 10 * (dstY - dstX);
+        }
+        /*
     recalculatePaths() {
         for (let x = 0; x < mapSize; ++x) {
             for (let y = 0; y < mapSize; ++y) {
@@ -463,28 +469,24 @@ class World {
         return path;
     }
 
-    getAINodeOnVector(vector2)
-    {
+    getAINodeOnVector(vector2) {
         let dst = 99999999;
         let tile = null;
 
-        for(let x = 0; x < mapSize; ++x)
-        {
-            for(let y = 0; y < mapSize; ++y)
-            {
+        for (let x = 0; x < mapSize; ++x) {
+            for (let y = 0; y < mapSize; ++y) {
                 let dstX = Math.abs(this.map[x][y].singleAINode.worldPosition.x - vector2.x);
                 let dstY = Math.abs(this.map[x][y].singleAINode.worldPosition.y - vector2.y);
 
                 if (dstX > dstY) {
                     let calc = 14 * dstY + 10 * (dstX - dstY) / 1000;
                     dst = calc < dst ? calc : dst;
-                    if(calc <= dst)
+                    if (calc <= dst)
                         tile = this.map[x][y];
-                }
-                else {
+                } else {
                     let calc = 14 * dstX + 10 * (dstY - dstX) / 1000;
                     dst = calc < dst ? calc : dst;
-                    if(calc <= dst)
+                    if (calc <= dst)
                         tile = this.map[x][y];
                 }
             }

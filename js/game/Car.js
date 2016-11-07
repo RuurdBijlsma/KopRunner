@@ -57,6 +57,15 @@ class Car extends Physijs.Vehicle {
         this.boostPower = 50;
         this.health = 100;
         this.mesh.addEventListener('collision', (collisionObject, collisionVelocity, collisionRotation, normal) => this.collisionHandler(collisionObject, collisionVelocity, collisionRotation, normal));
+        this.boostEmitter = new Explosion(this, {
+            color: {
+                value: [new THREE.Color('orange'), new THREE.Color('red')]
+            },
+            position: {
+                value: this.mesh.position.clone().sub(new THREE.Vector3(0, 10, 0)),
+                spread: new THREE.Vector3(0, 0, 0)
+            }
+        });
     }
 
     get health() {
@@ -65,6 +74,7 @@ class Car extends Physijs.Vehicle {
     set health(h) {
         if (h < 0) {
             console.log('dead');
+            this.explode();
         }
         this._health = h;
     }
@@ -103,6 +113,29 @@ class Car extends Physijs.Vehicle {
         //-1 = right
         this.stopTurningWheels();
         this.wheelDirection += direction / 50;
+    }
+
+    explode() {
+        let splosion = new Explosion(MAIN.game.car, {
+            velocity: {
+                value: new THREE.Vector3(0, 0.5, 0),
+                spread: new THREE.Vector3(10, 10, 10)
+            },
+            acceleration: {
+                value: new THREE.Vector3(0, 0, 0),
+                spread: new THREE.Vector3(0, 0, 0)
+            },
+            color: {
+                value: [new THREE.Color('orange'), new THREE.Color('yellow')]
+            },
+            particleCount: 50000
+        }).start();
+        setTimeout(() => splosion.dispose(), 200);
+        setTimeout(() => this.handleExplosion(), 2000);
+    }
+
+    handleExplosion(){
+        //player exploded
     }
 
     setWheels(direction) {
@@ -162,14 +195,14 @@ class Car extends Physijs.Vehicle {
 
     boost() {
         if (!this.boostTimeout) {
-            let boostFX = new Explosion(this);
+            this.boostEmitter.start();
             this.boostTimeout = true;
             let loop = MAIN.loop.add(() => {
                 this.mesh.setLinearVelocity(this.mesh.getWorldDirection().multiplyScalar(this.boostPower));
             });
             setTimeout(() => {
                 MAIN.loop.remove(loop);
-                boostFX.dispose();
+                this.boostEmitter.stop();
             }, 1000);
 
             setTimeout(() => {
