@@ -20,6 +20,10 @@ class TextureMap extends Singleton {
         }
     }
 
+    setCanvas(name) {
+        document.getElementsByTagName("canvas")[0].replaceWith(this.map[name].canvas.canvas);
+    }
+
     createCanvasElement(name, rotation) {
         let image = document.createElement('img');
         image.src = this.folder + name + this.extension;
@@ -29,6 +33,19 @@ class TextureMap extends Singleton {
             let context = canvas.getContext('2d');
             canvas.width = image.width;
             canvas.height = image.height;
+
+            switch(rotation) {
+                case 1:
+                    context.translate(image.width, 0);
+                    break;
+                case 2:
+                    context.translate(image.width, image.height);
+                    break;
+                case 3:
+                    context.translate(0, image.height);
+                    break;
+            }
+
             context.rotate((Math.PI / 2) * rotation);
             context.drawImage(image, 0, 0, image.width, image.height);
 
@@ -39,10 +56,13 @@ class TextureMap extends Singleton {
             }
             else dictName = name + "rotate" + rotation;
 
+            document.body.appendChild(canvas);
+
             this.map[dictName] = {
                 canvas: context,
                 texture: new THREE.Texture(canvas)
             };
+
             this.map[dictName].texture.anisotropy = 16;
             this.map[dictName].texture.magFilter = THREE.LinearFilter;
             this.map[dictName].texture.minFilter = THREE.LinearMipMapNearestFilter;
