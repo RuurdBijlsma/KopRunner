@@ -11,7 +11,7 @@ class Game {
         this.car.wheelDirection = 0;
 
         this.copCars = [];
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 10; i++) {
             let x = (halfMapSize - Math.random() * halfMapSize * 2) / 1.5,
                 z = (halfMapSize - Math.random() * halfMapSize * 2) / 1.5,
                 copper = new CopCar(MAIN.scene, x, 8, z);

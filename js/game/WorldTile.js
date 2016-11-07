@@ -153,7 +153,14 @@ class WorldTile {
         geometry.computeFaceNormals();
         geometry.computeVertexNormals();
 
-        let ground = new Physijs.HeightfieldMesh(geometry, new THREE.MeshPhongMaterial({ map: this.texture }), 0, this.channelsImage.width, this.channelsImage.height);
+        let material = Physijs.createMaterial(new THREE.MeshPhongMaterial({
+            map: this.texture,
+            bumpMap: this.texture,
+            bumpScale: 0.025,
+            shininess: 5
+        }), 0.8, 0.2);
+
+        let ground = new Physijs.HeightfieldMesh(geometry, material, 0, this.channelsImage.width, this.channelsImage.height);
         ground.rotation.x = Math.PI / -2;
         ground.receiveShadow = true;
 

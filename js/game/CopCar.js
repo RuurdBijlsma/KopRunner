@@ -9,7 +9,7 @@ class CopCar extends Car {
         this._actor = KeyboardActor.instance;
 
         this.flickerInterval = 500;
-        setTimeout(() => this.flickerLights(), 5000 + Math.random() * this.flickerInterval);
+        setTimeout(() => this.flickerLights(), 10000 + Math.random() * this.flickerInterval);
     }
 
     flickerLights() {
