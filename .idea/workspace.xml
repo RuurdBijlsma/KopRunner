@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Car.js" afterPath="$PROJECT_DIR$/js/game/Car.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/CopCar.js" afterPath="$PROJECT_DIR$/js/game/CopCar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/WorldTile.js" afterPath="$PROJECT_DIR$/js/game/WorldTile.js" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -421,7 +418,7 @@
       <workItem from="1478430425554" duration="1305000" />
       <workItem from="1478436399879" duration="1047000" />
       <workItem from="1478442137925" duration="6495000" />
-      <workItem from="1478512482199" duration="644000" />
+      <workItem from="1478512482199" duration="691000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -640,11 +637,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478451164190</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="driveroute function added">
+      <created>1478514988988</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1478514988989</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18669000" />
+    <option name="totallyTimeSpent" value="18716000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -683,7 +687,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="envmap credits fixed" />
     <MESSAGE value="get speed fixed, driving backwards now possible" />
     <MESSAGE value="jump added, boost fixed" />
     <MESSAGE value="boost power property added" />
@@ -708,7 +711,8 @@
     <MESSAGE value="channels updated" />
     <MESSAGE value="fixed" />
     <MESSAGE value="copcar added" />
-    <option name="LAST_COMMIT_MESSAGE" value="copcar added" />
+    <MESSAGE value="driveroute function added" />
+    <option name="LAST_COMMIT_MESSAGE" value="driveroute function added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
