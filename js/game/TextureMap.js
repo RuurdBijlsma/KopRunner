@@ -14,7 +14,7 @@ class TextureMap extends Singleton {
         this.filesToLoad = names.length * 4;
         let loader = new THREE.TextureLoader();
         for (let name of names) {
-            for(let i = 0; i < 4; ++i) {
+            for (let i = 0; i < 4; ++i) {
                 this.createCanvasElement(name, i);
             }
         }
@@ -34,7 +34,7 @@ class TextureMap extends Singleton {
             canvas.width = image.width;
             canvas.height = image.height;
 
-            switch(rotation) {
+            switch (rotation) {
                 case 1:
                     context.translate(image.width, 0);
                     break;
@@ -50,13 +50,16 @@ class TextureMap extends Singleton {
             context.drawImage(image, 0, 0, image.width, image.height);
 
             let dictName;
-            if(name.includes(".channels")) {
+            if (name.includes(".channels")) {
                 name = name.substring(0, name.length - 9);
                 dictName = name + "rotate" + rotation + ".channels";
-            }
-            else dictName = name + "rotate" + rotation;
+            } else dictName = name + "rotate" + rotation;
 
-            document.body.appendChild(canvas);
+            // document.body.appendChild(document.createElement("p"));
+            // document.getElementsByTagName('p')[document.getElementsByTagName('p').length - 1].innerText = dictName;
+            // document.getElementsByTagName('p')[document.getElementsByTagName('p').length - 1].style.color = 'black';
+            // document.getElementsByTagName('p')[document.getElementsByTagName('p').length - 1].style.fontSize = '80px';
+            // document.body.appendChild(canvas);
 
             this.map[dictName] = {
                 canvas: context,
@@ -73,8 +76,7 @@ class TextureMap extends Singleton {
         };
     }
 
-    onLoad() {
-    }
+    onLoad() {}
 
     onLoadFile() {
         if (--this.filesToLoad <= 0) {
@@ -94,7 +96,7 @@ class TextureMap extends Singleton {
 
         // The above code doesn't work on servers that don't show folders
         // Instead, we need to hardcode all filenames here
-        let names =  [
+        let names = [
             "4wayroad",
             "3wayroad",
             "2wayroad",
