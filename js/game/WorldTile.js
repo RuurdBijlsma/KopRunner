@@ -250,9 +250,9 @@ class WorldTile {
 
             arr.push(mesh.clone());
 
-            let v = Math.random() * (0.6 - 0.01) + 0.01;
+            let v = Math.random() * (0.6 - 0.4) + 0.4;
             let clone = arr[arr.length - 1];
-            clone.material.color.setRGB(v, v, v);
+            clone.material.color.setRGB(0, 0, v);
 
             clone.rotation.y = rot;
             clone.scale.x = size;

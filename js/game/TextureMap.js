@@ -88,7 +88,7 @@ class TextureMap extends Singleton {
 
         // Textures that don't have a channels image
         let namesWithoutChannels = [
-
+            "skyline"
         ];
 
         return names.concat(namesWithoutChannels);

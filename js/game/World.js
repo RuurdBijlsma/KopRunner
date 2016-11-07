@@ -75,8 +75,30 @@ class World {
     {
         let geom = new THREE.PlaneGeometry(tileSize * mapSize, tileSize, 1,1);
 
-        let mat = new THREE.MeshBasicMaterial();
+        let texture = TextureMap.instance.map['skylinerotate0'].texture;
+        let mat = new THREE.MeshBasicMaterial({map: texture, transparent: true});
+        let mesh = new Physijs.PlaneMesh(geom,mat);
+        mesh.translateY(tileSize / 3);
 
+        let mesh0 = mesh.clone();
+        let mesh1 = mesh.clone();
+        let mesh2 = mesh.clone();
+        let mesh3 = mesh.clone();
+
+        mesh0.translateZ(halfMapSize);
+        mesh1.translateZ(-halfMapSize);
+        mesh0.rotateY(Math.PI);
+
+        mesh2.translateX(halfMapSize);
+        mesh2.rotateY(-Math.PI / 2);
+
+        mesh3.translateX(-halfMapSize);
+        mesh3.rotateY(Math.PI / 2);
+
+        MAIN.scene.add(mesh0);
+        MAIN.scene.add(mesh1);
+        MAIN.scene.add(mesh2);
+        MAIN.scene.add(mesh3);
 
     }
 
