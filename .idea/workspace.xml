@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
+    <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="test canvas rotation">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/TextureMap.js" afterPath="$PROJECT_DIR$/js/game/TextureMap.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/World.js" afterPath="$PROJECT_DIR$/js/game/World.js" />
@@ -51,8 +51,8 @@
       <file leaf-file-name="WorldTile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/game/WorldTile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="173" column="58" selection-start-line="170" selection-start-column="9" selection-end-line="173" selection-end-column="58" />
+            <state relative-caret-position="-56">
+              <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -92,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="World.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="World.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/World.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-493">
-              <caret line="54" column="59" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
+            <state relative-caret-position="204">
+              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -112,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TextureMap.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TextureMap.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/game/TextureMap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="58" column="46" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
+            <state relative-caret-position="442">
+              <caret line="65" column="53" selection-start-line="65" selection-start-column="53" selection-end-line="65" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -137,8 +137,8 @@
         <option value="$PROJECT_DIR$/js/game/NewCar.js" />
         <option value="$PROJECT_DIR$/js/game/Scene.js" />
         <option value="$PROJECT_DIR$/js/game/WorldTile.js" />
-        <option value="$PROJECT_DIR$/js/game/World.js" />
         <option value="$PROJECT_DIR$/js/game/TextureMap.js" />
+        <option value="$PROJECT_DIR$/js/game/World.js" />
       </list>
     </option>
   </component>
@@ -498,7 +498,7 @@
       <workItem from="1478436399879" duration="371000" />
       <workItem from="1478436931574" duration="10168000" />
       <workItem from="1478449577728" duration="1813000" />
-      <workItem from="1478514399541" duration="9879000" />
+      <workItem from="1478514399541" duration="11158000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -689,11 +689,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478517128246</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="test canvas rotation">
+      <created>1478525741615</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1478525741615</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32714000" />
+    <option name="totallyTimeSpent" value="33993000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1874" height="1096" extended-state="6" />
@@ -756,7 +763,8 @@
     <MESSAGE value="fixmix" />
     <MESSAGE value="add names without channels" />
     <MESSAGE value="fix image rotatione" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix image rotatione" />
+    <MESSAGE value="test canvas rotation" />
+    <option name="LAST_COMMIT_MESSAGE" value="test canvas rotation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1088,22 +1096,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/WorldTile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="173" column="58" selection-start-line="170" selection-start-column="9" selection-end-line="173" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/World.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-493">
-          <caret line="54" column="59" selection-start-line="54" selection-start-column="59" selection-end-line="54" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/game/PixelFetcher.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1114,8 +1106,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/TextureMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="58" column="46" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
+        <state relative-caret-position="442">
+          <caret line="65" column="53" selection-start-line="65" selection-start-column="53" selection-end-line="65" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/game/WorldTile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-56">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/game/World.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
           <folding />
         </state>
       </provider>
