@@ -134,7 +134,7 @@ class Car extends Physijs.Vehicle {
 
     explode() {
         this.splosionEmitter.start();
-        setTimeout(() => this.splosionEmitter.dispose(), 200);
+        setTimeout(() => this.splosionEmitter.stop(), 200);
         setTimeout(() => this.handleExplosion(), 2000);
     }
 

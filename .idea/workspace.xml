@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="splash scr">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/textures/splash.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/textures/Thumbs.db" afterPath="$PROJECT_DIR$/img/textures/Thumbs.db" />
+    <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Car.js" afterPath="$PROJECT_DIR$/js/game/Car.js" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +39,8 @@
       <file leaf-file-name="Car.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/Car.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
+            <state relative-caret-position="357">
+              <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -441,7 +440,7 @@
       <workItem from="1478515663912" duration="121000" />
       <workItem from="1478517523987" duration="195000" />
       <workItem from="1478527390659" duration="1283000" />
-      <workItem from="1478560609671" duration="263000" />
+      <workItem from="1478560609671" duration="558000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -681,17 +680,24 @@
       <option name="project" value="LOCAL" />
       <updated>1478528278534</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="splash screen added">
+      <created>1478560878901</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1478560878901</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20686000" />
+    <option name="totallyTimeSpent" value="20981000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.525" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.475" order="7" side_tool="false" content_ui="tabs" />
@@ -724,7 +730,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="jump added, boost fixed" />
     <MESSAGE value="boost power property added" />
     <MESSAGE value="redundant files removed" />
     <MESSAGE value="console.log removed" />
@@ -749,7 +754,8 @@
     <MESSAGE value="copcar added" />
     <MESSAGE value="driveroute function added" />
     <MESSAGE value="collision detection added" />
-    <option name="LAST_COMMIT_MESSAGE" value="collision detection added" />
+    <MESSAGE value="splash screen added" />
+    <option name="LAST_COMMIT_MESSAGE" value="splash screen added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1146,8 +1152,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/Car.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="57" column="29" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
+        <state relative-caret-position="357">
+          <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
           <folding />
         </state>
       </provider>
