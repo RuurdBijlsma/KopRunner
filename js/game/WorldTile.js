@@ -144,7 +144,7 @@ class WorldTile {
         let geometry = new THREE.PlaneGeometry(tileSize, tileSize, verticesPerAxis, verticesPerAxis);
 
         for (let vertex of geometry.vertices) {
-            let posX = ((vertex.x + (tileSize + 1) / 2) * ((fetcher.context.canvas.width)  / (tileSize + 1)));
+            let posX = ((vertex.x + (tileSize + 1) / 2) * ((fetcher.context.canvas.width) / (tileSize + 1)));
             let posY = ((vertex.y + (tileSize + 1) / 2) * ((fetcher.context.canvas.height) / (tileSize + 1)));
             vertex.z = fetcher.getPixelR(posX, posY) / 128;
         }
@@ -185,8 +185,8 @@ class WorldTile {
         let a = fetcher.getPixelA(fetcher.context.canvas.width / 2, fetcher.context.canvas.height / 2);
         this.singleAINode = new AStarNode();
         this.singleAINode.densityFactor = a;
-        this.singleAINode.localPosition = {x: -1, y: -1};
-        this.singleAINode.worldPosition = {x: this.worldX + tileSize / 2 - halfMapSize, y: this.worldZ + tileSize / 2 - halfMapSize};
+        this.singleAINode.localPosition = { x: -1, y: -1 };
+        this.singleAINode.worldPosition = { x: this.worldX + tileSize / 2 - halfMapSize, y: this.worldZ + tileSize / 2 - halfMapSize };
 
         if(showDebugMeshes) {
             let g1 = new THREE.CylinderGeometry(1, 1, 5, 10, 10);
@@ -218,7 +218,7 @@ class WorldTile {
 
         let mesh = new THREE.Mesh(geom, new THREE.MeshStandardMaterial(),0);
 
-        let BuildingCount = Math.floor((Math.random() * (50 - 1)) + 1);
+        let BuildingCount = Math.floor(((Math.random() * (50 - 1)) + 1) / 5);
 
         let arr = [];
 
@@ -226,9 +226,9 @@ class WorldTile {
         {
 
 
-            let rot = Math.random() * Math.PI*2;
+            let rot = Math.random() * Math.PI * 2;
             let size = Math.floor((Math.random() * (tileSize / 6 - tileSize / 16)) + tileSize / 16);
-            let ySize = Math.floor((Math.random() * (64-10)) + 10);
+            let ySize = Math.floor((Math.random() * (64 - 10)) + 10);
 
             let x = Math.floor((Math.random() * (tileSize / 2 - 1)) + 1);
             let y = Math.floor((Math.random() * (tileSize / 2 - 1)) + 1);
