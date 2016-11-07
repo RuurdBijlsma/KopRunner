@@ -6,9 +6,8 @@ class CopCar extends Car {
 
     driveRoute(route) {
         if (route.length > 1) {
-            let nextPoint = route[1];
             for (let i = 0; i < route.length - 1; i++) {
-
+                this.driveTo(route[i].then(driveTo(route[i+1])));
             }
         }
     }
