@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/CopCar.js" afterPath="$PROJECT_DIR$/js/game/CopCar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Explosion.js" afterPath="$PROJECT_DIR$/js/game/Explosion.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Game.js" afterPath="$PROJECT_DIR$/js/game/Game.js" />
     </list>
     <ignored path="KopRunner.iws" />
@@ -44,8 +42,8 @@
             <state relative-caret-position="357">
               <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
               <folding>
-                <marker date="1478565666736" expanded="true" signature="85:1049" ph="{...}" />
-                <marker date="1478565666736" expanded="true" signature="486:500" ph="{...}" />
+                <marker date="1478565890373" expanded="true" signature="85:1049" ph="{...}" />
+                <marker date="1478565890373" expanded="true" signature="486:500" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -54,8 +52,8 @@
       <file leaf-file-name="CopCar.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game/CopCar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+            <state relative-caret-position="272">
+              <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -347,7 +345,7 @@
       <workItem from="1478517523987" duration="195000" />
       <workItem from="1478527390659" duration="1283000" />
       <workItem from="1478560609671" duration="1551000" />
-      <workItem from="1478564417704" duration="1026000" />
+      <workItem from="1478564417704" duration="1183000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -615,11 +613,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478563007526</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="r to add copcar">
+      <created>1478565754063</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1478565754063</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23000000" />
+    <option name="totallyTimeSpent" value="23157000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -658,7 +663,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="redundant files removed" />
     <MESSAGE value="console.log removed" />
     <MESSAGE value="redundant code removed" />
     <MESSAGE value="SkeerSteer™ added" />
@@ -683,7 +687,8 @@
     <MESSAGE value="collision detection added" />
     <MESSAGE value="splash screen added" />
     <MESSAGE value="explosions fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="explosions fixed" />
+    <MESSAGE value="r to add copcar" />
+    <option name="LAST_COMMIT_MESSAGE" value="r to add copcar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1059,8 +1064,8 @@
         <state relative-caret-position="357">
           <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
           <folding>
-            <marker date="1478565666736" expanded="true" signature="85:1049" ph="{...}" />
-            <marker date="1478565666736" expanded="true" signature="486:500" ph="{...}" />
+            <marker date="1478565890373" expanded="true" signature="85:1049" ph="{...}" />
+            <marker date="1478565890373" expanded="true" signature="486:500" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1083,8 +1088,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/CopCar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+        <state relative-caret-position="272">
+          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
           <folding />
         </state>
       </provider>

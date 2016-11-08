@@ -19,7 +19,7 @@ class Game {
         document.getElementById("loadingDisplay").style.display = "none";
     }
     addRandomCopper() {
-        if (this.copCars.length < 12) {
+        if (this.copCars.length < 11) {
             let pos = this.randomSafePosition(),
                 randPos = new THREE.Vector3(2.5 - pos.x + Math.random() * 5, 8, 5 - pos.y + Math.random() * 10);
             console.log(randPos, pos.y);
