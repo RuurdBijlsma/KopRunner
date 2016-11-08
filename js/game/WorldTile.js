@@ -27,9 +27,9 @@ class WorldTile {
         this._neighbours = new Array(4);
         //this.generateAStarNodes();
 
-        this.generateSimpleAStar();
-
         this._connections = connectionsDictionary[this.texture_name];
+
+        this.generateSimpleAStar();
 
         this.generateBuildings();
 

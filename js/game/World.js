@@ -1,9 +1,7 @@
 const mapSize = 10;
 const tileSize = 60;
-const tileHeight = 0.1;
 const aiNodePerBlock = 10;
 const tileYlevel = 5;
-const detailRadius = 1; //MUST BE SMALLER THAN mapSize!
 const halfMapSize = mapSize * tileSize / 2;
 const showDebugMeshes = false;
 
@@ -12,22 +10,27 @@ const connectionsDictionary = {
     "4wayroadrotate1": [true, true, true, true],
     "4wayroadrotate2": [true, true, true, true],
     "4wayroadrotate3": [true, true, true, true],
-    "3wayroadrotate0": [true, true, true, false],
-    "3wayroadrotate1": [true, true, false, true],
-    "3wayroadrotate2": [true, false, true, true],
-    "3wayroadrotate3": [false, true, true, true],
-    "2wayroadrotate0": [true, false, true, false],
-    "2wayroadrotate1": [false, true, false, true],
-    "2wayroadrotate2": [true, false, true, false],
-    "2wayroadrotate3": [false, true, false, true],
-    "cornerrotate0": [false, true, true, false],
+
+    "3wayroadrotate0": [true, true, false, true],
+    "3wayroadrotate1": [true, true, true, false],
+    "3wayroadrotate2": [false, true, true, true],
+    "3wayroadrotate3": [true, false, true, true],
+
+    "2wayroadrotate0": [false, true, false, true],
+    "2wayroadrotate1": [true, false, true, false],
+    "2wayroadrotate2": [false, true, false, true],
+    "2wayroadrotate3": [true, false, true, false],
+
+    "cornerrotate0": [true, false, false, true],
     "cornerrotate1": [true, true, false, false],
-    "cornerrotate2": [true, false, false, true],
+    "cornerrotate2": [false, true, true, false],
     "cornerrotate3": [false, false, true, true],
+
     "grassrotate0": [false, false, false, false],
     "grassrotate1": [false, false, false, false],
     "grassrotate2": [false, false, false, false],
     "grassrotate3": [false, false, false, false],
+
     "grasshillrotate0": [false, false, false, false],
     "grasshillrotate1": [false, false, false, false],
     "grasshillrotate2": [false, false, false, false],
@@ -72,25 +75,16 @@ class World {
 
 
                 if (column === 0)
-                    arr[2] = false;
-                if (column === mapSize - 1)
-                    arr[0] = false;
-                if (row === 0)
                     arr[3] = false;
-                if (row === mapSize - 1)
+                if (column === mapSize - 1)
                     arr[1] = false;
+                if (row === 0)
+                    arr[2] = false;
+                if (row === mapSize - 1)
+                    arr[0] = false;
 
-                /*
-                 arr 3 is west
-                 arr 2 is zuid
-                 arr 1 oost
-                 aarr 0 noord
-                 */
             }
         }
-
-        let lastTilePosX = -1;
-        let lastTilePosY = -1;
 
         let tilesVisited = 0;
 
@@ -120,14 +114,20 @@ class World {
                     }
                 }
 
-                console.log("fucking up");
                 columns[column][row] = result;
 
-                columns[column + 1][row][2] = columns[column][row][0];
-                columns[column - 1][row][0] = columns[column][row][2];
+                columns[column + 1][row][3] = columns[column][row][1];
+                columns[column - 1][row][1] = columns[column][row][3];
 
-                columns[column][row + 1][3] = columns[column][row][1];
-                columns[column][row - 1][1] = columns[column][row][3];
+                columns[column][row + 1][2] = columns[column][row][0];
+                columns[column][row - 1][0] = columns[column][row][2];
+
+                /*
+                 arr 3 is west
+                 arr 2 is zuid
+                 arr 1 oost
+                 aarr 0 noord
+                 */
 
                 messedWith.push({
                     column: column,
@@ -136,7 +136,7 @@ class World {
 
             }
         }
-        console.log("visited tiles", tilesVisited);
+        //console.log("visited tiles", tilesVisited);
         return columns;
     }
 
@@ -206,20 +206,19 @@ class World {
 
 
 
-        let t2 = this.findPath(this.map[0][0].singleAINode, this.map[mapSize - 1][mapSize - 1].singleAINode);
-        // console.log(t2);
-        if (showDebugMeshes) {
-            let geom = new THREE.CylinderGeometry(0.1, 0.1, 6, 8, 8);
-            let mat2 = new THREE.MeshPhongMaterial({ color: "yellow" });
-            let mesh = new THREE.Mesh(geom, mat2);
-
-            if (t2)
-                for (let k of t2) {
-                    let m = mesh.clone();
-                    m.position.set(k.worldPosition.x, 0, k.worldPosition.y);
-                    MAIN.scene.add(m);
-                }
-        }
+        // let t2 = this.findPath(this.map[0][0].singleAINode, this.map[mapSize - 1][mapSize - 1].singleAINode);
+        // if (showDebugMeshes) {
+        //     let geom = new THREE.CylinderGeometry(0.1, 0.1, 6, 8, 8);
+        //     let mat2 = new THREE.MeshPhongMaterial({ color: "yellow" });
+        //     let mesh = new THREE.Mesh(geom, mat2);
+        //     console.log(t2);
+        //     if (t2)
+        //         for (let k of t2) {
+        //             let m = mesh.clone();
+        //             m.position.set(k.worldPosition.x, 0, k.worldPosition.y);
+        //             MAIN.scene.add(m);
+        //         }
+        // }
 
 
         this.generateSideFaces();
@@ -278,17 +277,26 @@ class World {
                 let tile = this.map[x][y];
                 let sainode = tile.singleAINode;
 
+                // if (tile.westTile != null && tile.westConnectable)
+                //     sainode.neighbours.push(tile.westTile.singleAINode);
+                // if (tile.eastTile != null && tile.eastConnectable)
+                //     sainode.neighbours.push(tile.eastTile.singleAINode);
+                // if (tile.southTile != null && tile.southConnectable)
+                //     sainode.neighbours.push(tile.southTile.singleAINode);
+                // if (tile.northTile != null && tile.northConnectable)
+                //     sainode.neighbours.push(tile.northTile.singleAINode);
 
-                if (tile.westTile != null && tile.westConnectable)
+                if (tile.westTile != null)
                     sainode.neighbours.push(tile.westTile.singleAINode);
-                if (tile.eastTile != null && tile.eastConnectable)
+                if (tile.eastTile != null)
                     sainode.neighbours.push(tile.eastTile.singleAINode);
-                if (tile.southTile != null && tile.southConnectable)
+                if (tile.southTile != null)
                     sainode.neighbours.push(tile.southTile.singleAINode);
-                if (tile.northTile != null && tile.northConnectable)
+                if (tile.northTile != null)
                     sainode.neighbours.push(tile.northTile.singleAINode);
 
-                // console.log(sainode.neighbours);
+                //console.log(sainode.neighbours);
+
             }
         }
     }
@@ -398,7 +406,4 @@ class World {
         }
         return tile.singleAINode;
     }
-
-
-
 }

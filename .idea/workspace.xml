@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3639b956-527d-4686-9e42-626ff426e8dc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/CopCar.js" afterPath="$PROJECT_DIR$/js/game/CopCar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Explosion.js" afterPath="$PROJECT_DIR$/js/game/Explosion.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/Game.js" afterPath="$PROJECT_DIR$/js/game/Game.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/World.js" afterPath="$PROJECT_DIR$/js/game/World.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game/WorldTile.js" afterPath="$PROJECT_DIR$/js/game/WorldTile.js" />
     </list>
     <ignored path="KopRunner.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,35 +27,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EnvMap.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/game/EnvMap.js">
+      <file leaf-file-name="CopCar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/game/CopCar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Game.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/game/Game.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="-234">
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding>
-                <marker date="1478565666736" expanded="true" signature="85:1049" ph="{...}" />
-                <marker date="1478565666736" expanded="true" signature="486:500" ph="{...}" />
+                <marker date="1478565807034" expanded="true" signature="1539:1679" ph="{...}" />
+                <marker date="1478565807034" expanded="true" signature="1573:1670" ph="{...}" />
+                <marker date="1478565807034" expanded="true" signature="4105:4114" ph="{...}" />
+                <marker date="1478565807034" expanded="true" signature="4105:4195" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CopCar.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/game/CopCar.js">
+      <file leaf-file-name="Scene.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/game/Scene.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="774">
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+              <folding>
+                <marker date="1478565807034" expanded="true" signature="73:1109" ph="{...}" />
+                <marker date="1478565807034" expanded="true" signature="1094:1109" ph="{...}" />
+                <marker date="1478565807034" expanded="true" signature="3380:3390" ph="{...}" />
+                <marker date="1478565807034" expanded="true" signature="3380:3396" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,30 +60,23 @@
       <file leaf-file-name="Car.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/game/Car.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Explosion.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/game/Explosion.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PixelFetcher.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/game/PixelFetcher.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="3708">
+              <caret line="272" column="5" selection-start-line="272" selection-start-column="5" selection-end-line="272" selection-end-column="5" />
               <folding>
-                <marker date="1478430436850" expanded="true" signature="603:610" ph="{...}" />
+                <marker date="1478565807034" expanded="true" signature="34:9178" ph="{...}" />
+                <marker date="1478565807034" expanded="true" signature="95:959" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="World.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/game/World.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-237">
+              <caret line="304" column="26" selection-start-line="304" selection-start-column="26" selection-end-line="304" selection-end-column="26" />
+              <folding>
+                <element signature="n#!!block;n#findPath#0;n#World#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -96,8 +85,28 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+            <state relative-caret-position="270">
+              <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Actor.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/game/Actor.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AStarNode.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/game/AStarNode.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -106,9 +115,25 @@
       <file leaf-file-name="WorldTile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/game/WorldTile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="360">
+              <caret line="29" column="69" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="69" />
+              <folding>
+                <element signature="n#!!block;n#generateAStarNodes#0;n#WorldTile#0" expanded="false" />
+                <marker date="1478565807062" expanded="true" signature="9397:9415" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/game/Game.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+              <folding>
+                <marker date="1478565856685" expanded="true" signature="1072:1234" ph="{...}" />
+                <marker date="1478565856685" expanded="true" signature="1112:1228" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,7 +141,6 @@
     </leaf>
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -125,12 +149,14 @@
         <option value="$PROJECT_DIR$/js/game/EnvMap.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/game/PhysicsCar.js" />
-        <option value="$PROJECT_DIR$/js/game/NewCar.js" />
-        <option value="$PROJECT_DIR$/js/game/WorldTile.js" />
+        <option value="$PROJECT_DIR$/js/game/Car.backup.js" />
+        <option value="$PROJECT_DIR$/js/game/Actor.js" />
         <option value="$PROJECT_DIR$/js/game/Car.js" />
-        <option value="$PROJECT_DIR$/js/game/Game.js" />
-        <option value="$PROJECT_DIR$/js/game/Explosion.js" />
         <option value="$PROJECT_DIR$/js/game/CopCar.js" />
+        <option value="$PROJECT_DIR$/js/game/Scene.js" />
+        <option value="$PROJECT_DIR$/js/game/Game.js" />
+        <option value="$PROJECT_DIR$/js/game/WorldTile.js" />
+        <option value="$PROJECT_DIR$/js/game/World.js" />
       </list>
     </option>
   </component>
@@ -141,10 +167,32 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="1855" />
     <option name="height" value="1056" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsJavaScript</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>EmptyStatementBodyJS</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -171,31 +219,33 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KoprunnerFix" />
+              <option name="myItemId" value="KopRunner" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KoprunnerFix" />
+              <option name="myItemId" value="KopRunner" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KoprunnerFix" />
+              <option name="myItemId" value="KopRunner" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KoprunnerFix" />
+              <option name="myItemId" value="KopRunner" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KoprunnerFix" />
+              <option name="myItemId" value="KopRunner" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -205,11 +255,29 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KoprunnerFix" />
+              <option name="myItemId" value="KopRunner" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KoprunnerFix" />
+              <option name="myItemId" value="KopRunner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="three" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KopRunner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KopRunner" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -223,11 +291,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KoprunnerFix" />
+              <option name="myItemId" value="KopRunner" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KoprunnerFix" />
+              <option name="myItemId" value="KopRunner" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -241,11 +309,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KoprunnerFix" />
+              <option name="myItemId" value="KopRunner" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="KoprunnerFix" />
+              <option name="myItemId" value="KopRunner" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -255,16 +323,138 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/css/style.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/img/textures/Thumbs.db</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/index.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/js/game/Car.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/js/game/CopCar.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/js/game/Explosion.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/js/game/Game.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/js/game/KeyboardActor.js</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/js/game/Scene.js</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/img/textures/splash.jpg</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration default="false" name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/KopRunner/index.html">
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
@@ -318,6 +508,14 @@
       <recursive>false</recursive>
       <method />
     </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -338,16 +536,21 @@
       <workItem from="1478167359045" duration="624000" />
       <workItem from="1478168067988" duration="687000" />
       <workItem from="1478169538478" duration="28000" />
-      <workItem from="1478170231112" duration="1979000" />
-      <workItem from="1478430425554" duration="1305000" />
-      <workItem from="1478436399879" duration="1047000" />
-      <workItem from="1478442137925" duration="6495000" />
-      <workItem from="1478512482199" duration="799000" />
-      <workItem from="1478515663912" duration="121000" />
-      <workItem from="1478517523987" duration="195000" />
-      <workItem from="1478527390659" duration="1283000" />
-      <workItem from="1478560609671" duration="1551000" />
-      <workItem from="1478564417704" duration="1026000" />
+      <workItem from="1478170231112" duration="1967000" />
+      <workItem from="1478186814395" duration="166000" />
+      <workItem from="1478196763664" duration="1061000" />
+      <workItem from="1478266807608" duration="1198000" />
+      <workItem from="1478359055933" duration="1400000" />
+      <workItem from="1478369719882" duration="2646000" />
+      <workItem from="1478380724174" duration="30000" />
+      <workItem from="1478471116123" duration="1068000" />
+      <workItem from="1478515159540" duration="8287000" />
+      <workItem from="1478536255847" duration="8434000" />
+      <workItem from="1478546171742" duration="727000" />
+      <workItem from="1478547034260" duration="8624000" />
+      <workItem from="1478555740755" duration="1308000" />
+      <workItem from="1478557276469" duration="2511000" />
+      <workItem from="1478560113649" duration="5790000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -447,193 +650,221 @@
       <option name="project" value="LOCAL" />
       <updated>1478184195450</updated>
     </task>
-    <task id="LOCAL-00015" summary="physics driving added">
-      <created>1478186088909</created>
+    <task id="LOCAL-00015" summary="orbit controls are back">
+      <created>1478196920497</created>
       <option name="number" value="00015" />
       <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1478186088909</updated>
+      <updated>1478196920497</updated>
     </task>
-    <task id="LOCAL-00016" summary="car mass upped">
-      <created>1478431349364</created>
+    <task id="LOCAL-00016" summary="camera following added">
+      <created>1478205237097</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1478431349364</updated>
+      <updated>1478205237097</updated>
     </task>
-    <task id="LOCAL-00017" summary="steering fixed">
-      <created>1478432751240</created>
+    <task id="LOCAL-00017" summary="camera following added">
+      <created>1478205373983</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1478432751240</updated>
+      <updated>1478205373983</updated>
     </task>
-    <task id="LOCAL-00018" summary="more textures added">
-      <created>1478436737940</created>
+    <task id="LOCAL-00018" summary="physijs vehicle start">
+      <created>1478266830135</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1478436737940</updated>
+      <updated>1478266830135</updated>
     </task>
-    <task id="LOCAL-00019" summary="more textures added">
-      <created>1478436775241</created>
+    <task id="LOCAL-00019" summary="newcar class added">
+      <created>1478266983505</created>
       <option name="number" value="00019" />
       <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1478436775241</updated>
+      <updated>1478266983505</updated>
     </task>
-    <task id="LOCAL-00020" summary="extra textures added with channels">
-      <created>1478442170527</created>
+    <task id="LOCAL-00020" summary="added vehicle.html&#10;">
+      <created>1478359074137</created>
       <option name="number" value="00020" />
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
-      <updated>1478442170527</updated>
+      <updated>1478359074137</updated>
     </task>
-    <task id="LOCAL-00021" summary="grass texture added">
-      <created>1478442806114</created>
+    <task id="LOCAL-00021" summary="vehicle working">
+      <created>1478363806891</created>
       <option name="number" value="00021" />
       <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
-      <updated>1478442806114</updated>
+      <updated>1478363806891</updated>
     </task>
-    <task id="LOCAL-00022" summary="grass heightmap fixed">
-      <created>1478443240060</created>
+    <task id="LOCAL-00022" summary="car driving working">
+      <created>1478371424395</created>
       <option name="number" value="00022" />
       <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1478443240060</updated>
+      <updated>1478371424395</updated>
     </task>
-    <task id="LOCAL-00023" summary="grasshill heightmap fixed">
-      <created>1478443570101</created>
+    <task id="LOCAL-00023" summary="toggle camera button added">
+      <created>1478371959190</created>
       <option name="number" value="00023" />
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
-      <updated>1478443570101</updated>
+      <updated>1478371959190</updated>
     </task>
-    <task id="LOCAL-00024" summary="grasshill heightmap fixed">
-      <created>1478443745349</created>
+    <task id="LOCAL-00024" summary="jump and boost fixed">
+      <created>1478372166478</created>
       <option name="number" value="00024" />
       <option name="presentableId" value="LOCAL-00024" />
       <option name="project" value="LOCAL" />
-      <updated>1478443745349</updated>
+      <updated>1478372166478</updated>
     </task>
-    <task id="LOCAL-00025" summary="jump and boost fixed">
-      <created>1478445098635</created>
+    <task id="LOCAL-00025" summary="floopr is back">
+      <created>1478373798197</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1478445098635</updated>
+      <updated>1478373798197</updated>
     </task>
-    <task id="LOCAL-00026" summary="keymap added">
-      <created>1478447759768</created>
+    <task id="LOCAL-00026" summary="steer speed edited">
+      <created>1478375779746</created>
       <option name="number" value="00026" />
       <option name="presentableId" value="LOCAL-00026" />
       <option name="project" value="LOCAL" />
-      <updated>1478447759768</updated>
+      <updated>1478375779746</updated>
     </task>
-    <task id="LOCAL-00027" summary="channels updated">
-      <created>1478448655806</created>
+    <task id="LOCAL-00027" summary="driveto added">
+      <created>1478473664411</created>
       <option name="number" value="00027" />
       <option name="presentableId" value="LOCAL-00027" />
       <option name="project" value="LOCAL" />
-      <updated>1478448655806</updated>
+      <updated>1478473664411</updated>
     </task>
-    <task id="LOCAL-00028" summary="channels updated">
-      <created>1478449765605</created>
+    <task id="LOCAL-00028" summary="skyline added">
+      <created>1478515670876</created>
       <option name="number" value="00028" />
       <option name="presentableId" value="LOCAL-00028" />
       <option name="project" value="LOCAL" />
-      <updated>1478449765605</updated>
+      <updated>1478515670876</updated>
     </task>
-    <task id="LOCAL-00029" summary="fixed">
-      <created>1478449876709</created>
+    <task id="LOCAL-00029" summary="skyline fixed">
+      <created>1478516078421</created>
       <option name="number" value="00029" />
       <option name="presentableId" value="LOCAL-00029" />
       <option name="project" value="LOCAL" />
-      <updated>1478449876709</updated>
+      <updated>1478516078421</updated>
     </task>
-    <task id="LOCAL-00030" summary="fixed">
-      <created>1478449910830</created>
+    <task id="LOCAL-00030" summary="skyline updated, logs improved">
+      <created>1478516469908</created>
       <option name="number" value="00030" />
       <option name="presentableId" value="LOCAL-00030" />
       <option name="project" value="LOCAL" />
-      <updated>1478449910830</updated>
+      <updated>1478516469908</updated>
     </task>
-    <task id="LOCAL-00031" summary="copcar added">
-      <created>1478451164190</created>
+    <task id="LOCAL-00031" summary="copcars added, errors surpressed">
+      <created>1478520492388</created>
       <option name="number" value="00031" />
       <option name="presentableId" value="LOCAL-00031" />
       <option name="project" value="LOCAL" />
-      <updated>1478451164190</updated>
+      <updated>1478520492388</updated>
     </task>
-    <task id="LOCAL-00032" summary="driveroute function added">
-      <created>1478514988988</created>
+    <task id="LOCAL-00032" summary="bluelight update">
+      <created>1478521278612</created>
       <option name="number" value="00032" />
       <option name="presentableId" value="LOCAL-00032" />
       <option name="project" value="LOCAL" />
-      <updated>1478514988989</updated>
+      <updated>1478521278612</updated>
     </task>
-    <task id="LOCAL-00033" summary="driveroute function added">
-      <created>1478515029388</created>
+    <task id="LOCAL-00033" summary="car spotlights added">
+      <created>1478525747421</created>
       <option name="number" value="00033" />
       <option name="presentableId" value="LOCAL-00033" />
       <option name="project" value="LOCAL" />
-      <updated>1478515029388</updated>
+      <updated>1478525747421</updated>
     </task>
-    <task id="LOCAL-00034" summary="collision detection added">
-      <created>1478528278534</created>
+    <task id="LOCAL-00034" summary="mn ding gedaan">
+      <created>1478527399106</created>
       <option name="number" value="00034" />
       <option name="presentableId" value="LOCAL-00034" />
       <option name="project" value="LOCAL" />
-      <updated>1478528278534</updated>
+      <updated>1478527399106</updated>
     </task>
-    <task id="LOCAL-00035" summary="splash screen added">
-      <created>1478560878901</created>
+    <task id="LOCAL-00035" summary="update connections dictionary after fixing texture rotations">
+      <created>1478528203644</created>
       <option name="number" value="00035" />
       <option name="presentableId" value="LOCAL-00035" />
       <option name="project" value="LOCAL" />
-      <updated>1478560878901</updated>
+      <updated>1478528203644</updated>
     </task>
-    <task id="LOCAL-00036" summary="explosions fixed">
-      <created>1478561176572</created>
+    <task id="LOCAL-00036" summary="health fix">
+      <created>1478529440088</created>
       <option name="number" value="00036" />
       <option name="presentableId" value="LOCAL-00036" />
       <option name="project" value="LOCAL" />
-      <updated>1478561176572</updated>
+      <updated>1478529440088</updated>
     </task>
-    <task id="LOCAL-00037" summary="explosions fixed">
-      <created>1478562994896</created>
+    <task id="LOCAL-00037" summary="health fix">
+      <created>1478529454917</created>
       <option name="number" value="00037" />
       <option name="presentableId" value="LOCAL-00037" />
       <option name="project" value="LOCAL" />
-      <updated>1478562994896</updated>
+      <updated>1478529454917</updated>
     </task>
-    <task id="LOCAL-00038" summary="explosions fixed">
-      <created>1478563007526</created>
+    <task id="LOCAL-00038" summary="health fix">
+      <created>1478529539722</created>
       <option name="number" value="00038" />
       <option name="presentableId" value="LOCAL-00038" />
       <option name="project" value="LOCAL" />
-      <updated>1478563007526</updated>
+      <updated>1478529539722</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="health fix">
+      <created>1478531409342</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1478531409342</updated>
+    </task>
+    <task id="LOCAL-00040" summary="health fix">
+      <created>1478531421287</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1478531421287</updated>
+    </task>
+    <task id="LOCAL-00041" summary="implemented getVectorsToCar()">
+      <created>1478537727291</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1478537727291</updated>
+    </task>
+    <task id="LOCAL-00042" summary="implement random map gen">
+      <created>1478559617823</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1478559617823</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23000000" />
+    <option name="totallyTimeSpent" value="52416000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1671159" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.52708334" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.47291666" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.5272237" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.4727763" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39959225" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -658,61 +889,70 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="redundant files removed" />
-    <MESSAGE value="console.log removed" />
-    <MESSAGE value="redundant code removed" />
-    <MESSAGE value="SkeerSteer™ added" />
-    <MESSAGE value="road texture added" />
-    <MESSAGE value="physics driving" />
-    <MESSAGE value="ground and physics car added" />
     <MESSAGE value="fixmix" />
     <MESSAGE value="physics driving added" />
-    <MESSAGE value="car mass upped" />
-    <MESSAGE value="steering fixed" />
-    <MESSAGE value="more textures added" />
-    <MESSAGE value="extra textures added with channels" />
-    <MESSAGE value="grass texture added" />
-    <MESSAGE value="grass heightmap fixed" />
-    <MESSAGE value="grasshill heightmap fixed" />
+    <MESSAGE value="orbit controls are back" />
+    <MESSAGE value="camera following added" />
+    <MESSAGE value="physijs vehicle start" />
+    <MESSAGE value="newcar class added" />
+    <MESSAGE value="added vehicle.html&#10;" />
+    <MESSAGE value="vehicle working" />
+    <MESSAGE value="car driving working" />
+    <MESSAGE value="toggle camera button added" />
     <MESSAGE value="jump and boost fixed" />
-    <MESSAGE value="keymap added" />
-    <MESSAGE value="channels updated" />
-    <MESSAGE value="fixed" />
-    <MESSAGE value="copcar added" />
-    <MESSAGE value="driveroute function added" />
-    <MESSAGE value="collision detection added" />
-    <MESSAGE value="splash screen added" />
-    <MESSAGE value="explosions fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="explosions fixed" />
+    <MESSAGE value="floopr is back" />
+    <MESSAGE value="steer speed edited" />
+    <MESSAGE value="driveto added" />
+    <MESSAGE value="skyline added" />
+    <MESSAGE value="skyline fixed" />
+    <MESSAGE value="skyline updated, logs improved" />
+    <MESSAGE value="copcars added, errors surpressed" />
+    <MESSAGE value="bluelight update" />
+    <MESSAGE value="car spotlights added" />
+    <MESSAGE value="mn ding gedaan" />
+    <MESSAGE value="update connections dictionary after fixing texture rotations" />
+    <MESSAGE value="health fix" />
+    <MESSAGE value="implemented getVectorsToCar()" />
+    <MESSAGE value="implement random map gen" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement random map gen" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="14" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/game/Car.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="90" column="28" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="28" />
+          <folding>
+            <marker date="1478565807034" expanded="true" signature="34:9178" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="95:959" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/game/PixelFetcher.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1478430436850" expanded="true" signature="603:610" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+        <state relative-caret-position="544">
+          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/WorldTile.js">
+    <entry file="file://$PROJECT_DIR$/js/game/PhysicsCar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -720,7 +960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -728,7 +967,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
           <caret line="90" column="28" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="28" />
-          <folding />
+          <folding>
+            <marker date="1478565807034" expanded="true" signature="34:9178" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="95:959" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -736,79 +978,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1478430436850" expanded="true" signature="603:610" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/NewCar.js" />
-    <entry file="file://$PROJECT_DIR$/js/game/EnvMap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/Car.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="90" column="28" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/PixelFetcher.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1478430436850" expanded="true" signature="603:610" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/NewCar.js" />
-    <entry file="file://$PROJECT_DIR$/js/game/EnvMap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/Car.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="90" column="28" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/PixelFetcher.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1478430436850" expanded="true" signature="603:610" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -831,7 +1000,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -839,7 +1007,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
           <caret line="90" column="28" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="28" />
-          <folding />
+          <folding>
+            <marker date="1478565807034" expanded="true" signature="34:9178" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="95:959" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -847,9 +1018,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1478430436850" expanded="true" signature="603:610" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -872,7 +1040,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -880,7 +1047,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
           <caret line="90" column="28" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="28" />
-          <folding />
+          <folding>
+            <marker date="1478565807034" expanded="true" signature="34:9178" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="95:959" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -888,9 +1058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1478430436850" expanded="true" signature="603:610" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -906,7 +1073,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -914,7 +1080,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
           <caret line="90" column="28" selection-start-line="90" selection-start-column="28" selection-end-line="90" selection-end-column="28" />
-          <folding />
+          <folding>
+            <marker date="1478565807034" expanded="true" signature="34:9178" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="95:959" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -922,9 +1091,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1478430436850" expanded="true" signature="603:610" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -940,7 +1106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -948,7 +1113,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1751">
           <caret line="103" column="20" selection-start-line="103" selection-start-column="20" selection-end-line="103" selection-end-column="20" />
-          <folding />
+          <folding>
+            <marker date="1478565807034" expanded="true" signature="34:9178" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="95:959" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -963,7 +1131,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -971,7 +1138,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1478565807034" expanded="true" signature="34:9178" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="95:959" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -986,7 +1156,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -994,7 +1163,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1478565807034" expanded="true" signature="34:9178" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="95:959" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1012,80 +1184,161 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/game/PhysicsCar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="148" column="39" selection-start-line="148" selection-start-column="39" selection-end-line="148" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/game/PixelFetcher.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1478430436850" expanded="true" signature="603:610" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/PhysicsCar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="137" column="5" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/NewCar.js" />
-    <entry file="file://$PROJECT_DIR$/js/game/WorldTile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/EnvMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="144">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/Game.js">
+    <entry file="file://$PROJECT_DIR$/js/game/Car.backup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding>
-            <marker date="1478565666736" expanded="true" signature="85:1049" ph="{...}" />
-            <marker date="1478565666736" expanded="true" signature="486:500" ph="{...}" />
-          </folding>
+        <state relative-caret-position="306">
+          <caret line="18" column="51" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/game/AIActor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/game/Actor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/Car.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
+        <state relative-caret-position="3708">
+          <caret line="272" column="5" selection-start-line="272" selection-start-column="5" selection-end-line="272" selection-end-column="5" />
+          <folding>
+            <marker date="1478565807034" expanded="true" signature="34:9178" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="95:959" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/game/Scene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <marker date="1478565807034" expanded="true" signature="73:1109" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="1094:1109" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="3380:3390" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="3380:3396" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/textures/channels_desctiption.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/game/Game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+          <folding>
+            <marker date="1478565856685" expanded="true" signature="1072:1234" ph="{...}" />
+            <marker date="1478565856685" expanded="true" signature="1112:1228" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/game/Explosion.js">
+    <entry file="file://$PROJECT_DIR$/js/game/AStarNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+        <state relative-caret-position="324">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/game/AstarNodeData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/game/WorldTile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="29" column="69" selection-start-line="29" selection-start-column="69" selection-end-line="29" selection-end-column="69" />
+          <folding>
+            <element signature="n#!!block;n#generateAStarNodes#0;n#WorldTile#0" expanded="false" />
+            <marker date="1478565807062" expanded="true" signature="9397:9415" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/textures/3wayroad.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/textures/2wayroad.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game/CopCar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
-          <folding />
+        <state relative-caret-position="-234">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <marker date="1478565807034" expanded="true" signature="1539:1679" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="1573:1670" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="4105:4114" ph="{...}" />
+            <marker date="1478565807034" expanded="true" signature="4105:4195" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/textures/corner.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/game/World.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-237">
+          <caret line="304" column="26" selection-start-line="304" selection-start-column="26" selection-end-line="304" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!block;n#findPath#0;n#World#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
