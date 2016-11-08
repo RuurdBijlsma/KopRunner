@@ -2,6 +2,9 @@ class CopCar extends Car {
     constructor(scene, x, y, z) {
         super(scene, x, y, z, 'blue');
 
+        this.light = new THREE.PointLight(0x000000, 1, 100);
+        this.mesh.add(this.light);
+        this.light.position.set(0, 4, 0);
 
         this._actor = KeyboardActor.instance;
 
@@ -37,11 +40,6 @@ class CopCar extends Car {
     }
 
     enableLights() {
-        if (!this.light) {
-            this.light = new THREE.PointLight(0x000000, 1, 100);
-            this.mesh.add(this.light);
-            this.light.position.set(0, 4, 0);
-        }
         if (!this.lightInterval) {
             this.light.intensity = 2;
             this.lightInterval = setInterval(() => {
@@ -54,15 +52,13 @@ class CopCar extends Car {
         }
     }
     disableLights() {
-        if (this.light) {
-            this.mesh.remove(this.light);
-            delete this.light;
-        }
         if (this.lightInterval) {
             clearInterval(this.lightInterval);
             delete this.lightInterval;
         }
-        this.light.intensity = 0;
+        if (this.light) {
+            this.light.intensity = 0;
+        }
     }
 
     driveRoute(route) {
@@ -121,9 +117,10 @@ class CopCar extends Car {
         let path = MAIN.game.world.findPath(tileThis, tileTarget);
 
         let arr = [];
-        for (let elem of path) {
-            arr.push(new THREE.Vector2(elem.worldPosition.x, elem.worldPosition.z));
-        }
+        if (path)
+            for (let elem of path) {
+                arr.push(new THREE.Vector2(elem.worldPosition.x, elem.worldPosition.z));
+            }
         arr.splice(0, 1);
         arr.push(vecTarget);
         return arr;

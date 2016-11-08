@@ -7,20 +7,25 @@ class Game {
 
         MAIN.scene.toggleCamera();
         let safePos = this.randomSafePosition();
-        this.car.setPosition(safePos.x + (5 - Math.random() * 2.5), tileYlevel - 2, safePos.z + (10 - Math.random() * 5));
+        this.car.setPosition(safePos.x, tileYlevel - 2, safePos.z);
         this.car.setRotation();
         this.car.wheelDirection = 0;
 
         this.copCars = [];
-        for (let i = 0; i < 25; i++)
+        for (let i = 0; i < 1; i++) {
             this.addRandomCopper();
+        }
         this.fixCopPositions();
         document.getElementById("loadingDisplay").style.display = "none";
     }
     addRandomCopper() {
-        let pos = this.randomSafePosition(),
-            copper = new CopCar(MAIN.scene, pos.x + (5 - Math.random() * 2.5), tileYlevel, pos.z + (10 - Math.random() * 5));
-        this.copCars.push(copper);
+        if (this.copCars.length < 12) {
+            let pos = this.randomSafePosition(),
+                randPos = new THREE.Vector3(2.5 - pos.x + Math.random() * 5, 8, 5 - pos.y + Math.random() * 10);
+            console.log(randPos, pos.y);
+            let copper = new CopCar(MAIN.scene, randPos.x, randPos.y, randPos.z);
+            this.copCars.push(copper);
+        }
     }
     fixCopPositions() {
         for (let car of this.copCars) {

@@ -7,7 +7,8 @@ class Explosion {
         this.particleGroup = new SPE.Group({
             texture: {
                 value: this.tex
-            }
+            },
+            maxParticleCount:100000
         });
         this.clock = new THREE.Clock();
         this.loop = MAIN.loop.add(() => this.update());
