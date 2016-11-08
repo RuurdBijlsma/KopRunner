@@ -13,7 +13,12 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-#renderer, #loadingDisplay {
+.key {
+    color: 'black'
+}
+
+#renderer,
+#loadingDisplay {
     width: 100%;
     position: fixed;
     height: 100%;
@@ -26,7 +31,7 @@
 #loadingDisplay #loadingText {
     text-align: center;
     font-size: 60px;
-    bottom:100px;
+    bottom: 100px;
 }
 
 #keymapHint {
@@ -43,6 +48,7 @@ html {
     background-color: rgba(0, 0, 0, 0.1);
     color: white;
 }
+
 #keybinds {
     color: black;
 }
@@ -59,6 +65,7 @@ html {
     overflow-y: auto;
     display: none;
 }
+
 #closeKeymap {
     width: 20;
     height: 20;
@@ -66,16 +73,20 @@ html {
     top: 0px;
     text-align: center;
     right: 0px;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     padding: 25px;
     padding-top: 15px;
     cursor: pointer;
-    transition:0.1s;
+    transition: 0.1s;
 }
-#closeKeymap:hover{
-    color:white;
-    background-color:maroon;
+#hintkeyhint{
+    transform: translateY(-9px);
 }
+#closeKeymap:hover {
+    color: white;
+    background-color: maroon;
+}
+
 #help h1 {
     margin-bottom: 20px;
     color: black;
@@ -83,20 +94,22 @@ html {
 
 li {
     list-style: none;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-li:first-child{
-    border-top:1px solid rgba(0,0,0,0.1);
+
+li:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .key {
     display: inline-block;
     min-width: 20px;
+    color: black;
     height: 25px;
     padding: 15px;
-    padding-bottom:20px;
-    padding-top:10px;
-    font-size:20px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    font-size: 20px;
     background-color: rgb(240, 240, 240);
     text-align: center;
     box-shadow: inset -5px 5px 2px rgba(0, 0, 0, 0.15), inset 5px -5px 2px rgba(255, 255, 255, 0.5);
@@ -108,7 +121,8 @@ li:first-child{
     transform: translateY(7px);
 }
 
-body, html {
+body,
+html {
     height: 100%;
 }
 

@@ -2,9 +2,6 @@ class CopCar extends Car {
     constructor(scene, x, y, z) {
         super(scene, x, y, z, 'blue');
 
-        this.light = new THREE.PointLight(0x000000, 1, 100);
-        this.mesh.add(this.light);
-        this.light.position.set(0, 4, 0);
 
         this._actor = KeyboardActor.instance;
 
@@ -40,6 +37,11 @@ class CopCar extends Car {
     }
 
     enableLights() {
+        if (!this.light) {
+            this.light = new THREE.PointLight(0x000000, 1, 100);
+            this.mesh.add(this.light);
+            this.light.position.set(0, 4, 0);
+        }
         if (!this.lightInterval) {
             this.light.intensity = 2;
             this.lightInterval = setInterval(() => {
@@ -52,6 +54,10 @@ class CopCar extends Car {
         }
     }
     disableLights() {
+        if (this.light) {
+            this.mesh.remove(this.light);
+            delete this.light;
+        }
         if (this.lightInterval) {
             clearInterval(this.lightInterval);
             delete this.lightInterval;
