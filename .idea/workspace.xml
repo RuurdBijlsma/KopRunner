@@ -344,7 +344,7 @@
       <workItem from="1478517523987" duration="195000" />
       <workItem from="1478527390659" duration="1283000" />
       <workItem from="1478560609671" duration="1551000" />
-      <workItem from="1478564417704" duration="1225000" />
+      <workItem from="1478564417704" duration="1239000" />
     </task>
     <task id="LOCAL-00001" summary="EnvMap added">
       <created>1477850175034</created>
@@ -626,11 +626,18 @@
       <option name="project" value="LOCAL" />
       <updated>1478565897740</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="webgl crash fix">
+      <created>1478565937124</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1478565937124</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23199000" />
+    <option name="totallyTimeSpent" value="23213000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
