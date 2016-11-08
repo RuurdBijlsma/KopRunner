@@ -64,6 +64,10 @@ class KeyboardActor extends Actor {
         keyHandler.setSingleKey("r", "Add random cop", [
             () => MAIN.game.addRandomCopper()
         ]);
+        keyHandler.setSingleKey("l", "Light up the world", [
+            () => MAIN.scene.lights.ambient.intensity = 1,
+            () => MAIN.scene.lights.ambient.intensity = 0,
+        ]);
     }
 
     disable(car) {

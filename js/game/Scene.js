@@ -30,9 +30,10 @@ class Scene extends Physijs.Scene {
 
 
         this.lights = {
-             // ambient: new AmbientLight(this),
-             // directional: new DirectionalLight(this, 20, 11, 5)
+            ambient: new AmbientLight(this),
+            // directional: new DirectionalLight(this, 20, 11, 5)
         };
+        this.lights.ambient.intensity = 0;
 
         this.skyBox = new SkyBox(this, 'img/skybox/space/');
 

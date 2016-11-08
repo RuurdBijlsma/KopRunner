@@ -12,7 +12,7 @@ class Game {
         this.car.wheelDirection = 0;
 
         this.copCars = [];
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 3; i++) {
             this.addRandomCopper();
         }
         this.fixCopPositions();
